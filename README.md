@@ -104,7 +104,7 @@ Los integrantes son:
    2.3.4. [As-is Scenario Mapping.](#2.3.4.)<br>
    2.4. [Ubiquitous Language](#2.4.)<br>
 3. [**Capítulo III: Requirements Specification.**](#3.)<br>
-   3.1. [To-Be Scenario Mapping.](#3.1.)<br>   
+   3.1. [To-Be Scenario Mapping.](#3.1.)<br>
    3.2. [User Stories.](#3.2.)<br>
    3.3. [Impact Mapping.](#3.3.)<br>
    3.4. [Product Backlog.](#3.4.)<br>
