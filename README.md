@@ -14,7 +14,7 @@ width=50%"/>
 
 <h5 style="text-align: center"> Docente: Royer Edelwer Rojas Malásquez </h5>
 
-<h5 style="text-align: center"> Startup: ??? </h5>
+<h5 style="text-align: center"> Startup: Los PowerRanger </h5>
 
 <h5 style="text-align: center"> Producto: ??? </h5>
 
@@ -24,11 +24,11 @@ width=50%"/>
   
 |                Nombre                 |   Código   |
 | :-----------------------------------: | :--------: |
-|                                       |            |
-|                                       |            |
-|                                       |            |
-|                                       |            |
-|                                       |            |
+| Diego Martin Bastidas Bastidas        | u20221a301 |
+| Diego André Cantoral Paredes          | u20201f568 |
+| David Alejandro Rivas Sarango         | u20191e831 |
+| Elvia Marcela Rodriguez Villa         | u20231c784 |
+| Sebastian Valentino Silva Tirado      | u20211g296 |
 
 </div>
 
@@ -40,12 +40,11 @@ El objetivo de esta sección es resumir las modificaciones relevantes que se rea
 
 | Versión |   Fecha    |             Autor             | Descripción de modificación                                                                                                                                                                       |
 | :-----: | :--------: | :---------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|a|a|a|a|
-
+|   TB1   | 15/09/2025 | Silva Tirado, Sebastian Valentino | Realización de: <br> - Capítulo I: Introducción<br>- Capítulo II: Requirements Elicitation & Analysis<br>- Capítulo III: Requirements Specification<br>- Capítulo IV: Strategic-Level Software Design |
 
 # Project Report Collaboration Insights
 
-URL del repositorio para el reporte del proyecto:
+URL del repositorio para el reporte del proyecto: https://github.com/TF-SoftwareEmergentes
 
 **TB1**
 
@@ -61,7 +60,11 @@ Para el desarrollo del informe perteneciente a la entrega TF, se dividió la imp
 
 | Integrante                        | Tareas Asignadas                                                                                                                                                              |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|a|a|
+| Diego Martin Bastidas Bastidas    | Elaboración de la Unidad 1, 2 y 3 |
+| Diego André Cantoral Paredes      | Elaboración Diseño dirigido por atributos |
+| David Alejandro Rivas Sarango     | Elaboración de Software Architecture System |
+| Elvia Marcela Rodriguez Villa     | Elaboración de Users Stories |
+| Silva Tirado, Sebastián Valentino | Elaboración de Arquitectura y modelado avanzado |
 
 **Github Collaboration Insights**
 
@@ -69,11 +72,11 @@ Github también presenta un timeline de las ramas principales y los procesos de 
 
 Los integrantes son:
 
-- XXX (XXX)
-- XXX (XXX)
-- XXX (XXX)
+- Diego Martin Bastidas Bastidas (ghostnotfound404)
+- Diego André Cantoral Paredes (diegocantoralp)
+- David Alejandro Rivas Sarango (dars2002)
+- Elvia Marcela Rodriguez Villa (ElviaRV)
 - Silva Tirado, Sebastián Valentino (SebasSilvaT)
-- XXX (XXX)
 
 # Contenido
 
@@ -136,8 +139,14 @@ Los integrantes son:
 
 # STUDENT OUTCOME
 
-**ABET – EAC - Student Outcome 5**
- La capacidad de funcionar efectivamente en un equipo cuyos miembros juntos proporcionan liderazgo, crean un entorno de colaboración e inclusivo, establecen objetivos, planifican tareas y cumplen objetivos.
+El curso contribuye al cumplimiento del Student Outcome ABET:
+
+**ABET – EAC - Student Outcome 3**
+
+**Criterio:** Capacidad de comunicarse efectivamente con un rango de audiencias.
+
+En el siguiente cuadro se describe las acciones realizadas y enunciados de
+conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
 
 
 <table>
@@ -150,9 +159,7 @@ Los integrantes son:
   </thead>
   <tbody>
     <tr>
-      <td style="font-weight:bold">Trabaja en equipo para
-proporcionar liderazgo en
-forma conjunta</td>
+      <td style="font-weight:bold">Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerarquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
       </td>
       <td>
@@ -160,7 +167,7 @@ forma conjunta</td>
       </td>
     </tr>
     <tr>
-      <td style="font-weight:bold">Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos.</td>
+      <td style="font-weight:bold">Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerarquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
       </td>
       <td>
@@ -417,3 +424,9 @@ Este Context Map describe cómo interactúan los Bounded Contexts del sistema. A
 <div id='5.'><h2>5. Conclusiones</h2></div>
 <div id='6.'><h2>6. Bibliografía</h2></div>
 <div id='7.'><h2>7. Anexo</h2></div>
+
+| Descripción | Enlace |
+|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Organización de Github | [https://github.com/TF-SoftwareEmergentes](https://github.com/TF-SoftwareEmergentes) |
+| Link de Exposición |[Video]()|
+| Miro (Strategic-Level DDD) |[Miro](https://miro.com/welcomeonboard/NTdVVituT0xHUHkzRGE0anlScmprYjhKSzZtQWpPNFY4eVBOUXJpU284bVVGekJyY05yT0gwWlFCK3QxajRrUG0yRTNXTnB1SU9zZEVNc1BFN2U0YnJpenV0QTBlNTNnYmwrbW1MMkxTaHdDbVNLM3Fwd1g2VHVkVDR4V0pMTW5zVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=331643886038) |
