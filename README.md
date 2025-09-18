@@ -669,6 +669,12 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 
 <div id='4.1.'><h3>4.1. Strategic-Level Attribute-Driven Design</h3></div>
 <div id='4.1.1.'><h4>4.1.1. Design Purpose</h4></div>
+El propósito del diseño es mejorar la eficiencia en la gestión de cobranza mediante Inteligencia Artificial.  
+La plataforma busca:  
+- Procesar audios de llamadas y transcribirlos automáticamente con un LLM.  
+- Analizar emociones con una red neuronal de sentimiento.  
+- Predecir disposición de pago y apoyar la toma de decisiones.  
+- Brindar métricas en un dashboard interactivo para agentes y supervisores.  
 <div id='4.1.2.'><h4>4.1.2. Attribute-Driven Design Inputs</h4></div>
 <div id='4.1.2.1.'><h5>4.1.2.1. Primary Functionality (Primary User Stories)</h5></div>
 
@@ -693,9 +699,85 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 | **Precisión** | Análisis de sentimientos | Procesamiento de transcripción | Clasificación correcta del estado emocional | >85% de precisión en clasificación |
 
 <div id='4.1.2.3.'><h5>4.1.2.3. Constraints</h5></div>
+
+| Technical Story ID | Título                         | Descripción | Criterios de Aceptación | Relacionado con (Epic ID) |
+|--------------------|---------------------------------|-------------|--------------------------|---------------------------|
+| TS001              | Endpoint para procesamiento de audio | Subida de audios en formatos válidos .wav/.mp3 | Procesamiento exitoso con 202 Accepted | EP002 |
+| TS002              | Endpoint para análisis de sentimiento | Procesar transcripciones y devolver clasificación | Respuesta con sentimiento + confianza | EP002 |
+| TS003              | Endpoint para dashboard data   | Entregar métricas en tiempo real al dashboard | GET devuelve KPIs consistentes | EP003 |
+| C001               | Seguridad en autenticación     | Uso de OAuth2 y cifrado robusto en endpoints | Solo accesos autenticados válidos | EP001 |
+| C002               | Latencia máxima en análisis    | Procesamiento en < 3 min en 95% de casos | Validación en pruebas de carga | EP002 |
+| C003               | Disponibilidad mínima          | Dashboard disponible 24/7 (≥99.5% uptime) | Máx. 1h de downtime mensual | EP003 |
+| C004               | Privacidad de datos sensibles  | Grabaciones cifradas y anonimizadas | Sin filtración de datos personales | EP002 |
+| C005               | Escalabilidad en lotes         | Procesar ≥10,000 audios sin degradación | Stress test exitoso < 1 hora | EP005 |
+
 <div id='4.1.3.'><h4>4.1.3. Architectural Drivers Backlog</h4></div>
+
+| Driver ID | Título de Driver       | Descripción | Importancia para Stakeholders (High, Medium, Low) | Impacto en Architecture Technical Complexity (High, Medium, Low) |
+|-----------|------------------------|-------------|-----------------------------|--------------------------------|
+| AD01      | Rendimiento            | Procesamiento de audios en tiempo real | High | High |
+| AD02      | Disponibilidad         | Garantizar acceso continuo al dashboard | High | Medium |
+| AD03      | Seguridad              | Protección de datos sensibles | High | Medium |
+| AD04      | Usabilidad             | Dashboard intuitivo | High | Medium |
+| AD05      | Precisión del análisis | Clasificación emocional ≥85% | High | High |
+| AD06      | Escalabilidad          | Procesamiento masivo de llamadas | Medium | High |
+
 <div id='4.1.4.'><h4>4.1.4. Architectural Design Decisions</h4></div>
+
+| Driver ID | Título de Driver | Pattern 1 |        | Pattern 2 |        |
+|-----------|------------------|-----------|--------|-----------|--------|
+|           |                  | Pro       | Con    | Pro       | Con    |
+| AD01      | Rendimiento      | Procesamiento en streaming (baja latencia) | Mayor consumo de recursos | Procesamiento batch (optimizado análisis masivo) | No sirve en tiempo real |
+| AD02      | Disponibilidad   | Nube multi-región (redundancia) | Costo elevado | Una sola región (bajo costo) | Riesgo mayor de downtime |
+| AD03      | Seguridad        | Cifrado AES-256 + OAuth2 (robusto) | Más complejo | Cifrado básico + token (simple) | Menos seguro |
+| AD04      | Usabilidad       | Framework de UI modular (consistencia) | Curva de aprendizaje | Diseño ad-hoc (flexible) | Inconsistencias UX |
+
+
 <div id='4.1.5.'><h4>4.1.5. Quality Attribute Scenario Refinements</h4></div>
+
+#### Ejemplo Refinamiento 1 – Rendimiento
+
+| Campo                        | Detalle |
+|------------------------------|---------|
+| Scenario(s)                  | Procesamiento de audio en tiempo casi real |
+| **Business Goals**           | Brindar retroalimentación rápida al agente |
+| **Relevant Quality Attributes** | Rendimiento, Escalabilidad |
+| Stimulus                     | Subida de audio de 5–10 min |
+
+**Scenario Components**
+
+| Componente        | Detalle |
+|-------------------|---------|
+| Stimulus Source   | Agente |
+| Environment       | Plataforma web |
+| Artifact (if Known) | Módulo de transcripción + red neuronal |
+| Response          | Transcripción y análisis completados en menos de 3 min |
+| Response Measure  | ≥95% de los casos cumplen con la latencia establecida |
+| Questions:|  ¿Qué hacer si la latencia excede el límite en condiciones de stress? |  
+| **Issues:**  |  Ajustar recursos de cómputo en picos de carga.  |
+
+
+#### Ejemplo Refinamiento 2 – Seguridad
+
+| Campo                        | Detalle |
+|------------------------------|---------|
+| Scenario(s)                  | Protección de datos sensibles |
+| **Business Goals**           | Evitar accesos no autorizados y brechas |
+| **Relevant Quality Attributes** | Seguridad, Disponibilidad |
+| Stimulus                     | Intento de acceso no autorizado a grabación |
+
+**Scenario Components**
+
+| Componente        | Detalle |
+|-------------------|---------|
+| Stimulus Source   | Atacante externo |
+| Environment       | Plataforma web |
+| Artifact (if Known) | API de backend / repositorio de audios |
+| Response          | Bloquear acceso, registrar en logs, notificar al admin |
+| Response Measure  | 100% de accesos ilegales bloqueados en <5 seg |
+| Questions  | ¿Se requiere auditoría externa anual? |
+| Issues| Sobrecarga de logs en ataques masivos.  |
+
 
 <div id='4.2.'><h3>4.2. Strategic-Level Domain-Driven Design</h3></div>
 <div id='4.2.1.'><h4>4.2.1. EventStorming</h4></div>
