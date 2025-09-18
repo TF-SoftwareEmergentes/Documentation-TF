@@ -303,34 +303,34 @@ El Bounded Context Canvas es una herramienta gráfica aplicada en los talleres d
 Su objetivo principal es ayudar a los equipos a construir una visión compartida sobre el nombre y propósito de cada contexto, las entidades y agregados que este contiene, así como las políticas de negocio que lo rigen.
 
 ## Bounded Context Canvas — IAM (Access & Identity)
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas1.jpg" alt="Context_Canvas1"></img>
 
 ## Bounded Context Canvas — Telephony Ingestion
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas2.jpg" alt="Context_Canvas2"></img>
 
 ## Bounded Context Canvas — Transcription
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas3.jpg" alt="Context_Canvas3"></img>
 
 ## Bounded Context Canvas — Sentiment & Emotion
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas4.jpg" alt="Context_Canvas4"></img>
 
 ## Bounded Context Canvas — Propensity Scoring (Payment Intent)
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas5.jpg" alt="Context_Canvas5"></img>
 
 ## Bounded Context Canvas — Collections Operations
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas6.jpg" alt="Context_Canvas6"></img>
 
 ## Bounded Context Canvas — Compliance & Audit
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas7.jpg" alt="Context_Canvas7"></img>
 
 ## Bounded Context Canvas — Analytics & Dashboard
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Canvas8.jpg" alt="Context_Canvas8"></img>
 
 <div id='4.2.5.'><h4>4.2.5. Context Mapping</h4></div>
 
 Este Context Map describe cómo interactúan los Bounded Contexts del sistema. Aplicamos patrones de DDD como Upstream/Downstream, Published Language, Open-Host Service, Conformist y Anti-Corruption Layer (ACL).
 
-<img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
+<img src="assets/Context_Mapping.jpg" alt="Context_Mapping"></img>
 
 ## Bounded Contexts y relaciones
 
