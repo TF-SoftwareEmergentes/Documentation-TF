@@ -14,9 +14,9 @@ width=50%"/>
 
 <h5 style="text-align: center"> Docente: Royer Edelwer Rojas Malásquez </h5>
 
-<h5 style="text-align: center"> Startup: ??? </h5>
+<h5 style="text-align: center"> Startup: Los Power Ranger </h5>
 
-<h5 style="text-align: center"> Producto: ??? </h5>
+<h5 style="text-align: center"> Producto: aloGPT </h5>
 
 ## Team members:
 
@@ -24,11 +24,11 @@ width=50%"/>
   
 |                Nombre                 |   Código   |
 | :-----------------------------------: | :--------: |
-|                                       |            |
-|                                       |            |
-|                                       |            |
-|                                       |            |
-|                                       |            |
+| Bastidas Bastidas Diego Martin      | U20221a301  |
+| Cantoral Paredes Diego André        | u20201f568  |
+| Rivas Sarango David Alejandro       | u20191e831  |
+| Rodriguez Villa Elvia Marcela       | u20231c784  |
+| Silva Tirado Sebastian Valentino    | u20211g296  |
 
 </div>
 
@@ -69,11 +69,11 @@ Github también presenta un timeline de las ramas principales y los procesos de 
 
 Los integrantes son:
 
-- XXX (XXX)
-- XXX (XXX)
-- XXX (XXX)
+- Bastidas Bastidas, Diego Martin (ghostnotfound404)
+- Cantoral Paredes, Diego André
+- Rivas Sarango, David Alejandro
+- Rodriguez Villa Elvia Marcela
 - Silva Tirado, Sebastián Valentino (SebasSilvaT)
-- XXX (XXX)
 
 # Contenido
 
@@ -174,18 +174,157 @@ forma conjunta</td>
 <div id='1.'><h2>1. Capítulo I: Introducción</h2></div>
 
 <div id='1.1.'><h3>1.1. Startup Profile</h3></div>
+Esta sección incluye la descripción del Startup y los perfiles de los integrantes del equipo.
+
 <div id='1.1.1.'><h4>1.1.1. Descripción del startup</h4></div>
+
+aloGPT es una solución de inteligencia artificial para el sector de cobranzas. Su función principal es asistir a los agentes y supervisores en el proceso de llamadas a usuarios con deudas pendientes. La plataforma analiza la voz del deudor durante la llamada, identificando emociones, nivel de convicción y la probabilidad real de cumplir con la promesa de pago.
+
+Análisis de promesa de pago: el sistema genera un score emocional del audio y lo interpreta con un modelo de lenguaje (LLM) para determinar la veracidad de la intención del cliente.
+
+Gestión oportuna: en la fecha de vencimiento, aloGPT apoya en la identificación de los deudores con mayor probabilidad de pago, optimizando la eficiencia de las llamadas de cobranza.
 <div id='1.1.2.'><h4>1.1.2. Perfiles de los integrantes del equipo</h4></div>
+
+|                       Photo                        | Description |
+|:--------------------------------------------------:|:------------|
+| ![Diego](./img/Diegopfp.jpeg) | **Nombre y Apellido:** Diego Martin Bastidas Bastidas  <br> **Carrera:** Ingeniería de Software (8vo ciclo) <br> **Acerca de:** Decidí estudiar esta carrera porque desde pequeño me llamaba la atención el funcionamiento de las computadoras y los procesos que conllevan. Me apasiona practicar deportes de contacto, salir a pasear y, sobre todo, ser Groomer canino, ya que disfruto trabajar con mascotas. |
+| ![Nombre_1]() | **Nombre y Apellido:** Nombre_1 <br> **Carrera:** Carrera_1 <br> **Acerca de:** Descripción_1 |
+| ![Nombre_2]() | **Nombre y Apellido:** Nombre_2 <br> **Carrera:** Carrera_2 <br> **Acerca de:** Descripción_2 |
+| ![Nombre_3]() | **Nombre y Apellido:** Nombre_3 <br> **Carrera:** Carrera_3 <br> **Acerca de:** Descripción_3 |
+| ![Nombre_4]() | **Nombre y Apellido:** Nombre_4 <br> **Carrera:** Carrera_4 <br> **Acerca de:** Descripción_4 |
 
 <div id='1.2.'><h3>1.2. Solution Profile</h3></div>
 <div id='1.2.1.'><h4>1.2.1. Antecedentes y Problemática</h4></div>
+
+- What (¿Qué?)
+
+  El sector de cobranzas depende en gran medida de llamadas telefónicas para recuperar deudas. Sin embargo, gran parte de estas interacciones no generan resultados efectivos, ya que los deudores suelen dar respuestas poco confiables sobre su intención de pago.
+
+- Who (¿Quién?)
+
+  Los principales afectados son los supervisores de cobranza y los agentes callers, quienes invierten tiempo y esfuerzo en contactar deudores sin tener herramientas objetivas para evaluar si las promesas de pago serán cumplidas.
+
+- Where (¿Dónde?)
+
+  Esto ocurre principalmente en call centers de cobranza y en áreas de gestión de pagos de bancos, financieras, cooperativas y empresas de servicios.
+
+- When (¿Cuándo?)
+
+  El problema se intensifica en las fechas de vencimiento de deudas, cuando los equipos realizan más llamadas y necesitan priorizar a los clientes con mayor probabilidad de pago.
+
+- Why (¿Por qué?)
+
+  Las promesas de pago incumplidas generan ineficiencia operativa, pérdida de tiempo de los agentes, y retrasos en la recuperación de dinero para las empresas. Además, la falta de análisis emocional en la comunicación provoca que los supervisores tomen decisiones con información incompleta.
+
+- How (¿Cómo?)
+
+  Actualmente, la evaluación de la promesa de pago depende de la percepción subjetiva del agente, sin métricas objetivas que midan la veracidad o la disposición real del deudor. Esto limita la capacidad de los supervisores para tomar decisiones basadas en datos.
+
+- How much (¿Cuánto?)
+
+  El impacto económico es alto: en muchos call centers de cobranzas, más del 50% de las promesas de pago no se cumplen, lo que se traduce en pérdidas millonarias y en un uso ineficiente de recursos humanos y tecnológicos.
 <div id='1.2.2.'><h4>1.2.2. Lean UX Process</h4></div>
 <div id='1.2.2.1.'><h5>1.2.2.1. Lean UX Problem Statements</h5></div>
+
+Nuestro producto fue diseñado para apoyar a supervisores y agentes de cobranza mediante una plataforma que analiza la voz de los deudores de forma eficiente, confiable y fácil de usar. Hemos observado que en muchos call centers aún se enfrentan dificultades para identificar de manera objetiva qué promesas de pago son reales, lo que genera pérdida de tiempo, baja productividad y retrasos en la recuperación de la deuda.
 <div id='1.2.2.2.'><h5>1.2.2.2. Lean UX Assumptions</h5></div>
+
+#### Features
+
+- Análisis de voz y emociones: Los supervisores valoran poder identificar el nivel de convicción de los deudores a través de un score confiable que mide emociones e intenciones.
+
+- Detección de promesas de pago: Los agentes necesitan un sistema que evalúe si las promesas realizadas durante la llamada son reales o poco probables.
+
+- Alertas y reportes en tiempo real: Los usuarios valoran recibir insights inmediatos sobre la llamada, lo que les permite priorizar casos de mayor probabilidad de pago.
+
+- Modelo freemium con opción premium: Los call centers estarían dispuestos a pagar por funciones avanzadas de predicción, reportes detallados y dashboards integrados.
+
+#### Business Outcomes
+
+- Aumentar la efectividad de recuperación de deuda mediante análisis predictivo de promesas de pago.
+
+- Mejorar la productividad de los agentes y la toma de decisiones de supervisores.
+
+- Generar ingresos sostenibles mediante licencias, comisiones por uso y planes premium.
+
+- Posicionar a aloGPT como una solución innovadora y confiable en la industria de cobranzas.
+
+#### Users
+
+- Supervisores de cobranza, que necesitan medir y mejorar el desempeño de sus equipos.
+
+- Agentes callers, que requieren apoyo en tiempo real para saber con qué deudores insistir o no.
+
+- Call centers y áreas de cobranza de bancos, financieras, cooperativas y empresas de servicios.
+
+#### User Outcomes & Benefits
+
+- Identificar rápidamente deudores con mayor probabilidad de cumplir con su promesa de pago.
+
+- Tomar decisiones basadas en datos objetivos en lugar de percepciones subjetivas.
+
+- Reducir frustración y tiempo perdido en llamadas improductivas.
+
+- Aumentar la tasa de éxito en la recuperación de deudas con una herramienta de fácil uso.
+
+#### User Assumptions
+
+- Los supervisores desean métricas claras y fáciles de interpretar para evaluar a sus equipos.
+
+- Los agentes confían más en una herramienta que valide sus percepciones durante la llamada.
+
+- Prefieren plataformas intuitivas que no interrumpan su flujo de trabajo.
+
+- Los call centers están dispuestos a pagar un plan premium si obtienen análisis más profundos y predictivos.
+
+#### Business Assumptions
+
+- La demanda por soluciones de cobranza más efectivas seguirá creciendo en bancos y empresas de servicios.
+
+- Los usuarios adoptarán la plataforma si esta ofrece rapidez, confiabilidad y facilidad de uso.
+
+- Los call centers verán valor en registrar a sus equipos para aumentar el rendimiento y las recuperaciones.
+
 <div id='1.2.2.3.'><h5>1.2.2.3. Lean UX Hypothesis Statements</h5></div>
+
+**Hipótesis 1**
+
+Creemos que al ofrecer un sistema de análisis de voz que identifique emociones y el nivel de convicción en las promesas de pago, para supervisores de cobranza y agentes callers, mejoraremos la efectividad en la priorización de llamadas y aumentaremos la tasa de recuperación de deuda.
+Sabremos que esta hipótesis es cierta
+Cuando veamos que al menos el 60% de los supervisores reportan una mejora en la clasificación de deudores y que la tasa de cumplimiento de promesas de pago aumenta en un 20%.
+
+**Hipótesis 2**
+
+Creemos que al proveer reportes en tiempo real con un score de promesa de pago, los agentes de cobranza podrán tomar decisiones más rápidas y precisas durante la llamada, reduciendo el tiempo invertido en deudores con baja probabilidad de pago.
+Sabremos que esta hipótesis es cierta
+Cuando observemos que los agentes reducen en un 30% el tiempo promedio por llamada improductiva y aumentan en un 15% la conversión de promesas efectivas.
+
+**Hipótesis 3**
+
+Creemos que al implementar un sistema de alertas y dashboards fáciles de usar para supervisores, se incrementará la productividad del equipo y la satisfacción en la gestión de cobranza.
+Sabremos que esta hipótesis es cierta
+Cuando al menos el 70% de los supervisores reporten que la herramienta les facilita la toma de decisiones y se observe un aumento del 25% en la eficiencia operativa del call center.
+
+**Hipótesis 4**
+
+Creemos que al ofrecer un modelo free con funciones básicas gratuitas y análisis predictivos avanzados en un plan premium, los call centers adoptarán la plataforma y generaremos ingresos sostenibles.
+Sabremos que esta hipótesis es cierta
+Cuando al menos el 20% de los usuarios gratuitos migren al plan premium en los primeros 6 meses, y los ingresos por suscripciones superen las proyecciones iniciales.
 <div id='1.2.2.4.'><h5>1.2.2.4. Lean UX Canvas</h5></div>
 
+![Lean UX Canvas](./img/Canvas%20Emergentes.png)
+**Enlace:** <a href="https://acortar.link/ualshH"> https://acortar.link/ualshH</a> 
+
+
 <div id='1.3.'><h3>1.3. Segmentos objetivo</h3></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+Son responsables de monitorear y dirigir equipos de agentes en call centers o áreas de cobranza. Su principal necesidad es contar con métricas objetivas y dashboards claros que les permitan evaluar en tiempo real la calidad de las promesas de pago, priorizar deudores y mejorar la productividad del equipo.
+
+**Segmento Objetivo 2: Agentes callers**
+
+Son los operadores que realizan las llamadas directamente a los deudores. Enfrentan la dificultad de distinguir entre promesas reales y falsas, lo que genera frustración y pérdida de tiempo. Con aloGPT reciben apoyo en tiempo real mediante un score de intención de pago, lo que les ayuda a decidir con qué clientes insistir y cómo enfocar la conversación.
 
 <div id='2.'><h2>2. Capítulo II: Requirements Elicitation & Analysis</h2></div>
 
