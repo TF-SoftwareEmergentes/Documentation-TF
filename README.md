@@ -195,7 +195,7 @@ Gestión oportuna: en la fecha de vencimiento, aloGPT apoya en la identificació
 |                       Photo                        | Description |
 |:--------------------------------------------------:|:------------|
 | ![Diego](./img/Diegopfp.jpeg) | **Nombre y Apellido:** Diego Martin Bastidas Bastidas  <br> **Carrera:** Ingeniería de Software (8vo ciclo) <br> **Acerca de:** Decidí estudiar esta carrera porque desde pequeño me llamaba la atención el funcionamiento de las computadoras y los procesos que conllevan. Me apasiona practicar deportes de contacto, salir a pasear y, sobre todo, ser Groomer canino, ya que disfruto trabajar con mascotas. |
-| ![Nombre_1]() | **Nombre y Apellido:** Nombre_1 <br> **Carrera:** Carrera_1 <br> **Acerca de:** Descripción_1 |
+| ![Silva](./img/Silva.JPG) | **Nombre y Apellido:** Sebastián Valentino Silva Tirado <br> **Carrera:** Ingenieria de Software <br> **Acerca de:** Soy estudiante del octavo ciclo de la carrera de Ingeniería de Software en UPC. Opté por estudiar esta carrera porque me gusta la idea de programar y crear algo que pueda llegar a funcionar y ser útil en el mundo. Por lo cual, la universidad me da la posibilidad de estudiar y ser un profesional exitoso. Deseo ser buen integrante para mi equipo y me comprometo en hacer el mejor trabajo posible, y poder superarme más que el ciclo anterior. |
 | ![Nombre_2]() | **Nombre y Apellido:** Nombre_2 <br> **Carrera:** Carrera_2 <br> **Acerca de:** Descripción_2 |
 | ![Nombre_3]() | **Nombre y Apellido:** Nombre_3 <br> **Carrera:** Carrera_3 <br> **Acerca de:** Descripción_3 |
 | ![Nombre_4]() | **Nombre y Apellido:** Nombre_4 <br> **Carrera:** Carrera_4 <br> **Acerca de:** Descripción_4 |
@@ -526,7 +526,156 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 
 1. ¿Qué haría que realmente quieras usar este tipo de herramienta en tu día a día?
 <div id='2.2.2.'><h4>2.2.2. Registro de entrevistas</h4></div>
+
+### Segmento 1: Supervisores de cobranza
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td>Entrevistado N°1</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-1.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: 0:00 - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°2</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-2.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°3</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-3.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+</table>
+
+</div>
+
+### Segmento 2: Agentes callers
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td>Entrevistado N°1</td>
+        <td>Marcia Rea Gamboa</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>21</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>Comas</td>
+    </tr> 
+    <tr>
+        <td><img src="assets/Entrevista-1v2.png" width="300px"></td>
+        <td>Marcia Rea es una joven que trabaja como agente de cobranza y busca mejorar sus habilidades de persuasión.</td>
+    </tr> 
+    <tr>
+        <td>Timing: 0:00 - 09:43</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EavOkRlWWUFMowRkOibxKaUByF-2pkt2ZK79EkvEI7W-gg?e=jYYiLL" target="_blank">Link del Video</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°2</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-2.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°3</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-3.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+</table>
+
+</div>
+
 <div id='2.2.3.'><h4>2.2.3. Análisis de entrevistas</h4></div>
+
+A continuación, se presenta el análisis de las entrevistas realizadas a adultos mayores y cuidadores responsables de su atención. Este estudio permite identificar patrones, necesidades y oportunidades clave para el diseño de la solución IoT de monitoreo de signos vitales y detección de caídas.
+
+</br>
+
+**Características comunes entre Supervisores de cobranza y Agentes callers entrevistados**
+
+<img src="Img/grafico-barras-entrevistas-emergentes.png" alt="Gráfico de barras de las entrevistas emergentes" style="margin-bottom: 5px;" width="600"/>
+
+**Fuente**: Datos recolectados mediante entrevistas aplicadas a tres Supervisores de cobranza y tres Agentes callers en Lima Metropolitana.
+
+</br>
+
+En nuestro caso, permite a los equipos lograr una comprensión compartida del nombre y propósito de cada contexto relacionado con la cobranza asistida por inteligencia artificial, las entidades y agregados que cada uno controla (llamadas, transcripciones, sentimientos, casos de cobranza, reglas de compliance) y las políticas de negocio que regulan su funcionamiento.
 
 <div id='2.3.'><h3>2.3. Needfinding</h3></div>
 <div id='2.3.1.'><h4>2.3.1. User Personas</h4></div>
