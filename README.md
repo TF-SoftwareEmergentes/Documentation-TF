@@ -49,11 +49,11 @@ URL del repositorio para el reporte del proyecto: https://github.com/TF-Software
 **TB1**
 
 <div align="center">
-  <img src="" alt="insights">
+  <img src="assets/insights1.png" alt="insights">
 </div>
 
 <div align="center">
-  <img src="" alt="insights">
+  <img src="assets/insights2.png" alt="insights">
 </div>
 
 Para el desarrollo del informe perteneciente a la entrega TF, se dividió la implementación de secciones de la siguiente forma para cada integrante del equipo:
@@ -148,7 +148,6 @@ El curso contribuye al cumplimiento del Student Outcome ABET:
 En el siguiente cuadro se describe las acciones realizadas y enunciados de
 conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
 
-
 <table>
   <thead>
     <tr>
@@ -159,24 +158,43 @@ conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el l
   </thead>
   <tbody>
     <tr>
-      <td style="font-weight:bold">Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerarquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
+      <td>Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
+        Diego Martin Bastidas Bastidas<br>
+        TB1: Expuso la importancia del problema y el objetivo del proyecto.<br><br>
+        Diego André Cantoral Paredes<br>
+        TB1: Presentó la metodología y explicó el uso de EventStorming.<br><br>
+        David Alejandro Rivas Sarango<br>
+        TB1: Explicó los bounded contexts y su interacción.<br><br>
+        Elvia Marcela Rodriguez Villa<br>
+        TB1: Describió los casos de uso y el valor para los usuarios finales.<br><br>
+        Silva Tirado, Sebastián Valentino<br>
+        TB1: Presentó las conclusiones parciales y los aportes estratégicos.
       </td>
       <td>
-        <!--conclusion -->
+        TB1: Cada integrante logró comunicar con claridad su parte del proyecto, manteniendo un discurso técnico adaptado al nivel del público, lo que permitió una comprensión compartida del avance.
       </td>
     </tr>
     <tr>
-      <td style="font-weight:bold">Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerarquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
+      <td>Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
+        Diego Martin Bastidas Bastidas<br>
+        TB1: Redactó la introducción y la justificación del problema.<br><br>
+        Diego André Cantoral Paredes<br>
+        TB1: Elaboró la sección de EventStorming y Candidate Context Discovery.<br><br>
+        David Alejandro Rivas Sarango<br>
+        TB1: Desarrolló los Bounded Context Canvases.<br><br>
+        Elvia Marcela Rodriguez Villa<br>
+        TB1: Redactó los Domain Message Flows Modeling.<br><br>
+        Silva Tirado, Sebastián Valentino<br>
+        TB1: Estructuró el Context Mapping y la conclusión general.
       </td>
       <td>
-        <!-- conclusion -->
+        TB1: Se alcanzó una redacción clara, coherente y objetiva en todas las secciones, lo que permitió consolidar un documento alineado con los criterios de un proyecto de ingeniería.
       </td>
     </tr>
   </tbody>
 </table>
-
 
 <div id='1.'><h2>1. Capítulo I: Introducción</h2></div>
 
@@ -1137,7 +1155,31 @@ El diagrama de despliegue muestra cómo los contenedores son desplegados en la i
 <img src="assets/deployment_diagram_v0.jpg"></img>
 
 <div id='5.'><h2>5. Conclusiones</h2></div>
+
+La primera versión del trabajo ha permitido delimitar de manera estratégica el dominio de la plataforma de cobranza con análisis de sentimientos, identificando los bounded contexts clave, sus relaciones y flujos de comunicación. A través de técnicas como EventStorming, Candidate Context Discovery, Domain Storytelling, Bounded Context Canvas y Context Mapping, se logró construir una comprensión compartida del sistema y sentar las bases para su diseño técnico y funcional, asegurando que la solución responda tanto a las necesidades del negocio como a los retos tecnológicos de procesamiento de audio en tiempo real, análisis emocional y soporte a la toma de decisiones en la gestión de cobranzas.
+
 <div id='6.'><h2>6. Bibliografía</h2></div>
+
+Brandolini, A. (2019). *Introducing EventStorming: An act of deliberate collective learning*. Leanpub.  
+
+Evans, E. (2004). *Domain-Driven Design: Tackling complexity in the heart of software*. Addison-Wesley Professional.  
+
+Vernon, V. (2016). *Implementing Domain-Driven Design*. Addison-Wesley.  
+
+Richardson, C. (2018). *Microservices patterns: With examples in Java*. Manning Publications.  
+
+Burton, S., Alhijawi, B., Zlabinger, A., Roberts, S., Gilpin, W., & König-Ries, B. (2024). PetBERT: A pre-trained language model for veterinary medicine. *npj Digital Medicine, 7*(1), 54. https://doi.org/10.1038/s41746-024-00975-7  
+
+Miranda, M., Oliveira, J., & Souza, R. (2024). Deep learning for automated detection of Chagas disease vectors using convolutional neural networks. *Computers in Biology and Medicine, 170*, 107939. https://doi.org/10.1016/j.compbiomed.2024.107939  
+
+França, R., Santos, P., & Oliveira, M. (2025). Detection of bovine brucellosis through FTIR spectroscopy and support vector machines. *Veterinary Sciences, 12*(3), 122. https://doi.org/10.3390/vetsci12030122  
+
+Hwang, E. J., Lee, J. H., & Kim, H. (2022). Artificial intelligence in digital pathology: Current applications and future perspectives. *Journal of Pathology and Translational Medicine, 56*(3), 127–135. https://doi.org/10.4132/jptm.2022.03.15  
+
+Rai, R., Tiwari, P., & Singh, V. (2022). Applications of machine learning in veterinary medicine: A review. *Frontiers in Veterinary Science, 9*, 875312. https://doi.org/10.3389/fvets.2022.875312  
+
+Bussola, N., Ferrari, C., & Gatti, R. (2023). Artificial intelligence in clinical decision support systems: Opportunities and challenges. *Healthcare, 11*(4), 567. https://doi.org/10.3390/healthcare11040567  
+
 <div id='7.'><h2>7. Anexo</h2></div>
 
 | Descripción | Enlace |
