@@ -964,9 +964,20 @@ Este Context Map describe cómo interactúan los Bounded Contexts del sistema. A
 
 <div id='4.3.'><h3>4.3. Software Architecture</h3></div>
 <div id='4.3.1.'><h4>4.3.1. Software Architecture System Landscape Diagram</h4></div>
+
+<img src="assets/system_landscape_diagram.png"></img>
+
 <div id='4.3.2.'><h4>4.3.2. Software Architecture Context Level Diagrams</h4></div>
+
+<img src="assets/context_diagram.png"></img>
+
 <div id='4.3.3.'><h4>4.3.3. Software Architecture Container Level Diagrams</h4></div>
+
+<img src="assets/container_diagram.png"></img>
+
 <div id='4.3.4.'><h4>4.3.4. Software Architecture Deployment Diagrams</h4></div>
+
+<img src="assets/deployment_diagram_v0.jpg"></img>
 
 <div id='5.'><h2>5. Conclusiones</h2></div>
 <div id='6.'><h2>6. Bibliografía</h2></div>
