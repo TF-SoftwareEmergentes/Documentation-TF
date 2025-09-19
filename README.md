@@ -965,17 +965,25 @@ Este Context Map describe cómo interactúan los Bounded Contexts del sistema. A
 <div id='4.3.'><h3>4.3. Software Architecture</h3></div>
 <div id='4.3.1.'><h4>4.3.1. Software Architecture System Landscape Diagram</h4></div>
 
+aEl diagrama muestra el ecosistema tecnológico donde se integra la solución. Este sistema interactúa con actores humanos y sistemas externos como Genesys CRM y Genesys API, que proporcionan la información de clientes y grabaciones de llamadas.
+
 <img src="assets/system_landscape_diagram.png"></img>
 
 <div id='4.3.2.'><h4>4.3.2. Software Architecture Context Level Diagrams</h4></div>
+
+El diagrama de Contexto detalla cómo los actores externos interactúan con el sistema principal.
 
 <img src="assets/context_diagram.png"></img>
 
 <div id='4.3.3.'><h4>4.3.3. Software Architecture Container Level Diagrams</h4></div>
 
+En el nivel de Contenedores se describen los principales componentes de la solución. La capa de presentación está conformada por una Single-Page Application (SPA) desarrollada en Angular, que permite a los supervisores consultar las calificaciones y métricas de desempeño.
+
 <img src="assets/container_diagram.png"></img>
 
 <div id='4.3.4.'><h4>4.3.4. Software Architecture Deployment Diagrams</h4></div>
+
+El diagrama de despliegue muestra cómo los contenedores son desplegados en la infraestructura tecnolófgica. Donde la solución se ejecuta en AWS EC2, donde se alojan tanto el backend como el frontend, teniendo como servidor de base de datos PostgreSQL, mientras que se utilizan dos modelos de lenguaje (Whisper y Empathic-Insight-Voice.
 
 <img src="assets/deployment_diagram_v0.jpg"></img>
 
