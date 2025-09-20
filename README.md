@@ -549,7 +549,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 | Recibir retroalimentación gamificada (niveles, puntos, incentivos) | Media / Media | Frecuente / Media |
 
 <div id='2.3.3.'><h4>2.3.3. Empathy Mapping</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![Empathy Mapping Segmento 1](./img/Empathy_Mapping1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![Empathy Mapping Segmento 1](./img/Empathy_Mapping2.png)
 <div id='2.3.4.'><h4>2.3.4. As-is Scenario Mapping</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping2.png)
 
 <div id='2.4.'><h3>2.4. Ubiquitous Language</h3></div>
 
