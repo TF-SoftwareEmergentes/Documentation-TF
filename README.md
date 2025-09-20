@@ -697,6 +697,15 @@ En nuestro caso, permite a los equipos lograr una comprensión compartida del no
 
 <div id='2.3.'><h3>2.3. Needfinding</h3></div>
 <div id='2.3.1.'><h4>2.3.1. User Personas</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![User Persona Segmento 1](./img/Carlos%20Méndez.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![User Persona Segmento 2](./img/Andrea%20Salazar.png)
+
 <div id='2.3.2.'><h4>2.3.2. User Task Matrix</h4></div>
 
 | Tarea | Supervisores de Cobranza (Frecuencia / Importancia) | Agentes Callers (Frecuencia / Importancia) |
@@ -714,7 +723,23 @@ En nuestro caso, permite a los equipos lograr una comprensión compartida del no
 | Recibir retroalimentación gamificada (niveles, puntos, incentivos) | Media / Media | Frecuente / Media |
 
 <div id='2.3.3.'><h4>2.3.3. Empathy Mapping</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![Empathy Mapping Segmento 1](./img/Empathy_Mapping1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![Empathy Mapping Segmento 1](./img/Empathy_Mapping2.png)
 <div id='2.3.4.'><h4>2.3.4. As-is Scenario Mapping</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping2.png)
 
 <div id='2.4.'><h3>2.4. Ubiquitous Language</h3></div>
 
