@@ -561,7 +561,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
         <td>San Isidro</td>
     </tr> 
     <tr>
-        <td><img src="Img/Entrevista-1.png" width="300px"></td>
+        <td><img src="assets/Entrevista-1.png" width="300px"></td>
         <td>Marcelo Ávalos es un supervisor de cobranza con 5 años de experiencia en el sector.</td>
     </tr> 
     <tr>
