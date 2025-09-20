@@ -824,6 +824,7 @@ En nuestro caso, permite a los equipos lograr una comprensión compartida del no
 | TS003 | Endpoint para dashboard data | Como developer, quiero crear endpoints para alimentar el dashboard. | E01: Data consistente<br>Dado el endpoint "/api/dashboard/metrics"<br>Cuando se solicita data del dashboard<br>Entonces devuelve métricas en tiempo real. |
 
 <div id='3.3.'><h3>3.3. Impact Mapping</h3></div>
+
 | Actor              | Impacto                        | Comportamiento Deseado                               | Funcionalidades (Deliverables)                                   |
 |--------------------|--------------------------------|------------------------------------------------------|------------------------------------------------------------------|
 | Agentes de cobranza| Mejorar estrategias de negociación | Adaptar su enfoque según el estado emocional del cliente | - Dashboard con análisis de sentimientos <br> - Recomendaciones personalizadas <br> - Alertas de oportunidades |
