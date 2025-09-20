@@ -523,6 +523,15 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 
 <div id='2.3.'><h3>2.3. Needfinding</h3></div>
 <div id='2.3.1.'><h4>2.3.1. User Personas</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![User Persona Segmento 1](./img/Carlos%20Méndez.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![User Persona Segmento 2](./img/Andrea%20Salazar.png)
+
 <div id='2.3.2.'><h4>2.3.2. User Task Matrix</h4></div>
 
 | Tarea | Supervisores de Cobranza (Frecuencia / Importancia) | Agentes Callers (Frecuencia / Importancia) |
