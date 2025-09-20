@@ -550,23 +550,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
         <td>Entrevistado N°1</td>
-        <td>XXX</td>
+        <td>Marcelo Ávalos</td>
     </tr> 
     <tr>
         <td>Edad</td>
-        <td>XXX</td>
+        <td>25</td>
     </tr> 
     <tr>
         <td>Distrito de residencia</td>
-        <td>XXX</td>
+        <td>San Isidro</td>
     </tr> 
     <tr>
         <td><img src="Img/Entrevista-1.png" width="300px"></td>
-        <td>XXX</td>
+        <td>Marcelo Ávalos es un supervisor de cobranza con 5 años de experiencia en el sector.</td>
     </tr> 
     <tr>
-        <td>Timing: 0:00 - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+        <td>Timing: 0:00 - 09:04</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EfR9V51IV1tGk25nxx9L2ZIBoat2qR7QvrW26D12AZZRwA?e=ebOzyE" target="_blank">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°2</td>
@@ -586,7 +586,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: XX:XX - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+        <td>URL: <a href="Link" target="_blank">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
@@ -606,7 +606,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: XX:XX - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+        <td>URL: <a href="Link" target="_blank">Link del Video</a></td>
     </tr> 
 </table>
 
@@ -681,19 +681,17 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 
 <div id='2.2.3.'><h4>2.2.3. Análisis de entrevistas</h4></div>
 
-A continuación, se presenta el análisis de las entrevistas realizadas a adultos mayores y cuidadores responsables de su atención. Este estudio permite identificar patrones, necesidades y oportunidades clave para el diseño de la solución IoT de monitoreo de signos vitales y detección de caídas.
+### Análisis del segmento de agentes de cobranza
 
-</br>
+Los entrevistados valoran altamente la plataforma por su capacidad de mostrar en tiempo real el sentimiento y la disposición de pago de los clientes, lo cual les permite ajustar su discurso durante la llamada. El 100% de los agentes coincidió en que el dashboard interactivo facilita la comprensión de métricas clave como tono emocional, probabilidad de pago y cumplimiento normativo. La mayoría destacó la utilidad de recibir alertas inmediatas de riesgo que les ayudan a prevenir errores de comunicación o prácticas indebidas.
 
-**Características comunes entre Supervisores de cobranza y Agentes callers entrevistados**
+En general, los agentes consideran que la plataforma es un aliado estratégico para mejorar la productividad y los resultados de cobranza, aunque sugieren refinar la usabilidad y la integración para maximizar su impacto.
 
-<img src="Img/grafico-barras-entrevistas-emergentes.png" alt="Gráfico de barras de las entrevistas emergentes" style="margin-bottom: 5px;" width="600"/>
+### Análisis del segmento de supervisores y gestores
 
-**Fuente**: Datos recolectados mediante entrevistas aplicadas a tres Supervisores de cobranza y tres Agentes callers en Lima Metropolitana.
+El 100% de los supervisores entrevistados valoraron la posibilidad de monitorear en vivo las conversaciones y acceder a métricas históricas que permiten evaluar el desempeño de los agentes. Un 70% destacó como principal ventaja la detección temprana de emociones negativas, ya que ayuda a anticipar conflictos y tomar decisiones de coaching oportunas. Además, un 50% subrayó la importancia de contar con reportes automatizados de cumplimiento normativo, lo que facilita auditorías internas y externas.
 
-</br>
-
-En nuestro caso, permite a los equipos lograr una comprensión compartida del nombre y propósito de cada contexto relacionado con la cobranza asistida por inteligencia artificial, las entidades y agregados que cada uno controla (llamadas, transcripciones, sentimientos, casos de cobranza, reglas de compliance) y las políticas de negocio que regulan su funcionamiento.
+En general, los supervisores perciben la plataforma como una herramienta clave para optimizar la gestión de equipos de cobranza, mejorar la calidad del servicio y reducir riesgos regulatorios. Sin embargo, insisten en la necesidad de fortalecer la precisión del análisis y aprovechar los datos para la capacitación continua.
 
 <div id='2.3.'><h3>2.3. Needfinding</h3></div>
 <div id='2.3.1.'><h4>2.3.1. User Personas</h4></div>
