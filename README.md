@@ -49,11 +49,11 @@ URL del repositorio para el reporte del proyecto: https://github.com/TF-Software
 **TB1**
 
 <div align="center">
-  <img src="" alt="insights">
+  <img src="assets/insights1.png" alt="insights">
 </div>
 
 <div align="center">
-  <img src="" alt="insights">
+  <img src="assets/insights2.png" alt="insights">
 </div>
 
 Para el desarrollo del informe perteneciente a la entrega TF, se dividió la implementación de secciones de la siguiente forma para cada integrante del equipo:
@@ -148,7 +148,6 @@ El curso contribuye al cumplimiento del Student Outcome ABET:
 En el siguiente cuadro se describe las acciones realizadas y enunciados de
 conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
 
-
 <table>
   <thead>
     <tr>
@@ -159,24 +158,43 @@ conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el l
   </thead>
   <tbody>
     <tr>
-      <td style="font-weight:bold">Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerarquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
+      <td>Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
+        Diego Martin Bastidas Bastidas<br>
+        TB1: Expuso la importancia del problema y el objetivo del proyecto.<br><br>
+        Diego André Cantoral Paredes<br>
+        TB1: Presentó la metodología y explicó el uso de EventStorming.<br><br>
+        David Alejandro Rivas Sarango<br>
+        TB1: Explicó los bounded contexts y su interacción.<br><br>
+        Elvia Marcela Rodriguez Villa<br>
+        TB1: Describió los casos de uso y el valor para los usuarios finales.<br><br>
+        Silva Tirado, Sebastián Valentino<br>
+        TB1: Presentó las conclusiones parciales y los aportes estratégicos.
       </td>
       <td>
-        <!--conclusion -->
+        TB1: Cada integrante logró comunicar con claridad su parte del proyecto, manteniendo un discurso técnico adaptado al nivel del público, lo que permitió una comprensión compartida del avance.
       </td>
     </tr>
     <tr>
-      <td style="font-weight:bold">Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerarquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
+      <td>Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
+        Diego Martin Bastidas Bastidas<br>
+        TB1: Redactó la introducción y la justificación del problema.<br><br>
+        Diego André Cantoral Paredes<br>
+        TB1: Elaboró la sección de EventStorming y Candidate Context Discovery.<br><br>
+        David Alejandro Rivas Sarango<br>
+        TB1: Desarrolló los Bounded Context Canvases.<br><br>
+        Elvia Marcela Rodriguez Villa<br>
+        TB1: Redactó los Domain Message Flows Modeling.<br><br>
+        Silva Tirado, Sebastián Valentino<br>
+        TB1: Estructuró el Context Mapping y la conclusión general.
       </td>
       <td>
-        <!-- conclusion -->
+        TB1: Se alcanzó una redacción clara, coherente y objetiva en todas las secciones, lo que permitió consolidar un documento alineado con los criterios de un proyecto de ingeniería.
       </td>
     </tr>
   </tbody>
 </table>
-
 
 <div id='1.'><h2>1. Capítulo I: Introducción</h2></div>
 
@@ -195,7 +213,7 @@ Gestión oportuna: en la fecha de vencimiento, aloGPT apoya en la identificació
 |                       Photo                        | Description |
 |:--------------------------------------------------:|:------------|
 | ![Diego](./img/Diegopfp.jpeg) | **Nombre y Apellido:** Diego Martin Bastidas Bastidas  <br> **Carrera:** Ingeniería de Software (8vo ciclo) <br> **Acerca de:** Decidí estudiar esta carrera porque desde pequeño me llamaba la atención el funcionamiento de las computadoras y los procesos que conllevan. Me apasiona practicar deportes de contacto, salir a pasear y, sobre todo, ser Groomer canino, ya que disfruto trabajar con mascotas. |
-| ![Diego](./img/Diego2pfp.png) | **Nombre y Apellido:** Nombre_1 <br> **Carrera:** Ingeniería de Software <br> **Acerca de:** Mi nombre es Diego André Cantoral Paredes y soy estudiante de la carrera de Ingeniería de Software. Desde siempre me interesaron los temas tecnológicos y sobre todo las computadoras, por lo que desarrollé una afición a los videojuegos y luego a la programación. Me considero una persona responsable, creativa y siempre dispuesto a ayudar a mis compañeros. |
+| ![Silva](./img/Silva.JPG) | **Nombre y Apellido:** Sebastián Valentino Silva Tirado <br> **Carrera:** Ingenieria de Software <br> **Acerca de:** Soy estudiante del octavo ciclo de la carrera de Ingeniería de Software en UPC. Opté por estudiar esta carrera porque me gusta la idea de programar y crear algo que pueda llegar a funcionar y ser útil en el mundo. Por lo cual, la universidad me da la posibilidad de estudiar y ser un profesional exitoso. Deseo ser buen integrante para mi equipo y me comprometo en hacer el mejor trabajo posible, y poder superarme más que el ciclo anterior. |
 | ![Nombre_2]() | **Nombre y Apellido:** Nombre_2 <br> **Carrera:** Carrera_2 <br> **Acerca de:** Descripción_2 |
 | ![Nombre_3]() | **Nombre y Apellido:** Nombre_3 <br> **Carrera:** Carrera_3 <br> **Acerca de:** Descripción_3 |
 | ![Nombre_4]() | **Nombre y Apellido:** Nombre_4 <br> **Carrera:** Carrera_4 <br> **Acerca de:** Descripción_4 |
@@ -526,10 +544,166 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 
 1. ¿Qué haría que realmente quieras usar este tipo de herramienta en tu día a día?
 <div id='2.2.2.'><h4>2.2.2. Registro de entrevistas</h4></div>
+
+### Segmento 1: Supervisores de cobranza
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td>Entrevistado N°1</td>
+        <td>Marcelo Ávalos</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>25</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>San Isidro</td>
+    </tr> 
+    <tr>
+        <td><img src="assets/Entrevista-1.png" width="300px"></td>
+        <td>Marcelo Ávalos es un supervisor de cobranza con 5 años de experiencia en el sector.</td>
+    </tr> 
+    <tr>
+        <td>Timing: 0:00 - 09:04</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EfR9V51IV1tGk25nxx9L2ZIBoat2qR7QvrW26D12AZZRwA?e=ebOzyE" target="_blank">Link del Video</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°2</td>
+        <td>Amner Llamo</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>22</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>San Miguel</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-2.png" width="300px"></td>
+        <td>En la entrevista, el supervisor comentó que las herrmaientas actuales que utiliza para la medición de sus colaboradores son útiles pero que desaría contar con resultados relacionados a la calidad de las llamadas que recibe, y contar con un dashboard que muestre los resultados más importantes sería muy beneficioso para su trabajo </td>
+    </tr> 
+    <tr>
+        <td>Timing: 00:00 - 04:24</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f568_upc_edu_pe/EUn8MWIvHl1FtDR9EKUQr9YBdKAfrKMS8NYwGUXvDRSTkw?e=tCfled&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D" target="_blank">Link del Video</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°3</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-3.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">Link del Video</a></td>
+    </tr> 
+</table>
+
+</div>
+
+### Segmento 2: Agentes callers
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td>Entrevistado N°1</td>
+        <td>Marcia Rea Gamboa</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>21</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>Comas</td>
+    </tr> 
+    <tr>
+        <td><img src="assets/Entrevista-1v2.png" width="300px"></td>
+        <td>Marcia Rea es una joven que trabaja como agente de cobranza y busca mejorar sus habilidades de persuasión.</td>
+    </tr> 
+    <tr>
+        <td>Timing: 0:00 - 09:43</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EavOkRlWWUFMowRkOibxKaUByF-2pkt2ZK79EkvEI7W-gg?e=jYYiLL" target="_blank">Link del Video</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°2</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-2.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+    <tr>
+        <td>Entrevistado N°3</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Edad</td>
+        <td>XX</td>
+    </tr> 
+    <tr>
+        <td>Distrito de residencia</td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td><img src="Img/Entrevista-3.png" width="300px"></td>
+        <td>XXX</td>
+    </tr> 
+    <tr>
+        <td>Timing: XX:XX - XX:XX</td>
+        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+    </tr> 
+</table>
+
+</div>
+
 <div id='2.2.3.'><h4>2.2.3. Análisis de entrevistas</h4></div>
+
+### Análisis del segmento de agentes de cobranza
+
+Los entrevistados valoran altamente la plataforma por su capacidad de mostrar en tiempo real el sentimiento y la disposición de pago de los clientes, lo cual les permite ajustar su discurso durante la llamada. El 100% de los agentes coincidió en que el dashboard interactivo facilita la comprensión de métricas clave como tono emocional, probabilidad de pago y cumplimiento normativo. La mayoría destacó la utilidad de recibir alertas inmediatas de riesgo que les ayudan a prevenir errores de comunicación o prácticas indebidas.
+
+En general, los agentes consideran que la plataforma es un aliado estratégico para mejorar la productividad y los resultados de cobranza, aunque sugieren refinar la usabilidad y la integración para maximizar su impacto.
+
+### Análisis del segmento de supervisores y gestores
+
+El 100% de los supervisores entrevistados valoraron la posibilidad de monitorear en vivo las conversaciones y acceder a métricas históricas que permiten evaluar el desempeño de los agentes. Un 70% destacó como principal ventaja la detección temprana de emociones negativas, ya que ayuda a anticipar conflictos y tomar decisiones de coaching oportunas. Además, un 50% subrayó la importancia de contar con reportes automatizados de cumplimiento normativo, lo que facilita auditorías internas y externas.
+
+En general, los supervisores perciben la plataforma como una herramienta clave para optimizar la gestión de equipos de cobranza, mejorar la calidad del servicio y reducir riesgos regulatorios. Sin embargo, insisten en la necesidad de fortalecer la precisión del análisis y aprovechar los datos para la capacitación continua.
 
 <div id='2.3.'><h3>2.3. Needfinding</h3></div>
 <div id='2.3.1.'><h4>2.3.1. User Personas</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![User Persona Segmento 1](./img/Carlos%20Méndez.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![User Persona Segmento 2](./img/Andrea%20Salazar.png)
+
 <div id='2.3.2.'><h4>2.3.2. User Task Matrix</h4></div>
 
 | Tarea | Supervisores de Cobranza (Frecuencia / Importancia) | Agentes Callers (Frecuencia / Importancia) |
@@ -547,7 +721,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 | Recibir retroalimentación gamificada (niveles, puntos, incentivos) | Media / Media | Frecuente / Media |
 
 <div id='2.3.3.'><h4>2.3.3. Empathy Mapping</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![Empathy Mapping Segmento 1](./img/Empathy_map1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![Empathy Mapping Segmento 1](./img/Empathy_map2.png)
 <div id='2.3.4.'><h4>2.3.4. As-is Scenario Mapping</h4></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping2.png)
 
 <div id='2.4.'><h3>2.4. Ubiquitous Language</h3></div>
 
@@ -632,6 +822,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 | TS003 | Endpoint para dashboard data | Como developer, quiero crear endpoints para alimentar el dashboard. | E01: Data consistente<br>Dado el endpoint "/api/dashboard/metrics"<br>Cuando se solicita data del dashboard<br>Entonces devuelve métricas en tiempo real. |
 
 <div id='3.3.'><h3>3.3. Impact Mapping</h3></div>
+
 | Actor              | Impacto                        | Comportamiento Deseado                               | Funcionalidades (Deliverables)                                   |
 |--------------------|--------------------------------|------------------------------------------------------|------------------------------------------------------------------|
 | Agentes de cobranza| Mejorar estrategias de negociación | Adaptar su enfoque según el estado emocional del cliente | - Dashboard con análisis de sentimientos <br> - Recomendaciones personalizadas <br> - Alertas de oportunidades |
@@ -974,12 +1165,55 @@ Este Context Map describe cómo interactúan los Bounded Contexts del sistema. A
 
 <div id='4.3.'><h3>4.3. Software Architecture</h3></div>
 <div id='4.3.1.'><h4>4.3.1. Software Architecture System Landscape Diagram</h4></div>
+
+aEl diagrama muestra el ecosistema tecnológico donde se integra la solución. Este sistema interactúa con actores humanos y sistemas externos como Genesys CRM y Genesys API, que proporcionan la información de clientes y grabaciones de llamadas.
+
+<img src="assets/system_landscape_diagram.png"></img>
+
 <div id='4.3.2.'><h4>4.3.2. Software Architecture Context Level Diagrams</h4></div>
+
+El diagrama de Contexto detalla cómo los actores externos interactúan con el sistema principal.
+
+<img src="assets/context_diagram.png"></img>
+
 <div id='4.3.3.'><h4>4.3.3. Software Architecture Container Level Diagrams</h4></div>
+
+En el nivel de Contenedores se describen los principales componentes de la solución. La capa de presentación está conformada por una Single-Page Application (SPA) desarrollada en Angular, que permite a los supervisores consultar las calificaciones y métricas de desempeño.
+
+<img src="assets/container_diagram.png"></img>
+
 <div id='4.3.4.'><h4>4.3.4. Software Architecture Deployment Diagrams</h4></div>
 
+El diagrama de despliegue muestra cómo los contenedores son desplegados en la infraestructura tecnolófgica. Donde la solución se ejecuta en AWS EC2, donde se alojan tanto el backend como el frontend, teniendo como servidor de base de datos PostgreSQL, mientras que se utilizan dos modelos de lenguaje (Whisper y Empathic-Insight-Voice.
+
+<img src="assets/deployment_diagram_v0.jpg"></img>
+
 <div id='5.'><h2>5. Conclusiones</h2></div>
+
+La primera versión del trabajo ha permitido delimitar de manera estratégica el dominio de la plataforma de cobranza con análisis de sentimientos, identificando los bounded contexts clave, sus relaciones y flujos de comunicación. A través de técnicas como EventStorming, Candidate Context Discovery, Domain Storytelling, Bounded Context Canvas y Context Mapping, se logró construir una comprensión compartida del sistema y sentar las bases para su diseño técnico y funcional, asegurando que la solución responda tanto a las necesidades del negocio como a los retos tecnológicos de procesamiento de audio en tiempo real, análisis emocional y soporte a la toma de decisiones en la gestión de cobranzas.
+
 <div id='6.'><h2>6. Bibliografía</h2></div>
+
+Brandolini, A. (2019). *Introducing EventStorming: An act of deliberate collective learning*. Leanpub.  
+
+Evans, E. (2004). *Domain-Driven Design: Tackling complexity in the heart of software*. Addison-Wesley Professional.  
+
+Vernon, V. (2016). *Implementing Domain-Driven Design*. Addison-Wesley.  
+
+Richardson, C. (2018). *Microservices patterns: With examples in Java*. Manning Publications.  
+
+Burton, S., Alhijawi, B., Zlabinger, A., Roberts, S., Gilpin, W., & König-Ries, B. (2024). PetBERT: A pre-trained language model for veterinary medicine. *npj Digital Medicine, 7*(1), 54. https://doi.org/10.1038/s41746-024-00975-7  
+
+Miranda, M., Oliveira, J., & Souza, R. (2024). Deep learning for automated detection of Chagas disease vectors using convolutional neural networks. *Computers in Biology and Medicine, 170*, 107939. https://doi.org/10.1016/j.compbiomed.2024.107939  
+
+França, R., Santos, P., & Oliveira, M. (2025). Detection of bovine brucellosis through FTIR spectroscopy and support vector machines. *Veterinary Sciences, 12*(3), 122. https://doi.org/10.3390/vetsci12030122  
+
+Hwang, E. J., Lee, J. H., & Kim, H. (2022). Artificial intelligence in digital pathology: Current applications and future perspectives. *Journal of Pathology and Translational Medicine, 56*(3), 127–135. https://doi.org/10.4132/jptm.2022.03.15  
+
+Rai, R., Tiwari, P., & Singh, V. (2022). Applications of machine learning in veterinary medicine: A review. *Frontiers in Veterinary Science, 9*, 875312. https://doi.org/10.3389/fvets.2022.875312  
+
+Bussola, N., Ferrari, C., & Gatti, R. (2023). Artificial intelligence in clinical decision support systems: Opportunities and challenges. *Healthcare, 11*(4), 567. https://doi.org/10.3390/healthcare11040567  
+
 <div id='7.'><h2>7. Anexo</h2></div>
 
 | Descripción | Enlace |
