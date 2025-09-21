@@ -668,6 +668,8 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
 <div id='4.'><h2>4. Capítulo IV: Solution Software Design</h2></div>
 
 <div id='4.1.'><h3>4.1. Strategic-Level Attribute-Driven Design</h3></div>
+En este capítulo se muestran las decisiones que fundamentan la propuesta de la arquitectura; en la que el análisis permite que la solución esté planteada bajo una sólida base.
+
 <div id='4.1.1.'><h4>4.1.1. Design Purpose</h4></div>
 El propósito del diseño es mejorar la eficiencia en la gestión de cobranza mediante Inteligencia Artificial.  
 La plataforma busca:  
@@ -676,7 +678,9 @@ La plataforma busca:
 - Predecir disposición de pago y apoyar la toma de decisiones.  
 - Brindar métricas en un dashboard interactivo para agentes y supervisores.  
 <div id='4.1.2.'><h4>4.1.2. Attribute-Driven Design Inputs</h4></div>
+Se introduce los insumos principales que definen el proceso clave del diseño arquitectónico. 
 <div id='4.1.2.1.'><h5>4.1.2.1. Primary Functionality (Primary User Stories)</h5></div>
+Se identificar las User Stories con mayor impacto en las funcionalidades de la solución y que coindicionen de mayor manera la arquitectura. 
 
 | ID     | Título                              | Descripción |
 |--------|-------------------------------------|-------------|
@@ -689,6 +693,7 @@ La plataforma busca:
 | US010  | Recomendaciones personalizadas      | Como agente, quiero recibir sugerencias específicas basadas en el análisis de cada llamada. |
 
 <div id='4.1.2.2.'><h5>4.1.2.2. Quality Attribute Scenarios</h5></div>
+Se especifican los escenarios sobre los que se estarían evidenciando los atributos de calidad definidos que tendrán un comportamiento ante estímulos específicos. 
 
 | Atributo de Calidad | Escenario | Estímulo | Respuesta | Medida |
 |---------------------|-----------|----------|-----------|--------|
@@ -699,6 +704,7 @@ La plataforma busca:
 | **Precisión** | Análisis de sentimientos | Procesamiento de transcripción | Clasificación correcta del estado emocional | >85% de precisión en clasificación |
 
 <div id='4.1.2.3.'><h5>4.1.2.3. Constraints</h5></div>
+Se lista las restricciones no negociables que limitan y orientan las decisiones de diseño. Dichas restricciones estarán limitadas tanto por el alcance del negocio como también de las tecnologías utilizadas en la solución
 
 | Technical Story ID | Título                         | Descripción | Criterios de Aceptación | Relacionado con (Epic ID) |
 |--------------------|---------------------------------|-------------|--------------------------|---------------------------|
@@ -712,6 +718,7 @@ La plataforma busca:
 | C005               | Escalabilidad en lotes         | Procesar ≥10,000 audios sin degradación | Stress test exitoso < 1 hora | EP005 |
 
 <div id='4.1.3.'><h4>4.1.3. Architectural Drivers Backlog</h4></div>
+En esta sección se presenta los drivers arquitectónicos acordados por el equipo según el análisis de los atributos de calidad; en el que se detallan los drivers y criterios utilizados. 
 
 | Driver ID | Título de Driver       | Descripción | Importancia para Stakeholders (High, Medium, Low) | Impacto en Architecture Technical Complexity (High, Medium, Low) |
 |-----------|------------------------|-------------|-----------------------------|--------------------------------|
@@ -723,6 +730,7 @@ La plataforma busca:
 | AD06      | Escalabilidad          | Procesamiento masivo de llamadas | Medium | High |
 
 <div id='4.1.4.'><h4>4.1.4. Architectural Design Decisions</h4></div>
+En esta sección se explican los procesos mediante el cual se tomaron las decisiones de diseño en base a los atributos de calidad definidos previamente. 
 
 | Driver ID | Título de Driver | Pattern 1 |        | Pattern 2 |        |
 |-----------|------------------|-----------|--------|-----------|--------|
@@ -734,6 +742,7 @@ La plataforma busca:
 
 
 <div id='4.1.5.'><h4>4.1.5. Quality Attribute Scenario Refinements</h4></div>
+Se presentan los escenarios refinados de atributos de calidad que fueron seleccionados en base a los atributos de calidad priorizados. Se está detallando cada escenario con las variables necesarias para tener un marco claro para validar las decisiones arquitectónicas durante la implementación y operación.
 
 #### Ejemplo Refinamiento 1 – Rendimiento
 
