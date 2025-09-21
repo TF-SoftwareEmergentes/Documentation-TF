@@ -215,7 +215,7 @@ Gestión oportuna: en la fecha de vencimiento, aloGPT apoya en la identificació
 | ![Diego](./img/Diegopfp.jpeg) | **Nombre y Apellido:** Diego Martin Bastidas Bastidas  <br> **Carrera:** Ingeniería de Software (8vo ciclo) <br> **Acerca de:** Decidí estudiar esta carrera porque desde pequeño me llamaba la atención el funcionamiento de las computadoras y los procesos que conllevan. Me apasiona practicar deportes de contacto, salir a pasear y, sobre todo, ser Groomer canino, ya que disfruto trabajar con mascotas. |
 | ![Silva](./img/Silva.JPG) | **Nombre y Apellido:** Sebastián Valentino Silva Tirado <br> **Carrera:** Ingenieria de Software <br> **Acerca de:** Soy estudiante del octavo ciclo de la carrera de Ingeniería de Software en UPC. Opté por estudiar esta carrera porque me gusta la idea de programar y crear algo que pueda llegar a funcionar y ser útil en el mundo. Por lo cual, la universidad me da la posibilidad de estudiar y ser un profesional exitoso. Deseo ser buen integrante para mi equipo y me comprometo en hacer el mejor trabajo posible, y poder superarme más que el ciclo anterior. |
 | ![Diego](./img/Diego2pfp.png) | **Nombre y Apellido:** Diego Cantoral <br> **Carrera:** Ingeniería de Software <br> **Acerca de:** Mi nombre es Diego André Cantoral Paredes y soy estudiante de la carrera de Ingeniería de Software. Desde siempre me interesaron los temas tecnológicos y sobre todo las computadoras, por lo que desarrollé una afición a los videojuegos y luego a la programación. Me considero una persona responsable, creativa y siempre dispuesto a ayudar a mis compañeros. |
-| ![Nombre_4]() | **Nombre y Apellido:** Nombre_4 <br> **Carrera:** Carrera_4 <br> **Acerca de:** Descripción_4 |
+| ![Elvia](./img/Elvia.jpg) | **Nombre y Apellido:** Elvia Rodríguez <br> **Carrera:** Ingeniería de Software <br> **Acerca de:** Soy Elvia Rodríguez, estudiante universitaria, egresada de Laboratoria y embajadora de Microsoft. He participado en voluntariados y Hackathons, aplicando mis habilidades en desarrollo de interfaces de usuario (UI) y programación web. Mi experiencia en el ámbito tecnológico y educativo puede contribuir al modelo de negocio mediante la creación de soluciones digitales innovadoras y funcionales. |
 | ![Rivas](./img/rivas-foto.jpg)| **Nombre y Apellido:** David Alejandro Rivas Sarango <br> **Carrera:** Ingeniería de Software <br> **Acerca de:** Mi nombre es David Alejandro Rivas Sarango, actualmente estoy cursando la carrera de Ingeniería de Software en la UPC. Soy una persona honesta y responsable. Me interesa el área de Data Science, por esto estoy siguiendo cursos de capacitacion en SQL y Python. |
 
 <div id='1.2.'><h3>1.2. Solution Profile</h3></div>
@@ -728,16 +728,17 @@ En general, los supervisores perciben la plataforma como una herramienta clave p
 
 **Segmento Objetivo 2: Agentes callers**
 
-![Empathy Mapping Segmento 1](./img/Empathy_map2.png)
+![Empathy Mapping Segmento 2](./img/Empathy_map2.png)
+
 <div id='2.3.4.'><h4>2.3.4. As-is Scenario Mapping</h4></div>
 
 **Segmento Objetivo 1: Supervisores de cobranza**
 
-![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping1.png)
+![As-is Scenario Mapping Segmento 1](./img/As-isScenarioMapping1.png)
 
 **Segmento Objetivo 2: Agentes callers**
 
-![As-is Scenario Mapping Segmento 1](./img/Empathy_Mapping2.png)
+![As-is Scenario Mapping Segmento 2](./img/As-isScenarioMapping2.png)
 
 <div id='2.4.'><h3>2.4. Ubiquitous Language</h3></div>
 
@@ -764,6 +765,15 @@ En general, los supervisores perciben la plataforma como una herramienta clave p
 <div id='3.'><h2>3. Capítulo III: Requirements Specification</h2></div>
 
 <div id='3.1.'><h3>3.1. To-Be Scenario Mapping</h3></div>
+
+**Segmento Objetivo 1: Supervisores de cobranza**
+
+![To-be Scenario Mapping Segmento 1](./img/To-be_Scenario1.png)
+
+**Segmento Objetivo 2: Agentes callers**
+
+![To-be Scenario Mapping Segmento 2](./img/To-be_Scenario2.png)
+
 <div id='3.2.'><h3>3.2. User Stories</h3></div>
 
 | Epic ID | Título | Descripción |
@@ -825,8 +835,16 @@ En general, los supervisores perciben la plataforma como una herramienta clave p
 
 | Actor              | Impacto                        | Comportamiento Deseado                               | Funcionalidades (Deliverables)                                   |
 |--------------------|--------------------------------|------------------------------------------------------|------------------------------------------------------------------|
-| Agentes de cobranza| Mejorar estrategias de negociación | Adaptar su enfoque según el estado emocional del cliente | - Dashboard con análisis de sentimientos <br> - Recomendaciones personalizadas <br> - Alertas de oportunidades |
-| Supervisores       | Optimizar gestión del equipo   | Identificar patrones y oportunidades de mejora        | - Reportes de desempeño <br> - Tendencias temporales <br> - Métricas de efectividad |
+| Supervisores de cobranza| Mejorar estrategias de negociación | Adaptar su enfoque según el estado emocional del cliente | - Dashboard con análisis de sentimientos <br> - Recomendaciones personalizadas <br> - Alertas de oportunidades |
+| Agentes callers       | Optimizar gestión del equipo   | Identificar patrones y oportunidades de mejora        | - Reportes de desempeño <br> - Tendencias temporales <br> - Métricas de efectividad |
+
+### User Journey Map – Supervisores de cobranza
+
+<img src="assets/Journey_Mapping1.jpg" alt="Journey_Mapping1"></img>
+
+### User Journey Map – Agentes callers
+
+<img src="assets/Journey_Mapping2.jpg" alt="Journey_Mapping2"></img>
 
 <div id='3.4.'><h3>3.4. Product Backlog</h3></div>
 
