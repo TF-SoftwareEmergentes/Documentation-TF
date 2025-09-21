@@ -636,23 +636,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Entrevistado N°2</td>
-        <td>XXX</td>
+        <td>Sebastián Vargas/td>
     </tr> 
     <tr>
         <td>Edad</td>
-        <td>XX</td>
+        <td>25</td>
     </tr> 
     <tr>
         <td>Distrito de residencia</td>
-        <td>XXX</td>
+        <td>San Martín de Porres</td>
     </tr> 
     <tr>
         <td><img src="Img/Entrevista-2.png" width="300px"></td>
-        <td>XXX</td>
+        <td>Sebastián Vargas es un estudiante de la UPC que ha trabajado en el área de atención al cliente de Movistar y Claro.</td>
     </tr> 
     <tr>
         <td>Timing: XX:XX - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20191e831_upc_edu_pe/EVi9VU-y-spAqbxAWZlRDnQBiUlZWZ5uoBrDVUJT8L41fw?e=JJmGen&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D" target="_blank">NombreLink</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
