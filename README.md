@@ -1204,7 +1204,7 @@ En el nivel de Contenedores se describen los principales componentes de la soluc
 
 El diagrama de despliegue muestra cómo los contenedores son desplegados en la infraestructura tecnolófgica. Donde la solución se ejecuta en AWS EC2, donde se alojan tanto el backend como el frontend, teniendo como servidor de base de datos PostgreSQL, mientras que se utilizan dos modelos de lenguaje (Whisper y Empathic-Insight-Voice.
 
-<img src="assets/deployment_diagram_v0.jpg"></img>
+<img src="assets/deployment_diagram_v1.jpg"></img>
 
 <div id='5.'><h2>5. Conclusiones</h2></div>
 
