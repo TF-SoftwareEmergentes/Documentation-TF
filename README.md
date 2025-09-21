@@ -570,23 +570,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Entrevistado N°2</td>
-        <td>XXX</td>
+        <td>Amner Llamo</td>
     </tr> 
     <tr>
         <td>Edad</td>
-        <td>XX</td>
+        <td>22</td>
     </tr> 
     <tr>
         <td>Distrito de residencia</td>
-        <td>XXX</td>
+        <td>San Miguel</td>
     </tr> 
     <tr>
         <td><img src="Img/Entrevista-2.png" width="300px"></td>
-        <td>XXX</td>
+        <td>En la entrevista, el supervisor comentó que las herrmaientas actuales que utiliza para la medición de sus colaboradores son útiles pero que desaría contar con resultados relacionados a la calidad de las llamadas que recibe, y contar con un dashboard que muestre los resultados más importantes sería muy beneficioso para su trabajo </td>
     </tr> 
     <tr>
-        <td>Timing: XX:XX - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">Link del Video</a></td>
+        <td>Timing: 00:00 - 04:24</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f568_upc_edu_pe/EUn8MWIvHl1FtDR9EKUQr9YBdKAfrKMS8NYwGUXvDRSTkw?e=tCfled&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D" target="_blank">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
