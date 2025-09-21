@@ -695,13 +695,14 @@ Se identificar las User Stories con mayor impacto en las funcionalidades de la s
 <div id='4.1.2.2.'><h5>4.1.2.2. Quality Attribute Scenarios</h5></div>
 Se especifican los escenarios sobre los que se estarían evidenciando los atributos de calidad definidos que tendrán un comportamiento ante estímulos específicos. 
 
-| Atributo de Calidad | Escenario | Estímulo | Respuesta | Medida |
-|---------------------|-----------|----------|-----------|--------|
-| **Rendimiento** | Procesamiento de audio en tiempo casi real | Subida de archivo de audio (5-10 min) | Transcripción y análisis completos en menos de 3 minutos | 95% de procesamientos bajo 3 min |
-| **Disponibilidad** | Acceso continuo al dashboard | Solicitud de acceso durante horario laboral | Sistema disponible 24/7 con máximo 1h de mantenimiento mensual | 99.5% uptime |
-| **Seguridad** | Protección de datos sensibles | Intento de acceso no autorizado a grabaciones | Autenticación robusta y encriptación end-to-end | 0 brechas de datos |
-| **Usabilidad** | Interfaz intuitiva para agentes | Primer uso del dashboard | Curva de aprendizaje menor a 30 minutos | 90% de usuarios proficientes en 1 día |
-| **Precisión** | Análisis de sentimientos | Procesamiento de transcripción | Clasificación correcta del estado emocional | >85% de precisión en clasificación |
+| Atributo de Calidad | Fuente                    | Escenario                                | Estímulo                                   | Artefacto                          | Entorno                   | Respuesta                                                    | Medida                                |
+|---------------------|---------------------------|------------------------------------------|--------------------------------------------|------------------------------------|---------------------------|--------------------------------------------------------------|---------------------------------------|
+| **Rendimiento**     | Agente                    | Procesamiento de audio en tiempo casi real | Subida de archivo de audio (5-10 min)      | Módulo de transcripción + análisis | Plataforma web             | Transcripción y análisis completos en menos de 3 minutos     | 95% de procesamientos < 3 min         |
+| **Disponibilidad**  | Usuario (agente/supervisor) | Acceso continuo al dashboard              | Solicitud de acceso durante horario laboral | Servidor de aplicación / Dashboard | Nube multi-región          | Sistema disponible 24/7 con máximo 1h de mantenimiento mensual | 99.5% uptime                          |
+| **Seguridad**       | Atacante externo/interno  | Protección de datos sensibles             | Intento de acceso no autorizado a grabaciones | API backend / Repositorio de audios | Plataforma en producción   | Autenticación robusta y encriptación end-to-end              | 0 brechas de datos                    |
+| **Usabilidad**      | Agente nuevo              | Interfaz intuitiva para agentes           | Primer uso del dashboard                   | Interfaz de usuario (UI)           | Navegador web / dispositivo estándar | Curva de aprendizaje menor a 30 minutos                      | 90% de usuarios proficientes en 1 día |
+| **Precisión**       | Sistema (motor de análisis) | Análisis de sentimientos                  | Procesamiento de transcripción             | Red neuronal de sentimiento        | Servidor de análisis       | Clasificación correcta del estado emocional                  | >85% de precisión en clasificación    |
+
 
 <div id='4.1.2.3.'><h5>4.1.2.3. Constraints</h5></div>
 Se lista las restricciones no negociables que limitan y orientan las decisiones de diseño. Dichas restricciones estarán limitadas tanto por el alcance del negocio como también de las tecnologías utilizadas en la solución
