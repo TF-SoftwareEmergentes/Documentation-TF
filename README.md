@@ -724,11 +724,11 @@ En general, los supervisores perciben la plataforma como una herramienta clave p
 
 **Segmento Objetivo 1: Supervisores de cobranza**
 
-![Empathy Mapping Segmento 1](./img/Empathy_Mapping1.png)
+![Empathy Mapping Segmento 1](./img/Empathy_map1.png)
 
 **Segmento Objetivo 2: Agentes callers**
 
-![Empathy Mapping Segmento 1](./img/Empathy_Mapping2.png)
+![Empathy Mapping Segmento 1](./img/Empathy_map2.png)
 <div id='2.3.4.'><h4>2.3.4. As-is Scenario Mapping</h4></div>
 
 **Segmento Objetivo 1: Supervisores de cobranza**
