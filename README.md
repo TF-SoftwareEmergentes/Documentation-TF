@@ -580,7 +580,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
         <td>San Miguel</td>
     </tr> 
     <tr>
-        <td><img src="Img/Entrevista-2.png" width="300px"></td>
+        <td><img src="img/entrevistaAmner.jpg" width="300px"></td>
         <td>En la entrevista, el supervisor comentó que las herrmaientas actuales que utiliza para la medición de sus colaboradores son útiles pero que desaría contar con resultados relacionados a la calidad de las llamadas que recibe, y contar con un dashboard que muestre los resultados más importantes sería muy beneficioso para su trabajo </td>
     </tr> 
     <tr>
