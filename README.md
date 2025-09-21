@@ -648,7 +648,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
         <td>San Martín de Porres</td>
     </tr> 
     <tr>
-        <td><img src="Img/Entrevista-2.png" width="300px"></td>
+        <td><img src="assets/entrevista3_ss.png" width="300px"></td>
         <td>Sebastián Vargas es un estudiante de la UPC que ha trabajado en el área de atención al cliente de Movistar y Claro.</td>
     </tr> 
     <tr>
