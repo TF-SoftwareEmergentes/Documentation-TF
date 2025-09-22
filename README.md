@@ -590,23 +590,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
-        <td>XXX</td>
+        <td>Vanesa Gomez</td>
     </tr> 
     <tr>
         <td>Edad</td>
-        <td>XX</td>
+        <td>24</td>
     </tr> 
     <tr>
         <td>Distrito de residencia</td>
-        <td>XXX</td>
+        <td>Lince</td>
     </tr> 
     <tr>
-        <td><img src="Img/Entrevista-3.png" width="300px"></td>
-        <td>XXX</td>
+        <td><img src="./img/entrevista3.png" width="300px"></td>
+        <td>El entrevistado resaltó que la plataforma le permite monitorear en tiempo real las llamadas y acceder a métricas históricas para evaluar a su equipo. Considera especialmente útil la detección temprana de emociones negativas, ya que facilita intervenir antes de que surjan conflictos. También valoró los reportes automáticos de cumplimiento normativo, que simplifican auditorías internas. Sin embargo, señaló que aún es necesario mejorar la precisión del análisis y aprovechar más los datos para entrenar a los agentes.</td>
     </tr> 
     <tr>
-        <td>Timing: XX:XX - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">Link del Video</a></td>
+        <td>Timing: 00:00 - 6:56</td>
+        <td>URL: <a href="https://n9.cl/entrevista_3" target="_blank">Link del Video</a></td>
     </tr> 
 </table>
 
@@ -687,7 +687,7 @@ Los entrevistados valoran altamente la plataforma por su capacidad de mostrar en
 
 En general, los agentes consideran que la plataforma es un aliado estratégico para mejorar la productividad y los resultados de cobranza, aunque sugieren refinar la usabilidad y la integración para maximizar su impacto.
 
-### Análisis del segmento de supervisores y gestores
+### Análisis del segmento de Agentes callers
 
 El 100% de los supervisores entrevistados valoraron la posibilidad de monitorear en vivo las conversaciones y acceder a métricas históricas que permiten evaluar el desempeño de los agentes. Un 70% destacó como principal ventaja la detección temprana de emociones negativas, ya que ayuda a anticipar conflictos y tomar decisiones de coaching oportunas. Además, un 50% subrayó la importancia de contar con reportes automatizados de cumplimiento normativo, lo que facilita auditorías internas y externas.
 
