@@ -40,7 +40,7 @@ El objetivo de esta sección es resumir las modificaciones relevantes que se rea
 
 | Versión |   Fecha    |             Autor             | Descripción de modificación                                                                                                                                                                       |
 | :-----: | :--------: | :---------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   TB1   | 15/09/2025 | Silva Tirado, Sebastian Valentino | Realización de: <br> - Capítulo I: Introducción<br>- Capítulo II: Requirements Elicitation & Analysis<br>- Capítulo III: Requirements Specification<br>- Capítulo IV: Strategic-Level Software Design |
+|   TB1   | 15/09/2025 |Diego Martin Bastidas Bastidas<br>     Diego André Cantoral Paredes<br>      David Alejandro Rivas Sarango<br>Elvia Marcela Rodriguez Villa<br>    Silva Tirado, Sebastián Valentino<br> | Realización de: <br> - Capítulo I: Introducción<br>- Capítulo II: Requirements Elicitation & Analysis<br>- Capítulo III: Requirements Specification<br>- Capítulo IV: Strategic-Level Software Design |
 
 # Project Report Collaboration Insights
 
