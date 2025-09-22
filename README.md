@@ -657,23 +657,23 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
-        <td>XXX</td>
+        <td>Alejandro Álvarez </td>
     </tr> 
     <tr>
         <td>Edad</td>
-        <td>XX</td>
+        <td>29</td>
     </tr> 
     <tr>
         <td>Distrito de residencia</td>
-        <td>XXX</td>
+        <td>Lince</td>
     </tr> 
     <tr>
-        <td><img src="Img/Entrevista-3.png" width="300px"></td>
-        <td>XXX</td>
+        <td><img src="img/Entrevista-3.png" width="300px"></td>
+        <td>Alejandro es ex trabajador del área de cobranzas de una conocida empresa de telefonía </td>
     </tr> 
     <tr>
-        <td>Timing: XX:XX - XX:XX</td>
-        <td>URL: <a href="Link" target="_blank">NombreLink</a></td>
+        <td>Timing: 00:00:00 - 05:15</td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231c784_upc_edu_pe/EUHvlUQYGf9PgOThOUt9N-UB4D4_qLtRXgOQmHfzpYHgiQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=HrEumQ" target="_blank">Link del video</a></td>
     </tr> 
 </table>
 
