@@ -42,6 +42,11 @@ El objetivo de esta sección es resumir las modificaciones relevantes que se rea
 | :-----: | :--------: | :---------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |   TB1   | 15/09/2025 |Diego Martin Bastidas Bastidas<br>     Diego André Cantoral Paredes<br>      David Alejandro Rivas Sarango<br>Elvia Marcela Rodriguez Villa<br>    Silva Tirado, Sebastián Valentino<br> | Realización de: <br> - Capítulo I: Introducción<br>- Capítulo II: Requirements Elicitation & Analysis<br>- Capítulo III: Requirements Specification<br>- Capítulo IV: Strategic-Level Software Design |
 
+| Versión |   Fecha    |             Autor             | Descripción de modificación                                                                                                                                                                       |
+| :-----: | :--------: | :---------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   TP1   | 10/10/2025 |Diego Martin Bastidas Bastidas<br>     Diego André Cantoral Paredes<br>      David Alejandro Rivas Sarango<br>Elvia Marcela Rodriguez Villa<br>    Silva Tirado, Sebastián Valentino<br> | Realización de: <br> - Capítulo V: Tactical-Level Software Design. <br> - Capítulo VI: Solution UX Design |
+
+
 # Project Report Collaboration Insights
 
 URL del repositorio para el reporte del proyecto: https://github.com/TF-SoftwareEmergentes
@@ -56,15 +61,25 @@ URL del repositorio para el reporte del proyecto: https://github.com/TF-Software
   <img src="assets/insights2.png" alt="insights">
 </div>
 
-Para el desarrollo del informe perteneciente a la entrega TF, se dividió la implementación de secciones de la siguiente forma para cada integrante del equipo:
+**TP1**
+
+<div align="center">
+  <img src="assets/insights1.png" alt="insights">
+</div>
+
+<div align="center">
+  <img src="assets/insights2.png" alt="insights">
+</div>
+
+Para el desarrollo del informe perteneciente a la entrega TP1, se dividió la implementación de secciones de la siguiente forma para cada integrante del equipo:
 
 | Integrante                        | Tareas Asignadas                                                                                                                                                              |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Diego Martin Bastidas Bastidas    | Elaboración de la Unidad 1, 2 y 3 |
-| Diego André Cantoral Paredes      | Elaboración Diseño dirigido por atributos |
-| David Alejandro Rivas Sarango     | Elaboración de Software Architecture System |
-| Elvia Marcela Rodriguez Villa     | Elaboración de Users Stories |
-| Silva Tirado, Sebastián Valentino | Elaboración de Arquitectura y modelado avanzado |
+| Diego Martin Bastidas Bastidas    | Elaboración de la Unidad 5 |
+| Diego André Cantoral Paredes      | Elaboración de la Unidad 5 |
+| David Alejandro Rivas Sarango     | Elaboración de la Unidad 6 |
+| Elvia Marcela Rodriguez Villa     | Elaboración de la Unidad 6 |
+| Silva Tirado, Sebastián Valentino | Elaboración de la Unidad 5 |
 
 **Github Collaboration Insights**
 
@@ -132,10 +147,62 @@ Los integrantes son:
   4.3.2. [Software Architecture Context Level Diagrams.](#4.3.2.)<br>
   4.3.3. [Software Architecture Container Level Diagrams.](#4.3.3.)<br>
   4.3.4. [Software Architecture Deployment Diagrams.](#4.3.4.)<br>
-
-5. [Conclusiones](#5.)<br>
-6. [Bibliografía](#6.)<br>
-7. [Anexo](#7.)<br>
+5. [**Capítulo V: Tactical-Level Software Design.**](#5.)<br>
+   5.1. [Bounded Context: IAM (Access & Identity).](#5.1.)<br>
+   5.1.1. [Domain Layer.](#5.1.1.)<br>
+   5.1.2. [Interface Layer.](#5.1.2.)<br>
+   5.1.3. [Application Layer.](#5.1.3.)<br>
+   5.1.4. [Infrastructure Layer.](#5.1.4.)<br>
+   5.1.5. [Bounded Context Software Architecture Component Level Diagrams.](#5.1.5.)<br>
+   5.1.6. [Bounded Context Software Architecture Code Level Diagrams.](#5.1.6.)<br>
+   5.1.6.1. [Bounded Context Domain Layer Class Diagrams.](#5.1.6.1.)<br>
+   5.1.6.2. [Bounded Context Database Design Diagram.](#5.1.6.2.)<br>
+   5.2. [Bounded Context: Proceso de audio.](#5.2.)<br>
+   5.2.1. [Domain Layer.](#5.2.1.)<br>
+   5.2.2. [Interface Layer.](#5.2.2.)<br>
+   5.2.3. [Application Layer.](#5.2.3.)<br>
+   5.2.4. [Infrastructure Layer.](#5.2.4.)<br>
+   5.2.5. [Bounded Context Software Architecture Component Level Diagrams.](#5.2.5.)<br>
+   5.2.6. [Bounded Context Software Architecture Code Level Diagrams.](#5.2.6.)<br>
+   5.2.6.1. [Bounded Context Domain Layer Class Diagrams.](#5.2.6.1.)<br>
+   5.2.6.2. [Bounded Context Database Design Diagram.](#5.2.6.2.)<br>
+   5.3. [Bounded Context: Puntuación & Recomendaciones.](#5.3.)<br>
+   5.3.1. [Domain Layer.](#5.3.1.)<br>
+   5.3.2. [Interface Layer.](#5.3.2.)<br>
+   5.3.3. [Application Layer.](#5.3.3.)<br>
+   5.3.4. [Infrastructure Layer.](#5.3.4.)<br>
+   5.3.5. [Bounded Context Software Architecture Component Level Diagrams.](#5.3.5.)<br>
+   5.3.6. [Bounded Context Software Architecture Code Level Diagrams.](#5.3.6.)<br>
+   5.3.6.1. [Bounded Context Domain Layer Class Diagrams.](#5.3.6.1.)<br>
+   5.3.6.2. [Bounded Context Database Design Diagram.](#5.3.6.2.)<br>
+   5.4. [Bounded Context: Analítica.](#5.4.)<br>
+   5.4.1. [Domain Layer.](#5.4.1.)<br>
+   5.4.2. [Interface Layer.](#5.4.2.)<br>
+   5.4.3. [Application Layer.](#5.4.3.)<br>
+   5.4.4. [Infrastructure Layer.](#5.4.4.)<br>
+   5.4.5. [Bounded Context Software Architecture Component Level Diagrams.](#5.4.5.)<br>
+   5.4.6. [Bounded Context Software Architecture Code Level Diagrams.](#5.4.6.)<br>
+   5.4.6.1. [Bounded Context Domain Layer Class Diagrams.](#5.4.6.1.)<br>
+   5.4.6.2. [Bounded Context Database Design Diagram.](#5.4.6.2.)<br>
+6. [**Capítulo VI: Solution UX Design.**](#6.)<br>
+    6.1. [Style Guidelines.](#6.1.)<br>
+    6.1.1. [General Style Guidelines.](#6.1.1.)<br>
+    6.1.2. [Web, Mobile & Devices Style Guidelines.](#6.1.2.)<br>
+    6.2. [Information Architecture.](#6.2.)<br>
+    6.2.1. [Site Maps.](#6.2.1.)<br>
+    6.2.2. [Labeling Systems.](#6.2.2.)<br>
+    6.2.3. [Searching Systems.](#6.2.3.)<br>
+    6.2.4. [SEO Tags and Meta Tags.](#6.2.4.)<br>
+    6.2.5. [Navigation Systems.](#6.2.5.)<br>
+    6.3. [Landing Page UI Design.](#6.3.)<br>
+    6.3.1. [Landing Page Wireframe.](#6.3.1.)<br>
+    6.3.2. [Landing Page Mock-up.](#6.3.2.)<br>
+    6.4. [Applications UX/UI Design.](#6.4.)<br>
+    6.4.1. [Applications Wireframes.](#6.4.1.)<br>
+    6.4.2. [Applications Wireflow Diagrams.](#6.4.2.)<br>
+7. [Conclusiones](#5.)<br>
+8. [Bibliografía](#6.)<br>
+9. [Anexo](#7.)<br>
 
 # STUDENT OUTCOME
 
@@ -566,7 +633,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: 0:00 - 09:04</td>
-        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EfR9V51IV1tGk25nxx9L2ZIBoat2qR7QvrW26D12AZZRwA?e=ebOzyE" target="_blank">Link del Video</a></td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EfR9V51IV1tGk25nxx9L2ZIBoat2qR7QvrW26D12AZZRwA?e=ebOzyE">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°2</td>
@@ -586,7 +653,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: 00:00 - 04:24</td>
-        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f568_upc_edu_pe/EUn8MWIvHl1FtDR9EKUQr9YBdKAfrKMS8NYwGUXvDRSTkw?e=tCfled&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D" target="_blank">Link del Video</a></td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f568_upc_edu_pe/EUn8MWIvHl1FtDR9EKUQr9YBdKAfrKMS8NYwGUXvDRSTkw?e=tCfled&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
@@ -606,7 +673,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: 00:00 - 6:56</td>
-        <td>URL: <a href="https://n9.cl/entrevista_3" target="_blank">Link del Video</a></td>
+        <td>URL: <a href="https://n9.cl/entrevista_3">Link del Video</a></td>
     </tr> 
 </table>
 
@@ -633,7 +700,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: 0:00 - 09:43</td>
-        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EavOkRlWWUFMowRkOibxKaUByF-2pkt2ZK79EkvEI7W-gg?e=jYYiLL" target="_blank">Link del Video</a></td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g296_upc_edu_pe/EavOkRlWWUFMowRkOibxKaUByF-2pkt2ZK79EkvEI7W-gg?e=jYYiLL">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°2</td>
@@ -653,7 +720,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: 00:00 - 09:05</td>
-        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20191e831_upc_edu_pe/EVi9VU-y-spAqbxAWZlRDnQBiUlZWZ5uoBrDVUJT8L41fw?e=JJmGen&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D" target="_blank">Link del Video</a></td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20191e831_upc_edu_pe/EVi9VU-y-spAqbxAWZlRDnQBiUlZWZ5uoBrDVUJT8L41fw?e=JJmGen&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">Link del Video</a></td>
     </tr> 
     <tr>
         <td>Entrevistado N°3</td>
@@ -673,7 +740,7 @@ Crear una plataforma que conecte de forma rápida y confiable a supervisores de 
     </tr> 
     <tr>
         <td>Timing: 00:00:00 - 05:15</td>
-        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231c784_upc_edu_pe/EUHvlUQYGf9PgOThOUt9N-UB4D4_qLtRXgOQmHfzpYHgiQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=HrEumQ" target="_blank">Link del video</a></td>
+        <td>URL: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231c784_upc_edu_pe/EUHvlUQYGf9PgOThOUt9N-UB4D4_qLtRXgOQmHfzpYHgiQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=HrEumQ" >Link del Video</a></td>
     </tr> 
 </table>
 
@@ -1248,11 +1315,69 @@ El diagrama de despliegue muestra cómo los contenedores son desplegados en la i
 
 <img src="assets/deployment_diagram_v1.jpg"></img>
 
-<div id='5.'><h2>5. Conclusiones</h2></div>
+<div id='5.'><h2>5. Capítulo V: Tactical-Level Software Design</h2></div>
+<div id='5.1.'><h3>5.1. Bounded Context: IAM (Access & Identity) </h3></div>
+<div id='5.1.1.'><h4>5.1.1. Domain Layer</h4></div>
+<div id='5.1.2.'><h4>5.1.2. Interface Layer</h4></div>
+<div id='5.1.3.'><h4>5.1.3. Application Layer</h4></div>
+<div id='5.1.4.'><h4>5.1.4. Infrastructure Layer</h4></div>
+<div id='5.1.5.'><h4>5.1.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+<div id='5.1.6.'><h4>5.1.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
+<div id='5.1.6.1.'><h4>5.1.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+<div id='5.1.6.2.'><h4>5.1.6.2. Bounded Context Database Design Diagram</h4></div>
+
+<div id='5.2.'><h3>5.2. Bounded Context: Proceso de audio </h3></div>
+<div id='5.2.1.'><h4>5.2.1. Domain Layer</h4></div>
+<div id='5.2.2.'><h4>5.2.2. Interface Layer</h4></div>
+<div id='5.2.3.'><h4>5.2.3. Application Layer</h4></div>
+<div id='5.2.4.'><h4>5.2.4. Infrastructure Layer</h4></div>
+<div id='5.2.5.'><h4>5.2.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+<div id='5.2.6.'><h4>5.2.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
+<div id='5.2.6.1.'><h4>5.2.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+<div id='5.2.6.2.'><h4>5.2.6.2. Bounded Context Database Design Diagram</h4></div>
+
+<div id='5.3.'><h3>5.3. Bounded Context: Puntuación & Recomendaciones </h3></div>
+<div id='5.3.1.'><h4>5.3.1. Domain Layer</h4></div>
+<div id='5.3.2.'><h4>5.3.2. Interface Layer</h4></div>
+<div id='5.3.3.'><h4>5.3.3. Application Layer</h4></div>
+<div id='5.3.4.'><h4>5.3.4. Infrastructure Layer</h4></div>
+<div id='5.3.5.'><h4>5.3.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+<div id='5.3.6.'><h4>5.3.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
+<div id='5.3.6.1.'><h4>5.3.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+<div id='5.3.6.2.'><h4>5.3.6.2. Bounded Context Database Design Diagram</h4></div>
+
+<div id='5.4.'><h3>5.4. Bounded Context: Analítica </h3></div>
+<div id='5.4.1.'><h4>5.4.1. Domain Layer</h4></div>
+<div id='5.4.2.'><h4>5.4.2. Interface Layer</h4></div>
+<div id='5.4.3.'><h4>5.4.3. Application Layer</h4></div>
+<div id='5.4.4.'><h4>5.4.4. Infrastructure Layer</h4></div>
+<div id='5.4.5.'><h4>5.4.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+<div id='5.4.6.'><h4>5.4.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
+<div id='5.4.6.1.'><h4>5.4.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+<div id='5.4.6.2.'><h4>5.4.6.2. Bounded Context Database Design Diagram</h4></div>
+
+<div id="6."><h2>6. Capítulo VI: Solution UX Design</h2></div>
+<div id="6.1."><h3>6.1. Style Guidelines</h3></div>
+<div id="6.1.1."><h4>6.1.1. General Style Guidelines</h4></div>
+<div id="6.1.2."><h4>6.1.2. Web, Mobile & Devices Style Guidelines</h4></div>
+<div id="6.2."><h3>6.2. Information Architecture</h3></div>
+<div id="6.2.1."><h4>6.2.1. Site Maps</h4></div>
+<div id="6.2.2."><h4>6.2.2. Labeling Systems</h4></div>
+<div id="6.2.3."><h4>6.2.3. Searching Systems</h4></div>
+<div id="6.2.4."><h4>6.2.4. SEO Tags and Meta Tags</h4></div>
+<div id="6.2.5."><h4>6.2.5. Navigation Systems</h4></div>
+<div id="6.3."><h3>6.3. Landing Page UI Design</h3></div>
+<div id="6.3.1."><h4>6.3.1. Landing Page Wireframe</h4></div>
+<div id="6.3.2."><h4>6.3.2. Landing Page Mock-up</h4></div>
+<div id="6.4."><h3>6.4. Applications UX/UI Design</h3></div>
+<div id="6.4.1."><h4>6.4.1. Applications Wireframes</h4></div>
+<div id="6.4.2."><h4>6.4.2. Applications Wireflow Diagrams</h4></div>
+
+<div id='7.'><h2>7. Conclusiones</h2></div>
 
 La primera versión del trabajo ha permitido delimitar de manera estratégica el dominio de la plataforma de cobranza con análisis de sentimientos, identificando los bounded contexts clave, sus relaciones y flujos de comunicación. A través de técnicas como EventStorming, Candidate Context Discovery, Domain Storytelling, Bounded Context Canvas y Context Mapping, se logró construir una comprensión compartida del sistema y sentar las bases para su diseño técnico y funcional, asegurando que la solución responda tanto a las necesidades del negocio como a los retos tecnológicos de procesamiento de audio en tiempo real, análisis emocional y soporte a la toma de decisiones en la gestión de cobranzas.
 
-<div id='6.'><h2>6. Bibliografía</h2></div>
+<div id='8.'><h2>8. Bibliografía</h2></div>
 
 Brandolini, A. (2019). *Introducing EventStorming: An act of deliberate collective learning*. Leanpub.  
 
@@ -1274,10 +1399,10 @@ Rai, R., Tiwari, P., & Singh, V. (2022). Applications of machine learning in vet
 
 Bussola, N., Ferrari, C., & Gatti, R. (2023). Artificial intelligence in clinical decision support systems: Opportunities and challenges. *Healthcare, 11*(4), 567. https://doi.org/10.3390/healthcare11040567  
 
-<div id='7.'><h2>7. Anexo</h2></div>
+<div id='9.'><h2>9. Anexo</h2></div>
 
 | Descripción | Enlace |
 |---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Organización de Github | [https://github.com/TF-SoftwareEmergentes](https://github.com/TF-SoftwareEmergentes) |
-| Link de Exposición |[Video]()|
-| Miro (Strategic-Level DDD) |[Miro](https://miro.com/welcomeonboard/NTdVVituT0xHUHkzRGE0anlScmprYjhKSzZtQWpPNFY4eVBOUXJpU284bVVGekJyY05yT0gwWlFCK3QxajRrUG0yRTNXTnB1SU9zZEVNc1BFN2U0YnJpenV0QTBlNTNnYmwrbW1MMkxTaHdDbVNLM3Fwd1g2VHVkVDR4V0pMTW5zVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=331643886038) |
+| Link de Exposición | <td>URL: <a href="XXX">Videos</a></td> |
+| Miro (Strategic-Level DDD) | <td>URL: <a href="https://miro.com/welcomeonboard/NTdVVituT0xHUHkzRGE0anlScmprYjhKSzZtQWpPNFY4eVBOUXJpU284bVVGekJyY05yT0gwWlFCK3QxajRrUG0yRTNXTnB1SU9zZEVNc1BFN2U0YnJpenV0QTBlNTNnYmwrbW1MMkxTaHdDbVNLM3Fwd1g2VHVkVDR4V0pMTW5zVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=331643886038">Miro</a></td> |
