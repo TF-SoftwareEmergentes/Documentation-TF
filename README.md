@@ -1001,37 +1001,100 @@ Se presentan los escenarios refinados de atributos de calidad que fueron selecci
 <div id='4.2.'><h3>4.2. Strategic-Level Domain-Driven Design</h3></div>
 <div id='4.2.1.'><h4>4.2.1. EventStorming</h4></div>
 
-A través de la plataforma Miro hemos realizado el proceso de EventStorming, lo que nos permitió identificar los eventos, usuarios o agentes, comandos que desencadenan dichos eventos, así como los aggregates y bounded contexts propios de nuestro dominio.
+A través de la plataforma **Miro** hemos realizado el proceso de **EventStorming**, lo que nos permitió identificar los **eventos**, **usuarios o agentes**, **comandos** que desencadenan dichos eventos, así como los **aggregates** y **bounded contexts** propios de nuestro dominio.
 
 Para facilitar la comprensión, la información se seccionará y presentará mediante distintos “post-its”, siguiendo la convención:
 
-* Post It Anaranjado: Evento que representa un hecho ocurrido en el dominio.
-* Post It Azul: Comando que desata el evento de su derecha.
-* Post It Amarillo: Usuario, sistema o agente que genera el comando de su derecha.
-* Delimitaciones amarillas: Agrupan eventos y comandos relacionados a un aggregate.
-* Delimitaciones de color negro: Agrupan uno o más aggregates relacionados a un bounded context.
-* Flechas punteadas: Señalan la comunicación de comandos que generan eventos en distintos aggregates o bounded contexts.
+* **Post It Anaranjado**: Evento que representa un hecho ocurrido en el dominio.
+* **Post It Azul**: Comando que desata el evento de su derecha.
+* **Post It Amarillo**: Usuario, sistema o agente que genera el comando de su derecha.
+* **Delimitaciones amarillas**: Agrupan eventos y comandos relacionados a un *aggregate*.
+* **Delimitaciones de color negro**: Agrupan uno o más *aggregates* relacionados a un *bounded context*.
+* **Flechas punteadas**: Señalan la comunicación de comandos que generan eventos en distintos *aggregates* o *bounded contexts*.
 
-<img src="assets/EventStorming.jpg" alt="Eventstorming"></img>
+<img src="assets/EventStorming_PT3.jpg" alt="Eventstorming"></img>
 
-#### Proceso
+---
 
-Primer paso: se identificaron los eventos principales del dominio y se trazaron en una línea de tiempo imaginaria de izquierda a derecha. Entre los más relevantes se encuentran: Llamada iniciada, Consentimiento de grabación registrado, Transcripción parcial generada, Transcripción final generada, Análisis de sentimiento calculado, Disposición de pago inferida (score), Caso de cobranza actualizado, Señales de riesgo/compliance detectadas y Notificación enviada al dashboard.
-Algunos eventos se dispusieron en la misma columna, dado que su ocurrencia no necesariamente sigue un orden consecutivo.
+### Proceso
 
-<img src="assets/EventStorming_PT1.jpg" alt="Eventstorming1"></img>
+#### Primer paso: eventos principales
 
-Segundo paso: se identificaron los comandos que disparan dichos eventos, representados con post-its azules. Ejemplos: Iniciar llamada, Registrar consentimiento, Procesar transcripción, Calcular sentimiento, Calcular disposición de pago, Actualizar caso de cobranza o Evaluar reglas de compliance.
+Se trazaron los **eventos** en una línea de tiempo. Los más relevantes para este dominio son:
 
-<img src="assets/EventStorming_PT2.jpg" alt="Eventstorming2"></img>
+* **Audio del caller descargado (batch)**
+* **Canal del caller separado**
+* **Chunk de audio procesado**
+* **Transcripción parcial del caller generada**
+* **Transcripción final del caller generada**
+* **Transcripción JSON almacenada**
+* **Sentimiento del caller calculado (streaming o batch)**
+* **Palabras prohibidas del caller detectadas**
+* **Adherencia al speech evaluada**
+* **Puntaje de rendimiento del caller calculado**
+* **Recomendación en tiempo real generada**
+* **KPIs de caller actualizados en dashboard**
 
-Tercer paso: se definieron los agentes o usuarios que ejecutan cada comando, los cuales se representaron con post-its amarillos. Aquí destacan: Agente de cobranza, Deudor/Cliente, Motor de telefonía (SIP/CCaaS), Servicio de Transcripción (LLM/ASR), Motor de Sentimiento/NN, Servicio de Scoring, Módulo de Compliance y Dashboard/Analytics.
+Algunos eventos se ubican en la misma columna cuando su orden no es estrictamente secuencial.
 
-<img src="assets/EventStorming_PT3.jpg" alt="Eventstorming3"></img>
+<img src="assets/EventStorming.jpg" alt="Eventstorming1"></img>
 
-Último paso: se agruparon los eventos relacionados dentro de sus respectivos aggregates, delimitados con marcos amarillos, y posteriormente se organizaron en bounded contexts, delimitados con marcos negros. Entre ellos se encuentran: Telephony Ingestion, Transcription, Sentiment & Emotion, Propensity Scoring, Collections Operations, Compliance & Audit y Analytics & Dashboard.
+#### Segundo paso: comandos
 
-Finalmente, se trazaron flechas punteadas para representar la interacción entre contextos. Por ejemplo: desde Transcripción final generada hacia Calcular sentimiento, desde Sentimiento calculado hacia Calcular disposición de pago, o desde Score de disposición de pago hacia Actualizar caso de cobranza y Enviar notificación al dashboard.
+Los principales **comandos** que disparan los eventos son:
+
+* **Autenticar usuario** (IAM)
+* **Descargar audios en batch**
+* **Separar canales (caller/agent)**
+* **Procesar transcripción (Whisper)**
+* **Guardar transcripción JSON**
+* **Evaluar sentimiento del caller (LLM)**
+* **Detectar malas palabras**
+* **Evaluar adherencia al speech**
+* **Calcular puntaje de rendimiento**
+* **Generar recomendación en tiempo real**
+* **Publicar métricas al dashboard**
+
+<img src="assets/EventStorming_PT1.jpg" alt="Eventstorming2"></img>
+
+#### Tercer paso: agentes o usuarios
+
+Los **actores** que emiten los comandos son:
+
+* **Usuario (Agente/Caller) autenticado vía IAM**
+* **Servicio de Proceso de Audio** (ingesta, batch, separación, Whisper)
+* **Servicio de Puntuación y Recomendaciones** (LLM)
+* **Supervisor** (consumidor de analítica/dashboard)
+
+<img src="assets/EventStorming_PT2.jpg" alt="Eventstorming3"></img>
+
+#### Último paso: aggregates y bounded contexts
+
+Los eventos y comandos se organizaron en sus respectivos **aggregates** y posteriormente en los **bounded contexts**:
+
+#### 1. IAM
+
+* **Aggregates**: User, Session
+* **Eventos**: Usuario autenticado, Sesión expirada
+* **Invariantes**: acciones sólo con token válido
+
+#### 2. Proceso de Audio (batch → separación → transcripción Whisper)
+
+* **Aggregates**: RecordingBatch, CallerChannel, Transcript
+* **Eventos**: Audio descargado, Canal separado, Transcripción parcial/final generada, Transcripción JSON almacenada
+* **Invariantes**: no transcribir sin canal caller; transcript final solo al cerrar stream
+
+#### 3. Puntuación automática y recomendaciones (caller)
+
+* **Aggregates**: CallerPerformanceReview, RealTimeHint
+* **Eventos**: Sentimiento calculado, Palabras prohibidas detectadas, Adherencia al speech evaluada, Puntaje calculado, Recomendación en tiempo real generada
+* **Invariantes**: el puntaje refiere únicamente al caller; toda recomendación debe incluir explicación breve
+
+#### 4. Analítica (Supervisor / Dashboard)
+
+* **Aggregates**: CallerKPIProjection, TeamTrends
+* **Eventos**: KPIs de caller actualizados en dashboard
+* **Invariantes**: vistas de solo lectura; actualización en vivo para llamadas activas y batch nocturno para históricos
 
 <div id='4.2.2.'><h4>4.2.2. Candidate Context Discovery</h4></div>
 
@@ -1039,147 +1102,126 @@ La técnica Start-With-Value es un enfoque dentro del diseño centrado en el usu
 
 En este sentido, utilizamos dicha técnica para determinar los eventos clave en nuestros bounded contexts, alineados con el valor esperado por los distintos usuarios del sistema.
 
-| **Bounded Context**        | **Valor esperado por el usuario**                                                                 | **Eventos clave**                                                                 |
-|-----------------------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| **Telephony Ingestion**     | Establecer la comunicación con el cliente, registrar consentimiento y capturar el audio en tiempo real. | *Llamada iniciada*, *Consentimiento de grabación registrado*, *Audio capturado*.  |
-| **Transcription**           | Obtener transcripciones parciales y finales de la conversación, incluyendo separación por hablantes. | *Transcripción parcial generada*, *Transcripción final generada*.                 |
-| **Sentiment & Emotion**     | Analizar el tono emocional de la llamada y detectar emociones críticas (enojo, empatía, frustración). | *Análisis de sentimiento calculado*, *Emociones detectadas*.                      |
-| **Propensity Scoring**      | Conocer la probabilidad de disposición de pago del cliente durante o después de la llamada.         | *Disposición de pago inferida (score)*.                                           |
-| **Collections Operations**  | Gestionar los casos de cobranza y registrar promesas de pago realizadas por los clientes.            | *Promesa de pago registrada*, *Caso de cobranza actualizado*.                      |
-| **Compliance & Audit**      | Asegurar el cumplimiento normativo, registrar evidencias y alertar sobre prácticas indebidas.        | *Señales de riesgo/compliance detectadas*, *Artefactos de auditoría consolidados*. |
-| **Analytics & Dashboard**   | Visualizar métricas de desempeño de agentes, reportes de disposición de pago y cumplimiento.         | *Notificación enviada al dashboard*, *KPIs actualizados*.                          |
+| **Bounded Context**              | **Valor esperado por el usuario**                                                                                                        | **Eventos clave**                                                                                                                                                        |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **IAM**                          | Autenticarse en la plataforma de manera segura para poder usar las funcionalidades del sistema.                                          | *Usuario autenticado*, *Sesión iniciada*, *Sesión expirada*.                                                                                                             |
+| **Proceso de Audio**             | Obtener transcripciones confiables del caller a partir de audios procesados en batch o en tiempo real (Whisper).                         | *Audio del caller descargado*, *Canal separado*, *Transcripción parcial generada*, *Transcripción final generada*, *Transcripción almacenada (JSON)*.                    |
+| **Puntuación y Recomendaciones** | Recibir un puntaje automático y recomendaciones de mejora para el caller, basados en sentimiento, malas palabras y adherencia al speech. | *Sentimiento calculado*, *Palabras prohibidas detectadas*, *Adherencia al speech evaluada*, *Puntaje de rendimiento calculado*, *Recomendación en tiempo real generada*. |
+| **Analítica (Dashboard)**        | Visualizar KPIs de rendimiento de los callers, tendencias históricas y métricas agregadas para el supervisor.                            | *KPIs de caller actualizados en dashboard*, *Resumen de desempeño generado*.                                                                                             |
 
 <div id='4.2.3.'><h4>4.2.3. Domain Message Flows Modeling</h4></div>
 
-Escenario 1: Atención completa de una llamada de cobranza
+El Domain Storytelling nos permitió modelar las interacciones clave entre los bounded contexts, describiendo cómo fluye la información en escenarios de negocio relevantes.
 
-Objetivo: Un agente quiere gestionar una interacción de cobranza completa, desde que se inicia la llamada hasta el registro del caso, analizando emociones y calculando la disposición de pago.
+Escenario 1: Evaluación completa del rendimiento de un caller
 
-<img src="assets/Message_Flows_Modeling.jpg" alt="Message_Flows_Modeling"></img>
+Objetivo: El sistema procesa el audio de una llamada, genera transcripciones, evalúa adherencia al speech, sentimientos y malas palabras, y finalmente calcula un puntaje de desempeño que queda registrado para el supervisor.
 
-Escenario 2: Control de cumplimiento y alertas en vivo
+<img src="assets/Message_Flows_Modeling1.jpg" alt="Message_Flows_Modeling1"></img>
 
-Objetivo: El sistema debe monitorear la conversación para garantizar el cumplimiento normativo y alertar sobre prácticas indebidas durante la cobranza.
+Escenario 2: Recomendaciones en tiempo real durante la llamada
+
+Objetivo: El sistema detecta malas palabras o desviaciones del speech mientras el caller habla, generando recomendaciones inmediatas que permiten corregir el rumbo de la conversación.
 
 <img src="assets/Message_Flows_Modeling2.jpg" alt="Message_Flows_Modeling2"></img>
 
-Escenario 3: Gestión y trazabilidad de métricas financieras y operativas
+Escenario 3: Supervisión y análisis histórico de desempeño
 
-Objetivo: Relacionar los resultados de las interacciones con métricas financieras y de desempeño de agentes.
+Objetivo: El supervisor accede al dashboard con métricas agregadas por caller y por periodo, analizando tendencias de rendimiento y puntos de mejora.
 
 <img src="assets/Message_Flows_Modeling3.jpg" alt="Message_Flows_Modeling3"></img>
 
 <div id='4.2.4.'><h4>4.2.4. Bounded Context Canvases</h4></div>
 
-El Bounded Context Canvas es una herramienta gráfica aplicada en los talleres de Domain-Driven Design (DDD) que permite representar y documentar de manera explícita los límites y las interacciones entre distintos contextos delimitados dentro de un sistema complejo.
+El Bounded Context Canvas es una herramienta gráfica aplicada en talleres de Domain-Driven Design (DDD) que permite representar y documentar de manera explícita los límites y las interacciones entre distintos contextos delimitados dentro de un sistema complejo.
 
-Su objetivo principal es ayudar a los equipos a construir una visión compartida sobre el nombre y propósito de cada contexto, las entidades y agregados que este contiene, así como las políticas de negocio que lo rigen.
+Su objetivo principal es ayudar a los equipos a construir una visión compartida sobre el nombre y propósito de cada contexto, las entidades/aggregates que contiene y las políticas de negocio que lo rigen.
 
 ## Bounded Context Canvas — IAM (Access & Identity)
 <img src="assets/Context_Canvas1.jpg" alt="Context_Canvas1"></img>
 
-## Bounded Context Canvas — Telephony Ingestion
+## Bounded Context Canvas — Proceso de audio
 <img src="assets/Context_Canvas2.jpg" alt="Context_Canvas2"></img>
 
-## Bounded Context Canvas — Transcription
+## Bounded Context Canvas — Puntuación & Recomendaciones (solo caller)
 <img src="assets/Context_Canvas3.jpg" alt="Context_Canvas3"></img>
 
-## Bounded Context Canvas — Sentiment & Emotion
+## Bounded Context Canvas — Analítica (Dashboard del Supervisor)
 <img src="assets/Context_Canvas4.jpg" alt="Context_Canvas4"></img>
-
-## Bounded Context Canvas — Propensity Scoring (Payment Intent)
-<img src="assets/Context_Canvas5.jpg" alt="Context_Canvas5"></img>
-
-## Bounded Context Canvas — Collections Operations
-<img src="assets/Context_Canvas6.jpg" alt="Context_Canvas6"></img>
-
-## Bounded Context Canvas — Compliance & Audit
-<img src="assets/Context_Canvas7.jpg" alt="Context_Canvas7"></img>
-
-## Bounded Context Canvas — Analytics & Dashboard
-<img src="assets/Context_Canvas8.jpg" alt="Context_Canvas8"></img>
 
 <div id='4.2.5.'><h4>4.2.5. Context Mapping</h4></div>
 
-Este Context Map describe cómo interactúan los Bounded Contexts del sistema. Aplicamos patrones de DDD como Upstream/Downstream, Published Language, Open-Host Service, Conformist y Anti-Corruption Layer (ACL).
+Este **Context Map** describe cómo interactúan los **Bounded Contexts** del sistema. Aplicamos patrones de DDD como **Upstream/Downstream**, **Published Language**, **Open-Host Service** y **Conformist**.
 
-<img src="assets/Context_Mapping.jpg" alt="Context_Mapping"></img>
+![Context Mapping](assets/Context_Mapping.jpg)
+
+---
 
 ## Bounded Contexts y relaciones
 
-1. IAM / AuthN-AuthZ
+### 1. IAM / AuthN-AuthZ
+- **Upstream de:** Proceso de audio, Puntuación & Recomendaciones, Analítica.  
+- **Patrón:** Conformist (todos consumen claims/roles tal como los expone IAM).  
+- **Motivo:** Identidad y permisos consistentes en toda la plataforma.  
 
-* Upstream de: Telephony, Transcription, Sentiment, Propensity Scoring, Collections, Compliance, Analytics.
-* Patrón: Conformist (los consumidores aceptan claims/roles tal como los expone IAM).
-* Motivo: identidad y permisos consistentes en todo el ecosistema.
+---
 
-2. Telephony Ingestion
+### 2. Proceso de audio
+*(batch/stream → separación → transcripción Whisper del caller)*  
+- **Upstream de:** Puntuación & Recomendaciones.  
+- **Patrones:**  
+  - **Open-Host Service** para streaming/ingesta (expone audio + metadatos).  
+  - **Published Language** para transcript final (JSON con segmentos, timestamps).  
+- **Responsabilidad:** Ingesta de audio, separación de canal **caller**, transcripción parcial/final, exportación de transcript JSON.  
 
-* Upstream de Transcription mediante Open-Host Service (expone stream de audio/metadata).
-* Downstream de IAM (autorización/claims para sesiones).
-* Responsabilidad: sesión de llamada, consentimiento, chunks de audio.
+---
 
-3. Transcription
+### 3. Puntuación & Recomendaciones (caller)
+- **Downstream de:** Proceso de audio.  
+- **Upstream de:** Analítica.  
+- **Patrón hacia Analítica:** Published Language (eventos de *Puntaje calculado*, *Regla activada*, *Recomendación emitida*).  
+- **Responsabilidad:** Análisis de sentimiento del caller, detección de malas palabras, adherencia al speech, cálculo de puntaje y recomendaciones (posible en tiempo real).  
 
-* Upstream de Sentiment & Emotion por Published Language (transcript con timestamps/diarización).
-* Downstream de Telephony e IAM.
-* Responsabilidad: transcripción parcial/final, calidad (WER), idioma.
+---
 
-4. Sentiment & Emotion
+### 4. Analítica (Dashboard del supervisor)
+- **Downstream de:** Puntuación & Recomendaciones (y opcionalmente métricas de calidad de transcripción).  
+- **Patrón:** CQRS/Read Models desde eventos publicados.  
+- **Responsabilidad:** KPIs por caller/campaña, tendencias históricas, comparativos y vistas de solo lectura.  
 
-* Upstream de Propensity Scoring (señales/ métricas conversacionales) vía Published Language; el consumidor actúa Conformist.
-* Downstream de Transcription e IAM.
-* Responsabilidad: sentimiento segmentado/global, emociones, métricas (talk/listen, interrupciones).
+---
 
-5. Propensity Scoring (Payment Intent)
+## Tabla de relaciones (resumen)
 
-* Upstream hacia Collections a través de un ACL (traduce score probabilístico a comandos seguros de negocio).
-* Upstream también de Analytics (entrega KPIs/scores).
-* Downstream de Sentiment, Transcription (features) e IAM.
-* Motivo del ACL: evitar contaminar el modelo operativo de casos con probabilidades/terminología de ML.
+| **Source (Upstream)** | **Target (Downstream)**        | **Tipo**    | **Patrón**                        | **Mensajes/Contratos**                              |
+|------------------------|--------------------------------|-------------|------------------------------------|-----------------------------------------------------|
+| IAM                   | Proceso de audio               | U→D         | Conformist                        | `claims`, `roles`, `token`                         |
+| IAM                   | Puntuación & Recomendaciones   | U→D         | Conformist                        | `claims`, `roles`, `token`                         |
+| IAM                   | Analítica                      | U→D         | Conformist                        | `claims`, `roles`, `token`                         |
+| Proceso de audio      | Puntuación & Recomendaciones   | U→D         | Open-Host, Published Language     | `audio(partial)`, `transcript.partial`, `transcript.final.json` |
+| Puntuación & Recomendaciones | Analítica               | U→D         | Published Language / CQRS         | `score.created`, `rule.triggered`, `realtime.hint` |
+| Proceso de audio (opt.) | Analítica                    | U→D         | Published Language                | `asr.metrics` (WER, latencia)                      |
 
-6. Collections Operations
-
-* Downstream de Propensity (vía ACL) y Compliance (alertas).
-* Upstream de Analytics (cambios de caso/promesas).
-* Downstream de IAM.
-* Responsabilidad: ciclo de vida de casos, promesas, follow-ups.
-
-7. Compliance & Audit
-
-* Downstream de Transcription y Sentiment (insumos para reglas).
-* Upstream de Collections (incidentes/alertas) y Analytics (estadísticas de cumplimiento).
-* Downstream de IAM para trazabilidad.
-* Responsabilidad: detección de infracciones, evidencias, retención.
-
-8. Analytics & Dashboard
-
-* Downstream de Collections, Propensity y Compliance (widgets/KPIs en vivo y batch).
-* Downstream de IAM (control de acceso).
-* Responsabilidad: proyecciones CQRS, scorecards, reportes.
-
-9. ML Platform / Feature Store
-
-* Upstream de Sentiment y Propensity (modelos y features online/offline).
-* No expone directamente a negocio; service interno de ML/Ops.
-
-## Anti-Corruption Layers (ACL)
-
-* **Entre Propensity Scoring y Collections**: convierte score, top factors y confianza en comandos/ eventos del dominio operativo (p.ej., Sugerir guion, Priorizar caso, Registrar promesa), aislando la incertidumbre del modelo.
+---
 
 ## Patrones de integración
 
-* **Conformist**: todos los consumidores de IAM aceptan su modelo de identidad/roles.
-* **Open-Host Service**: Telephony expone un endpoint/stream estable para Transcription.
-* **Published Language**: Transcription → Sentiment y Sentiment → Propensity usan contratos bien definidos de mensajes (segments, timestamps, señales).
-* **ACL**: Propensity → Collections para proteger el modelo de casos.
+- **Conformist:** todos los consumidores aceptan el modelo de identidad de IAM.  
+- **Open-Host Service:** Proceso de audio expone un endpoint/stream estable.  
+- **Published Language:** contratos claros para `transcript.final.json`, `score.created`, `rule.triggered`.  
+- **CQRS/Read Models:** Analítica materializa vistas de solo lectura a partir de eventos.  
+
+---
 
 ## Flujos U/D (resumen)
 
-* IAM como proveedor universal (Upstream) de identidad.
-* Telephony → Transcription → Sentiment → Propensity como cadena principal de valor (todos Upstream del siguiente).
-* Propensity → (ACL) → Collections y Collections → Analytics para operación y visibilidad.
-* Compliance consume de Transcription/Sentiment y provee a Collections/Analytics.
+- **IAM** como proveedor universal (**Upstream**) de identidad/autorización.  
+- Cadena principal de valor: **Proceso de audio → Puntuación & Recomendaciones → Analítica**.  
+- Flujo en tiempo real: **Proceso de audio (partials) → Puntuación & Recomendaciones → hints/recomendaciones inmediatas**.  
+- **Analítica** consume eventos para construir KPIs, tendencias y comparativos.  
+
+**Nota:** En esta versión no se incluyen ACLs ni contextos de cobranzas/compliance. El foco exclusivo está en el **rendimiento del caller** y la **observabilidad para supervisión**.
+
 
 <div id='4.3.'><h3>4.3. Software Architecture</h3></div>
 <div id='4.3.1.'><h4>4.3.1. Software Architecture System Landscape Diagram</h4></div>
