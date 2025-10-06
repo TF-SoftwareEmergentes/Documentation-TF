@@ -1316,25 +1316,394 @@ El diagrama de despliegue muestra cómo los contenedores son desplegados en la i
 <img src="assets/deployment_diagram_v1.jpg"></img>
 
 <div id='5.'><h2>5. Capítulo V: Tactical-Level Software Design</h2></div>
+
+Hemos adoptado el enfoque de "Arquitectura Limpia" para estructurar el diseño de la solución de software, dividiéndola en capas: Interfaces, Aplicación, Dominio e Infraestructura. También implementaremos DTOs para la entrada y salida de datos, así como patrones CQRS.
+
 <div id='5.1.'><h3>5.1. Bounded Context: IAM (Access & Identity) </h3></div>
+
+Siguiendo el modelo de arquitectura "Clean Architecture" hemos dividido el proyecto en capas.
+
 <div id='5.1.1.'><h4>5.1.1. Domain Layer</h4></div>
+
+Siguiendo Clean Architecture y DDD, el core del contexto IAM se modela con Entities, Value Objects, Aggregates, Commands/Events, Domain Services e Interfaces (Repositories/Providers). Esta capa es agnóstica de tecnología.
+
+### Sub-capa Model
+
+| Tipo             | Nombre                 | Descripción                                                                             | Responsabilidad Principal                                                                                                       | Relación con otros elementos                                                                                              |
+| ---------------- | ---------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Aggregate**    | **User**               | Raíz de agregado que representa a un usuario del sistema (caller, supervisor, auditor). | Mantener la **invariancia de identidad** (email único), gestionar roles y estado (activo/bloqueado). Emitir eventos de dominio. | Usa `EmailAddress`, `PersonName`, `PasswordHash`. Relación con `Role` (muchos a muchos). Persistido por `UserRepository`. |
+| **Entity**       | **Role**               | Rol asignable (e.g., `CALLER`, `SUPERVISOR`, `AUDITOR`).                                | Agrupar **permisos** y políticas de acceso.                                                                                     | Asociado a `User`. Persistido por `RoleRepository`.                                                                       |
+| **Entity**       | **Permission**         | Acción autorizable (e.g., `READ_DASHBOARD`, `STREAM_AUDIO`).                            | Ser parte del *policy set* de un `Role`.                                                                                        | Composición dentro de `Role`.                                                                                             |
+| **Entity**       | **Session**            | Sesión autenticada de un usuario.                                                       | Gestionar expiración, revocación y *device info*.                                                                               | Usa `SessionId`, `JwtToken`. Persistido por `SessionRepository`.                                                          |
+| **Value Object** | **EmailAddress**       | Email validado.                                                                         | Garantizar formato y **normalización**.                                                                                         | Usado por `User`.                                                                                                         |
+| **Value Object** | **PersonName**         | Nombre(s) y apellidos.                                                                  | Inmutabilidad y normalización (case, espacios).                                                                                 | Usado por `User`.                                                                                                         |
+| **Value Object** | **PasswordHash**       | Hash de contraseña (no almacena texto plano).                                           | Encapsular algoritmo y *salt* sin exponer detalles.                                                                             | Usado por `User`.                                                                                                         |
+| **Value Object** | **RoleName**           | Nombre canónico del rol.                                                                | Evitar valores inválidos/duplicados.                                                                                            | Usado por `Role`.                                                                                                         |
+| **Value Object** | **SessionId**          | Identificador único de sesión.                                                          | Identidad inmutable.                                                                                                            | Usado por `Session`.                                                                                                      |
+| **Value Object** | **JwtToken**           | Token firmado (access/refresh).                                                         | Encapsular claims, expiración y *signature*.                                                                                    | Emitido por `TokenService`.                                                                                               |
+| **Domain Event** | **UserRegistered**     | Usuario creado y verificado.                                                            | Disparar post-acciones (auditoría, *welcome* opc.).                                                                             | Publicado por `User`.                                                                                                     |
+| **Domain Event** | **UserLoggedIn**       | Inicio de sesión exitoso.                                                               | Trazabilidad, límites de sesión.                                                                                                | Publicado por `AuthService`.                                                                                              |
+| **Domain Event** | **RoleAssignedToUser** | Rol agregado a usuario.                                                                 | Sincronizar *policy cache*.                                                                                                     | Publicado por `User`.                                                                                                     |
+
+### Sub-capa Services (Domain Services & Abstracciones)
+
+| Tipo                           | Nombre                 | Descripción                   | Responsabilidad Principal                                | Relación con otros elementos                               |
+| ------------------------------ | ---------------------- | ----------------------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
+| **Interface (Domain Service)** | **AuthCommandService** | Servicio de autenticación.    | Contrato para `signUp`, `signIn`, `logout`, `refresh`.   | Usado por la **Application Layer**. Implementado en Infra. |
+| **Interface (Domain Service)** | **UserAccessService**  | Gestión de roles/permisos.    | `assignRole`, `revokeRole`, `hasPermission(user, perm)`. | Invoca `UserRepository`, `RoleRepository`.                 |
+| **Interface (Domain Service)** | **SessionService**     | Gestión de sesiones.          | Crear/revocar/validar sesiones y expiración.             | Usa `SessionRepository`, `TokenService`.                   |
+| **Interface (Provider)**       | **TokenService**       | Manejo de JWT/Refresh tokens. | Firmar/validar tokens y construir *claims*.              | Implementación en **Infrastructure** (e.g., JWT).          |
+| **Interface (Provider)**       | **PasswordHasher**     | Hash & verify de contraseñas. | Abstraer algoritmo (e.g., bcrypt/argon2).                | Usado por `AuthCommandService`.                            |
+| **Interface (Repository)**     | **UserRepository**     | Acceso a usuarios.            | `findByEmail`, `save`, `existsByEmail`.                  | Implementación en Infra (DB).                              |
+| **Interface (Repository)**     | **RoleRepository**     | Acceso a roles/permisos.      | `findByName`, `save`.                                    | Implementación en Infra.                                   |
+| **Interface (Repository)**     | **SessionRepository**  | Acceso a sesiones.            | `save`, `findById`, `revokeByUser`.                      | Implementación en Infra.                                   |
+
+### Invariantes del dominio (IAM)
+
+* Un **email** identifica **unívocamente** a un `User`.
+* Un `User` **no** puede tener sesiones activas si está **bloqueado**.
+* Un `Role` agrupa `Permissions` válidas del catálogo; no se permiten permisos huérfanos.
+* Todo `JwtToken` debe contener **claims** de `sub`, `roles`, `exp` y **firma** válida.
+* Las operaciones del dominio solo son válidas con **identidad autenticada** (precondición de aplicación).
+
+---
+
+### Cómo se usa desde las capas superiores
+
+* La **Application Layer** orquesta **Commands** (`SignInCommand`, `AssignRoleCommand`) llamando a los **Domain Services**.
+* La **Interface Layer** (controllers) **no** contiene reglas: solo **convierte DTO↔VO** y delega.
+* La **Infrastructure Layer** **implementa** `Repositories`, `TokenService`, `PasswordHasher` y persistencia.
+
 <div id='5.1.2.'><h4>5.1.2. Interface Layer</h4></div>
+
+La **Interface/Presentation Layer** expone el **contrato HTTP** del bounded context IAM. Se define en términos de **Resources (DTOs)**, **Assemblers/Mappers** y **Controllers**, manteniendo la capa **agnóstica del dominio** (conversión DTO ↔ VO/Command) y respetando las invariantes.
+
+### Sub-capa REST
+
+| Tipo                  | Nombre                                        | Descripción                                                        | Responsabilidad Principal                                          | Relación con otros elementos                                    |
+| --------------------- | --------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ | --------------------------------------------------------------- |
+| **Resource**          | **AuthRequestResource**                       | Estructura de la petición para autenticación (login).              | Encapsular datos de entrada del cliente para `signIn`.             | Usado por `AuthController` → mapeado a `SignInCommand`.         |
+| **Resource**          | **AuthResponseResource**                      | Respuesta del login.                                               | Entregar `accessToken`, `refreshToken`, expiración y metadatos.    | Devuelto por `AuthController` tras `AuthCommandService.signIn`. |
+| **Resource**          | **RegisterRequestResource**                   | Petición para registro de usuario.                                 | Encapsular datos de entrada para `signUp`.                         | Usado por `AuthController` → `SignUpCommand`.                   |
+| **Resource**          | **RegisterResponseResource**                  | Respuesta del registro.                                            | Confirmar creación y datos básicos del `User`.                     | Devuelto por `AuthController` tras `signUp`.                    |
+| **Resource**          | **AssignRoleRequestResource**                 | Petición para asignar rol a un usuario.                            | Datos de entrada para `assignRole`.                                | Usado por `UserAccessController` → `AssignRoleCommand`.         |
+| **Resource**          | **RevokeSessionRequestResource**              | Petición para revocar sesiones activas.                            | Datos de entrada para `revokeSession`.                             | Usado por `SessionController` → `RevokeSessionCommand`.         |
+| **Resource**          | **RefreshTokenRequestResource**               | Petición para refrescar token.                                     | Portar `refreshToken` de cliente.                                  | Usado por `AuthController` → `RefreshTokenCommand`.             |
+| **Assembler**         | **SignInCommandFromResourceAssembler**        | Convierte `AuthRequestResource` → `SignInCommand`.                 | Evitar corrupción del modelo; validación inicial.                  | Invocado por `AuthController`.                                  |
+| **Assembler**         | **SignUpCommandFromResourceAssembler**        | Convierte `RegisterRequestResource` → `SignUpCommand`.             | Idem (mapeo/validación).                                           | Invocado por `AuthController`.                                  |
+| **Assembler**         | **AssignRoleCommandFromResourceAssembler**    | Convierte `AssignRoleRequestResource` → `AssignRoleCommand`.       | Mapeo/validación.                                                  | Invocado por `UserAccessController`.                            |
+| **Assembler**         | **RevokeSessionCommandFromResourceAssembler** | Convierte `RevokeSessionRequestResource` → `RevokeSessionCommand`. | Mapeo/validación.                                                  | Invocado por `SessionController`.                               |
+| **Assembler**         | **RefreshTokenCommandFromResourceAssembler**  | Convierte `RefreshTokenRequestResource` → `RefreshTokenCommand`.   | Mapeo/validación.                                                  | Invocado por `AuthController`.                                  |
+
+---
+
+### Contratos REST (endpoints)
+
+| Endpoint                        | Método | Request (Resource)                                                 | Response (Resource)                                                              | Auth                                   | Observaciones                                 |
+| ------------------------------- | ------ | ------------------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------- | --------------------------------------------- |
+| `/api/iam/auth/login`           | `POST` | `AuthRequestResource { email, password }`                          | `AuthResponseResource { accessToken, refreshToken, expiresIn, userId, roles[] }` | No                                     | Devuelve tokens JWT + claims.                 |
+| `/api/iam/auth/register`        | `POST` | `RegisterRequestResource { email, password, firstName, lastName }` | `RegisterResponseResource { userId, email, createdAt }`                          | No                                     | Aplica políticas de contraseña y email único. |
+| `/api/iam/auth/refresh`         | `POST` | `RefreshTokenRequestResource { refreshToken }`                     | `AuthResponseResource { accessToken, refreshToken, expiresIn }`                  | No                                     | Rotación de refresh token.                    |
+| `/api/iam/auth/logout`          | `POST` | —                                                                  | `204 No Content`                                                                 | **Sí** (Bearer)                        | Revoca sesión activa.                         |
+| `/api/iam/users/{userId}/roles` | `POST` | `AssignRoleRequestResource { roleName }`                           | `200 OK`                                                                         | **Sí** (Bearer + `ADMIN`)              | Asigna rol a usuario.                         |
+| `/api/iam/sessions/revoke`      | `POST` | `RevokeSessionRequestResource { userId? , sessionId? }`            | `204 No Content`                                                                 | **Sí** (Bearer + `ADMIN`/`SUPERVISOR`) | Revoca sesión específica o todas del usuario. |
+| `/api/iam/me`                   | `GET`  | —                                                                  | `{ userId, email, roles[], issuedAt, expiresAt }`                                | **Sí** (Bearer)                        | Perfil del usuario autenticado.               |
+
 <div id='5.1.3.'><h4>5.1.3. Application Layer</h4></div>
+
+La **Application Layer** orquesta los **flujos de proceso** del bounded context exponiendo **casos de uso** a través de **Command Handlers** y **Event Handlers**. Se apoya en contratos del **Domain Layer** (Services/Repositories) y delega la persistencia/externos a la **Infrastructure Layer**. No contiene reglas de negocio complejas: **coordina**.
+
+---
+
+### Sub-capa Internal (Casos de uso / Orquestación)
+
+| Tipo                 | Nombre                          | Descripción                                  | Responsabilidad Principal                                                                             | Relación con otros elementos                                                      |
+| -------------------- | ------------------------------- | -------------------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **CommandHandler**   | **SignUpCommandHandler**        | Caso de uso para registrar usuario.          | Validar input, invocar `AuthCommandService.signUp`, persistir `User`, publicar `UserRegistered`.      | Usa `UserRepository`, `PasswordHasher`, `TokenService?` (opcional post-registro). |
+| **CommandHandler**   | **SignInCommandHandler**        | Caso de uso para autenticar.                 | Validar credenciales, invocar `AuthCommandService.signIn`, crear `Session`, emitir `UserLoggedIn`.    | Usa `UserRepository`, `PasswordHasher`, `SessionRepository`, `TokenService`.      |
+| **CommandHandler**   | **AssignRoleCommandHandler**    | Caso de uso para asignar rol.                | Verificar existencia de `User` y `Role`, actualizar roles del usuario, publicar `RoleAssignedToUser`. | Usa `UserRepository`, `RoleRepository`, `UserAccessService`.                      |
+| **CommandHandler**   | **RevokeSessionCommandHandler** | Revocar una o varias sesiones.               | Invalidar sesión y tokens asociados.                                                                  | Usa `SessionRepository`, `TokenService`.                                          |
+| **CommandHandler**   | **RefreshTokenCommandHandler**  | Rotar/renovar token.                         | Validar `refreshToken`, generar nuevo `JwtToken`.                                                     | Usa `SessionRepository`, `TokenService`.                                          |
+
 <div id='5.1.4.'><h4>5.1.4. Infrastructure Layer</h4></div>
+
+La **Infrastructure Layer** provee las implementaciones concretas de los contratos definidos en el **Domain Layer**, permitiendo la interacción con servicios externos tales como bases de datos, sistemas de mensajería o proveedores de autenticación.
+En el caso del bounded context **IAM**, esta capa gestiona la **persistencia de usuarios y sesiones**, la **configuración de seguridad**, y la **emisión y validación de tokens JWT** utilizados en toda la plataforma.
+
+---
+
+### Sub-capa Repository
+
+| Tipo           | Nombre                    | Descripción                                                              | Responsabilidad Principal                                                         | Relación con otros elementos                                                                                                     |
+| -------------- | ------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Repository** | **UserRepositoryImpl**    | Implementación concreta del repositorio de usuarios.                     | Permitir acceso, búsqueda y modificación de entidades `User` en la base de datos. | Implementa la interfaz `UserRepository` definida en Domain. Utilizada por `AuthCommandServiceImpl` y `AssignRoleCommandHandler`. |
+| **Repository** | **RoleRepositoryImpl**    | Implementación para gestión de roles y permisos.                         | Mantener el catálogo de roles (`CALLER`, `SUPERVISOR`, `AUDITOR`).                | Implementa `RoleRepository` (Domain). Usado por `UserAccessServiceImpl`.                                                         |
+| **Repository** | **SessionRepositoryImpl** | Control de sesiones activas.                                             | Registrar, revocar y auditar sesiones de usuario.                                 | Implementa `SessionRepository` (Domain). Usado por `SessionServiceImpl` y `RevokeSessionCommandHandler`.                         |
+| **Repository** | **AuditRepositoryImpl**   | Persistencia de eventos IAM (logins, asignación de roles, revocaciones). | Guardar logs estructurados de seguridad y auditoría.                              | Usado por `UserLoggedInEventHandler` y `UserRegisteredEventHandler`.                                                             |
+
+---
+
+### Sub-capa Security
+
+| Tipo         | Nombre                    | Descripción                            | Responsabilidad Principal                                                          | Relación con otros elementos                                                 |
+| ------------ | ------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Config**   | **SecurityConfig**        | Configuración global de seguridad.     | Definir políticas de acceso, rutas públicas y privadas, filtros JWT y reglas CORS. | Configura `AuthMiddleware` y `JwtAuthFilter`.                                |
+| **Provider** | **PasswordHasherImpl**    | Implementación de hash de contraseñas. | Generar y validar hashes usando `bcrypt` o `argon2`.                               | Implementa `PasswordHasher` (Domain). Utilizado en `AuthCommandServiceImpl`. |
+| **Class**    | **AuthMiddleware**        | Middleware de autenticación.           | Interceptar peticiones HTTP y validar encabezado `Authorization`.                  | Usado por controladores protegidos (Interface Layer).                        |
+| **Class**    | **AccessDecisionManager** | Evaluador de permisos y roles.         | Determinar si un usuario puede ejecutar una acción específica según su rol.        | Utilizado por `SecurityConfig`.                                              |
+
+---
+
+### Sub-capa JWT
+
+| Tipo         | Nombre                  | Descripción                                         | Responsabilidad Principal                                                                                    | Relación con otros elementos                                                              |
+| ------------ | ----------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| **Class**    | **JwtAuthFilter**       | Filtro de autenticación JWT.                        | Interceptar cada solicitud HTTP, validar el token y establecer la autenticación en el contexto de seguridad. | Usado dentro del pipeline de `SecurityConfig`.                                            |
+| **Class**    | **JwtServiceImpl**      | Servicio para manejo de tokens JWT.                 | Crear, firmar, validar y decodificar tokens de acceso y refresh.                                             | Implementa la interfaz `JwtService` del Domain Layer. Usado por `AuthCommandServiceImpl`. |
+| **Provider** | **JwtKeyProvider**      | Gestor de claves públicas/privadas o secretos HMAC. | Proveer claves para firmar/verificar JWTs.                                                                   | Usado internamente por `JwtServiceImpl`.                                                  |
+| **Utility**  | **TokenBlacklistStore** | Control temporal de tokens revocados.               | Evitar reutilización de tokens invalidos (logout, rotación).                                                 | Consultado por `JwtAuthFilter` y `RevokeSessionCommandHandler`.                           |
+
 <div id='5.1.5.'><h4>5.1.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+
+Este diagrama representa la descomposición interna del container IAM Application, correspondiente al bounded context de identidad y autenticación (IAM) dentro del sistema.
+Se basa en los principios de Clean Architecture y Domain-Driven Design (DDD), ilustrando las principales dependencias e interacciones entre componentes de cada capa.
+
+El sistema proporciona servicios de autenticación, autorización, gestión de roles, emisión y validación de tokens JWT, y auditoría de sesiones.
+La comunicación se realiza a través de REST APIs y la publicación de eventos de dominio hacia otros bounded contexts (como Analytics).
+
+<div align="center">
+<img src="assets/structurizr-iam_view.png" alt="class-diagram">
+</div>
+
 <div id='5.1.6.'><h4>5.1.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.1.6.1.'><h4>5.1.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+
+### Diagrama de clases (PlantUML)
+
+Incluye Entities, Value Objects, Aggregates, Domain Services (interfaces) y Repositories (interfaces) con atributos, métodos, visibilidades y multiplicidades.
+
+<div align="center">
+<img src="assets/UML_iam.png" alt="class-diagram">
+</div>
+
 <div id='5.1.6.2.'><h4>5.1.6.2. Bounded Context Database Design Diagram</h4></div>
+
+<div align="center">
+<img src="assets/IAM_DB.png" alt="class-diagram">
+</div>
+
+| Nombre          | Descripción                                                |
+| --------------- | ---------------------------------------------------------- |
+| `id`            | Identificador único del registro (PK).                     |
+| `created_at`    | Fecha/hora de creación del registro.                       |
+| `updated_at`    | Fecha/hora de última actualización.                        |
+| `company_name`  | Empresa asociada al usuario (si aplica).                   |
+| `email`         | Correo electrónico (único).                                |
+| `first_name`    | Primer nombre.                                             |
+| `last_name`     | Apellido.                                                  |
+| `password_hash` | Hash de contraseña (BCrypt/Argon2).                        |
+| `trial`         | Indicador de periodo de prueba.                            |
+| `username`      | Alias único de acceso (opcional si usas email como login). |
+| `refresh_token` | Token de renovación (tabla `sessions`).                    |
 
 <div id='5.2.'><h3>5.2. Bounded Context: Proceso de audio </h3></div>
 <div id='5.2.1.'><h4>5.2.1. Domain Layer</h4></div>
+
+**Objetivo del BC:** Ingerir audios, separar canal **caller**, generar transcripción parcial/final y persistir **transcript JSON** con metadatos de calidad (WER/latencia), para ser consumido por **Puntuación & Recomendaciones** y **Analítica**.
+
+### Sub-capa Model
+
+| Tipo             | Nombre                | Descripción                                                                | Responsabilidad Principal                                                | Relación                                       |
+| ---------------- | --------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------- |
+| **Aggregate**    | **RecordingBatch**    | Lote de grabaciones a procesar.                                            | Coordinar ingestión y estado de cada **Recording**.                      | 1..* `Recording`, repos `BatchRepository`.     |
+| **Entity**       | **Recording**         | Una grabación (archivo o stream id).                                       | Mantener metadatos (duración, formato, samplerate) y estado de pipeline. | Tiene 0..1 `CallerChannel`, 0..1 `Transcript`. |
+| **Entity**       | **CallerChannel**     | Canal de audio del **caller** separado.                                    | Garantizar fuente válida para ASR.                                       | Deriva de `Recording`.                         |
+| **Entity**       | **Transcript**        | Transcripción del caller.                                                  | Contener `segments[]`, `language`, `metrics`.                            | Persistido por `TranscriptRepository`.         |
+| **Value Object** | **Segment**           | Fragmento con texto y tiempos.                                             | Texto + timestamps + confidencia.                                        | Composición en `Transcript`.                   |
+| **Value Object** | **Language**          | ISO-639-1/2 + probabilidad.                                                | Idioma detectado para ASR.                                               | En `Transcript`.                               |
+| **Value Object** | **ASRQualityMetrics** | Métricas ASR (WER, latencias).                                             | Medir calidad y performance.                                             | En `Transcript`.                               |
+| **Enum**         | **RecordingState**    | `INGESTED`, `CHANNELS_SEPARATED`, `PARTIAL_READY`, `FINAL_READY`, `FAILED` | Ciclo de vida.                                                           | En `Recording`.                                |
+
+### Domain Events
+
+| Evento                         | Dispara          | Propósito                              |
+| ------------------------------ | ---------------- | -------------------------------------- |
+| **AudioIngested**              | `RecordingBatch` | Señala que el audio quedó disponible.  |
+| **ChannelsSeparated**          | `Recording`      | Habilita ASR sobre **caller**.         |
+| **PartialTranscriptGenerated** | `Recording`      | Entrega segmentos parciales (stream).  |
+| **FinalTranscriptGenerated**   | `Recording`      | Señala texto final listo.              |
+| **TranscriptStored**           | `Transcript`     | Confirma persistencia JSON y métricas. |
+
+### Domain Services (Interfaces) & Repos
+
+| Tipo                       | Nombre                       | Responsabilidad                            | Observaciones                      |
+| -------------------------- | ---------------------------- | ------------------------------------------ | ---------------------------------- |
+| **Interface (Service)**    | **ChannelSeparationService** | Separar canal del caller (FFmpeg/sox).     | Validar formato y SNR mínimo.      |
+| **Interface (Service)**    | **TranscriptionService**     | Invocar ASR (Whisper/servicio).            | Parcia/Final, selección de modelo. |
+| **Interface (Service)**    | **AudioStorageService**      | Leer/guardar objetos binarios.             | S3/GCS/FS con URIs.                |
+| **Interface (Service)**    | **StreamingPublisher**       | Publicar eventos parciales/finales.        | Para consumo por otros BCs.        |
+| **Interface (Repository)** | **BatchRepository**          | Persistir `RecordingBatch`/estado.         | Infra relacional/no-SQL.           |
+| **Interface (Repository)** | **RecordingRepository**      | Persistir `Recording`/estado.              | —                                  |
+| **Interface (Repository)** | **TranscriptRepository**     | Guardar/leer `Transcript` JSON + métricas. | También índices por fecha/campaña. |
+
 <div id='5.2.2.'><h4>5.2.2. Interface Layer</h4></div>
+
+La **Interface/Presentation Layer** de este bounded context expone contratos para: **ingesta batch**, **separación de canales (caller)**, **transcripción parcial (stream) y final (archivo)**, y **persistencia/exportación de transcript JSON**. Se define con **Resources (DTOs)**, **Assemblers/Mappers → Commands** y **Controllers**. Mantiene el dominio aislado (DTO ↔ VO/Command).
+
+---
+
+### Sub-capa REST
+
+| Tipo           | Nombre                            | Descripción                                           | Responsabilidad Principal                                 | Relación con otros elementos                           |
+| -------------- | --------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------ |
+| **Resource**   | **IngestBatchRequest**            | Petición para registrar un lote de audios a procesar. | Encapsular URIs/ids y metadatos (campaña, fecha).         | `AudioIngestionController` → `IngestBatchCommand`.     |
+| **Resource**   | **IngestBatchResponse**           | Respuesta de registro de lote.                        | Devolver `batchId`, cantidad y estado inicial.            | Devuelto por `AudioIngestionController`.               |
+| **Resource**   | **SeparateChannelsRequest**       | Petición para separar canales de una grabación.       | Indicar `recordingId` y estrategia.                       | `ChannelController` → `SeparateChannelsCommand`.       |
+| **Resource**   | **SeparateChannelsResponse**      | Respuesta de separación.                              | Confirmar `callerChannelUri`, métricas básicas.           | Devuelto por `ChannelController`.                      |
+| **Resource**   | **TranscribeFinalRequest**        | Solicitud de transcripción final.                     | Indicar `recordingId`, `callerChannelUri`, config de ASR. | `TranscriptionController` → `TranscribeFinalCommand`.  |
+| **Resource**   | **TranscribeFinalResponse**       | Resultado de transcripción final.                     | `transcriptId`, `summary`, `language`, métricas.          | Devuelto por `TranscriptionController`.                |
+| **Resource**   | **StoreTranscriptRequest**        | Persistir el transcript en JSON.                      | Cargar `transcript` (segments) y `metrics`.               | `TranscriptController` → `StoreTranscriptJsonCommand`. |
+| **Resource**   | **StoreTranscriptResponse**       | Resultado de persistencia.                            | `transcriptId`, `uri`, `checksum`.                        | Devuelto por `TranscriptController`.                   |
+| **Assembler**  | **IngestBatchCommandMapper**      | DTO → `IngestBatchCommand`.                           | Validar y mapear.                                         | Usado por `AudioIngestionController`.                  |
+| **Assembler**  | **SeparateChannelsCommandMapper** | DTO → `SeparateChannelsCommand`.                      | Validar y mapear.                                         | `ChannelController`.                                   |
+| **Assembler**  | **TranscribeFinalCommandMapper**  | DTO → `TranscribeFinalCommand`.                       | Validar y mapear.                                         | `TranscriptionController`.                             |
+| **Assembler**  | **StoreTranscriptCommandMapper**  | DTO → `StoreTranscriptJsonCommand`.                   | Validar y mapear.                                         | `TranscriptController`.                                |
+
 <div id='5.2.3.'><h4>5.2.3. Application Layer</h4></div>
+
+La **Application Layer** orquesta los **casos de uso** del BC *Proceso de audio* mediante **CommandHandlers** y **EventHandlers**. Coordina a los servicios del **Domain Layer** (p. ej., `ChannelSeparationService`, `TranscriptionService`, `AudioStorageService`) y a los **Repositories**; define **transacciones**, **reintentos**, **idempotencia** y **publicación de eventos**.
+
+No implementa reglas de negocio complejas: **coordina** y asegura políticas de aplicación (timeouts, retries, observabilidad).
+
+---
+
+### Sub-capa Internal (Casos de uso / Orquestación)
+
+| Tipo               | Nombre                        | Descripción                                          | Responsabilidad Principal                                                                                          | Depende de                                                      |
+| ------------------ | ----------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| **CommandHandler** | **IngestBatchHandler**        | Registra un lote de audios a procesar.               | Validar `IngestBatchCommand`; crear `RecordingBatch` + `Recording`(s); publicar `AudioIngested`.                   | `BatchRepository`, `RecordingRepository`, `AudioStorageService` |
+| **CommandHandler** | **SeparateChannelsHandler**   | Ejecuta separación de canales y obtiene **caller**.  | Validar `recordingId`; invocar `ChannelSeparationService`; actualizar estado; publicar `ChannelsSeparated`.        | `RecordingRepository`, `ChannelSeparationService`               |
+| **CommandHandler** | **TranscribePartialHandler**  | ASR en tiempo real por chunks (opcional).            | Gestionar stream; por chunk invocar `TranscriptionService.partial`; publicar `PartialTranscriptGenerated`.         | `TranscriptionService`, `StreamingPublisher`                    |
+| **CommandHandler** | **TranscribeFinalHandler**    | ASR final (archivo completo).                        | Ejecutar `TranscriptionService.final`; producir `Transcript`; avanzar estado; publicar `FinalTranscriptGenerated`. | `RecordingRepository`, `TranscriptionService`                   |
+| **CommandHandler** | **StoreTranscriptHandler**    | Persistencia de transcript JSON + métricas.          | Validar segmentos/orden; persistir en `TranscriptRepository`; publicar `TranscriptStored`.                         | `TranscriptRepository`, `RecordingRepository`                   |
+| **QueryHandler**   | **GetTranscriptQueryHandler** | Recuperar transcript por `recordingId/transcriptId`. | Resolver y mapear a DTO.                                                                                           | `TranscriptRepository`                                          |
+| **Service Impl**   | **AudioIngestionAppService**  | Fachada de casos de uso de Ingesta.                  | Exponer operaciones transaccionales compuestas.                                                                    | Handlers + Repositorios                                         |
+| **Pipeline**       | **ValidationPipeline**        | Validación de comandos (esquema/VOs).                | Fallar temprano.                                                                                                   | Decorador de Handlers                                           |
+| **Pipeline**       | **TransactionalUnitOfWork**   | Límite transaccional por comando.                    | `begin/commit/rollback`.                                                                                           | Decorador de Handlers                                           |
+| **Policy**         | **RetryPolicy**               | Reintentos con backoff para ASR/Storage.             | Reintentar fallos transitorios.                                                                                    | Envuelve `TranscriptionService`, `AudioStorageService`          |
+
+---
+
+### Sub-capa Messaging
+
+| Tipo               | Nombre                         | Escucha/Publica            | Responsabilidad                                                              | Observaciones                                 |
+| ------------------ | ------------------------------ | -------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------- |
+| **EventHandler**   | **OnAudioIngested**            | `AudioIngested`            | Encadenar `SeparateChannelsCommand`.                                         | *Choreography* sin acoplar a interfaz.        |
+| **EventHandler**   | **OnChannelsSeparated**        | `ChannelsSeparated`        | Disparar `TranscribeFinalCommand` u `TranscribePartialCommand` (según modo). | Controlado por *feature flag*.                |
+| **EventHandler**   | **OnFinalTranscriptGenerated** | `FinalTranscriptGenerated` | Disparar `StoreTranscriptJsonCommand`.                                       | Garantiza persistencia posterior a ASR.       |
+| **EventPublisher** | **DomainEventBus**             | Publica todos los eventos  | Entregar eventos a **Puntuación & Recomendaciones** y **Analítica**.         | Implementación en Infra (broker o in-memory). |
+
 <div id='5.2.4.'><h4>5.2.4. Infrastructure Layer</h4></div>
+
+La **Infrastructure Layer** provee las **implementaciones concretas** de los puertos definidos en el dominio: persistencia de `Recording/Transcript`, **separación de canales** (FFmpeg/SoX), **ASR (Whisper)** para transcripción parcial/final, **almacenamiento de binarios** (S3/FS), **publicación de eventos** (broker/WebSocket/SSE) y **webhooks** de integración.
+
+---
+
+### Sub-capa Repository / Persistence
+
+| Tipo           | Nombre                       | Descripción                                    | Responsabilidad Principal                              | Relación                               |
+| -------------- | ---------------------------- | ---------------------------------------------- | ------------------------------------------------------ | -------------------------------------- |
+| **Repository** | **BatchRepositoryImpl**      | Persistencia de `RecordingBatch`.              | Crear/actualizar lotes, estado y métricas.             | Implementa `BatchRepository` (Domain). |
+| **Repository** | **RecordingRepositoryImpl**  | Persistencia de `Recording`.                   | Guardar metadatos, `RecordingState` y URIs.            | Implementa `RecordingRepository`.      |
+| **Repository** | **TranscriptRepositoryImpl** | Persistencia de `Transcript` (JSON + índices). | Guardar y consultar `transcript`/`metrics`/`checksum`. | Implementa `TranscriptRepository`.     |
+| **Config**     | **DatabaseConfig**           | Conexión y ORM.                                | Datasource/pools, mapeos entidad-tabla.                | Usado por repositorios.                |
+| **Migration**  | **Flyway/Liquibase Scripts** | Evolución de esquema.                          | Tablas: `batches`, `recordings`, `transcripts`.        | Se ejecuta al iniciar.                 |
+
 <div id='5.2.5.'><h4>5.2.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+
+Este diagrama representa la descomposición interna del container Audio Processing Application, correspondiente al bounded context de proceso de audio dentro del sistema.
+
+La comunicación se lleva a cabo mediante APIs REST y la emisión de eventos de dominio hacia otros contextos delimitados (como Analítica).
+
+<div align="center">
+<img src="assets/structurizr-audio_processing_view.png" alt="class-diagram">
+</div>
+
 <div id='5.2.6.'><h4>5.2.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.2.6.1.'><h4>5.2.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+
+### Diagrama de clases (PlantUML)
+
+Incluye Entities, Value Objects, Aggregates, Domain Services (interfaces) y Repositories (interfaces) con atributos, métodos, visibilidades y multiplicidades.
+
+<div align="center">
+<img src="assets/UML_audio_processing.png" alt="class-diagram">
+</div>
+
 <div id='5.2.6.2.'><h4>5.2.6.2. Bounded Context Database Design Diagram</h4></div>
+
+<div align="center">
+<img src="assets/Audio_processing_DB.png" alt="class-diagram">
+</div>
+
+#### Tabla: Recordings
+
+Representa **cada grabación** a procesar. Contiene metadatos técnicos (duración, sample rate, bit depth), el **estado** del pipeline y la **URI** de origen.
+
+<div align="center">
+
+| Campo        | Tipo     | Descripción                                                                                           |
+| ------------ | -------- | ----------------------------------------------------------------------------------------------------- |
+| id           | string   | Identificador de la grabación (`recordingId`, PK).                                                    |
+| batch_id     | uuid     | Referencia al lote (`Batches.id`). Permite agrupar grabaciones por campaña.                           |
+| source_uri   | string   | URI del archivo de audio fuente (p. ej., `s3://.../rec-001.wav`).                                     |
+| duration_sec | int      | Duración de la grabación en segundos.                                                                 |
+| sample_rate  | int      | Frecuencia de muestreo detectada del audio fuente (Hz).                                               |
+| bit_depth    | int      | Profundidad de bits del audio fuente (p. ej., 16).                                                    |
+| state        | string   | Estado del procesamiento: `INGESTED`, `CHANNELS_SEPARATED`, `PARTIAL_READY`, `FINAL_READY`, `FAILED`. |
+| created_at   | datetime | Fecha y hora de creación del registro.                                                                |
+| updated_at   | datetime | Fecha y hora de la última actualización del registro (cambio de estado, metadatos, etc.).             |
+
+</div>
+
+---
+
+#### Tabla: CallerChannels
+
+Contiene la **derivación del canal del caller** tras la separación de canales (left/right/auto). Es un registro **1:1** con `Recordings`.
+
+<div align="center">
+
+| Campo        | Tipo   | Descripción                                                       |
+| ------------ | ------ | ----------------------------------------------------------------- |
+| recording_id | string | FK hacia `Recordings.id` (también PK para asegurar relación 1:1). |
+| channel      | string | Canal detectado o seleccionado: `left`, `right` o `auto`.         |
+| caller_uri   | string | URI del audio resultante solo del caller (normalizado para ASR).  |
+| sample_rate  | int    | Frecuencia de muestreo del canal caller (típicamente 16000 Hz).   |
+| bit_depth    | int    | Profundidad de bits del canal caller (p. ej., 16).                |
+| duration_sec | int    | Duración del canal caller en segundos.                            |
+
+</div>
+
+---
+
+#### Tabla: Transcripts
+
+Almacena el **resultado de la transcripción** del canal caller: idioma, métricas de calidad (WER, latencia) y referencia al **JSON** persistido. Es **1:1** con `Recordings`.
+
+| Campo               | Tipo     | Descripción                                                                                         |
+| ------------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| id                  | string   | Identificador único del transcript (PK).                                                            |
+| recording_id        | string   | FK única a `Recordings.id` (relación 1:1 entre grabación y transcript).                             |
+| language_code       | string   | Código de idioma detectado (ISO-639-1/2), p. ej. `es`.                                              |
+| language_confidence | float    | Confianza del idioma detectado (0.0–1.0).                                                           |
+| storage_uri         | string   | URI del JSON con el transcript completo (segments + metadatos).                                     |
+| checksum            | string   | Huella del JSON (p. ej., `sha256:...`) para **idempotencia** y verificación de integridad (UNIQUE). |
+| wer                 | float    | Word Error Rate estimado para la transcripción final.                                               |
+| latency_ms          | bigint   | Latencia total del proceso de ASR (ms).                                                             |
+| model               | string   | Modelo ASR utilizado (p. ej., `whisper-large-v3`).                                                  |
+| created_at          | datetime | Fecha y hora de creación del registro de transcript.                                                |
+
 
 <div id='5.3.'><h3>5.3. Bounded Context: Puntuación & Recomendaciones </h3></div>
 <div id='5.3.1.'><h4>5.3.1. Domain Layer</h4></div>
