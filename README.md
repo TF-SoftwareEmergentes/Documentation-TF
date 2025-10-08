@@ -1717,9 +1717,77 @@ Almacena el **resultado de la transcripción** del canal caller: idioma, métric
 
 <div id='5.4.'><h3>5.4. Bounded Context: Analítica </h3></div>
 <div id='5.4.1.'><h4>5.4.1. Domain Layer</h4></div>
+**Objetivo del BC:** Consolidar y servir métricas, KPIs y tendencias a partir de eventos y resultados generados por _Proceso de audio_ y _Puntuación & Recomendaciones_ (e.g., WER, latencia, score de promesa, cumplimiento, productividad de agentes), exponiendo insights consistentes para dashboards, reportes y alertas.
+
+### Sub-capa Model
+
+| Tipo           | Nombre               | Descripción                                                                                     | Responsabilidad Principal                                     | Relación                                                                                                                                 |
+|----------------|----------------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| **Aggregate**  | **ReportDefinition** | Plantilla parametrizable (KPI, dimensiones, filtros, período, forma de cálculo)                 | Definir qué y cómo calcular; versionar definiciones           | 1..* **Metric** (usa); 1..* **DatasetView** (consulta); 0..* **Insight** (produce)                                                      |
+| **Aggregate**  | **DatasetView**      | Proyección materializada/virtual sobre hechos y dimensiones (ej. `vw_fact_scores_day`)           | Asegurar consistencia semántica y de tiempos de corte         | compone tablas `fact_*` y `dim_*`                                                                                                       |
+| **Entity**     | **Metric**           | Métrica atómica (ej. *AvgWER*, *MeanLatencyMs*, *PaymentIntentScoreP75*)                        | Encapsular fórmula + unidad + reglas de agregación            | pertenece a **ReportDefinition**                                                                                                         |
+| **Entity**     | **Insight**          | Resultado calculado (valor, tendencia, umbrales, explicaciones)                                 | Persistir series y snapshots para historización               | 1 **ReportDefinition**; 0..* **Annotation**                                                                                              |
+| **ValueObject**| **TimeWindow**       | Ventana temporal (rango, *grain*)                                                               | Estandarizar cortes (día/semana/mes, zona horaria)            | usado por **ReportDefinition** y **Insight**                                                                                             |
+| **ValueObject**| **DimensionFilter**  | Filtros (agente, campaña, sentimiento, bucket de score)                                         | Componer consultas reproducibles                              | usado por **ReportDefinition**                                                                                                           |
+| **DomainEvent**| **InsightPublished** | Insight listo y publicado para consumo de dashboards/alertas                                    | Disparar notificaciones y *caching*                           | emitido por **AnalyticsService**                                                                                                         |
+| **Repository** | **ReportRepository** | Acceso a definiciones/versiones                                                                 | CRUD + versionado                                             | almacén relacional                                                                                                                       |
+| **Repository** | **InsightRepository**| Acceso a insights (series/snapshots)                                                            | Query por tiempo/dimensiones                                  | almacén analítico/columnar                                                                                                               |
+| **Service**    | **AnalyticsService** | Casos de uso de dominio (calcular/persistir/publicar insights)                                  | Orquestar cálculos e idempotencia                             | usa **MetricEngine**, **DatasetGateway**, **CacheGateway**                                                                               |
+| **DomainPolicy**| **FreshnessPolicy** | Reglas de frescura/SLAs de *data* (latenza de ingesta, corte diario)                           | Validar ventanas de cálculo                                   | aplicado por **AnalyticsService**                                                                                                        |
 <div id='5.4.2.'><h4>5.4.2. Interface Layer</h4></div>
+
+**API REST/GraphQL (ejemplos):**
+
+-   `GET /api/analytics/metrics?from=2025-10-01&to=2025-10-31&dim=agent_id,campaign`
+    
+-   `POST /api/analytics/reports/{reportId}/compute` (dispara cálculo bajo ventana/segmento)
+    
+-   `GET /api/analytics/insights/{id}`
+    
+-   `GET /api/analytics/dashboards/{dashboardId}` (servidor de _widgets_)
+    
+-   `POST /api/analytics/subscriptions` (webhooks/email para umbrales: p. ej., _AvgWER > 0.15_)
+    
+
+**Eventos (suscripción/publicación):**
+
+-   **In**: `audio.transcribed` (final), `scoring.completed` (con score/confianza), `call.compliance.checked`
+    
+-   **Out**: `analytics.insight.published`, `analytics.alert.triggered`
+    
+
+**Autorización/Scopes (coordina con IAM):** `analytics:read`, `analytics:write`, `analytics:subscribe`.
+
+
 <div id='5.4.3.'><h4>5.4.3. Application Layer</h4></div>
+
+**Casos de uso (Application Services):**
+
+| Caso de Uso               | Descripción                                                                                     | Dependencias (Puertos)                                               |
+|---------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| **ComputeReportUseCase**  | Valida *FreshnessPolicy*, obtiene `DatasetView`, evalúa `Metric` → persiste `Insight` y emite `InsightPublished`. | `DatasetGateway`, `MetricEngine`, `InsightRepo`, `EventBus`          |
+| **GetDashboardUseCase**   | Resuelve *widgets* (definiciones → series) con *caching* y *downsampling*.                       | `CacheGateway`, `InsightRepo`                                        |
+| **SubscribeAlertsUseCase**| Registra condiciones sobre métricas; conecta a *stream processor* para evaluar en tiempo casi real.| `EventBus`, `CacheGateway`, `MetricEngine`, `ReportRepo`             |
+
+    
+
+**Puertos (Ports):** `DatasetGateway`, `MetricEngine`, `CacheGateway`, `EventBus`, `ReportRepo`, `InsightRepo`.
+
 <div id='5.4.4.'><h4>5.4.4. Infrastructure Layer</h4></div>
+
+| Adaptador        | Tecnología / Herramienta                                    | Responsabilidad Principal                                      |
+|------------------|-------------------------------------------------------------|----------------------------------------------------------------|
+| **DatasetGateway** | PostgreSQL/Timescale, ClickHouse                           | Acceso a `fact_*` y `dim_*`                                    |
+| **MetricEngine**  | SQL + UDF, motor series temporales                          | Cálculo de métricas y percentiles                              |
+| **EventBus**      | Kafka                                                      | Manejo de eventos (`audio.transcribed`, `scoring.completed`)   |
+| **CacheGateway**  | Redis                                                      | Acelerar dashboards, TTL de insights                           |
+| **ObjectStorage** | S3/MinIO                                                   | Exportar snapshots (CSV, Parquet)                              |
+| **ETL/Jobs**      | Airflow (batch), Flink/KSQL (stream)                       | Materializar vistas analíticas                                 |
+
+    
+
+**Observabilidad:** _probes_ de frescura, _data quality checks_ (nulos, _late data_, duplicados), _lineage_.
+
 <div id='5.4.5.'><h4>5.4.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
 <div id='5.4.6.'><h4>5.4.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.4.6.1.'><h4>5.4.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
