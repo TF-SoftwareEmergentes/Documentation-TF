@@ -1953,9 +1953,15 @@ Insights derivados de las evaluaciones para análisis posterior
 **Observabilidad:** _probes_ de frescura, _data quality checks_ (nulos, _late data_, duplicados), _lineage_.
 
 <div id='5.4.5.'><h4>5.4.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+En este nivel se representan los componentes principales del BC Analítica y su interacción con otros contextos y sistemas externos.
+<img src="./img/AnaliticaComponent.png">
 <div id='5.4.6.'><h4>5.4.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.4.6.1.'><h4>5.4.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+Aquí se especifica el modelo de dominio: el Aggregate Root (ReportDefinition), sus entidades (Metric, Insight), objetos de valor (TimeWindow, DimensionFilter, DatasetRef), repositorios y eventos de dominio (InsightPublished).
+<img src="./img/AnaliticaDomainLayer.png">
 <div id='5.4.6.2.'><h4>5.4.6.2. Bounded Context Database Design Diagram</h4></div>
+Se presenta el modelo lógico de la base de datos del BC Analítica, alineado con un esquema en estrella para análisis.
+<img src="./img/AnaliticaDatabase.png">
 
 <div id="6."><h2>6. Capítulo VI: Solution UX Design</h2></div>
 <div id="6.1."><h3>6.1. Style Guidelines</h3></div>
