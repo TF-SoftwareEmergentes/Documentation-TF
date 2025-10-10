@@ -32,7 +32,7 @@ width=50%"/>
 
 </div>
 
-<h5 style="text-align: center"> Ciclo 2025-02 </h5>
+<h5 style="text-align: center"> Ciclo 2025-20 </h5>
 
 # Registro de Versiones del Informe
 
@@ -64,11 +64,11 @@ URL del repositorio para el reporte del proyecto: https://github.com/TF-Software
 **TP1**
 
 <div align="center">
-  <img src="assets/insights1.png" alt="insights">
+  <img src="assets/insights3.png" alt="insights">
 </div>
 
 <div align="center">
-  <img src="assets/insights2.png" alt="insights">
+  <img src="assets/insights4.png" alt="insights">
 </div>
 
 Para el desarrollo del informe perteneciente a la entrega TP1, se dividió la implementación de secciones de la siguiente forma para cada integrante del equipo:
@@ -1998,6 +1998,10 @@ Se presenta el modelo lógico de la base de datos del BC Analítica, alineado co
 
 Los colores transmiten claridad y emocionalidad positiva, alineados al tema de análisis de sentimientos.
 
+<div align = "center">
+  <img src="assets/Colors.png" style="margin-bottom: 5px;" width="500">
+</div>
+
 **Tipografía**
 
 | Elemento | Fuente | Estilo / Peso |
@@ -2008,6 +2012,10 @@ Los colores transmiten claridad y emocionalidad positiva, alineados al tema de a
 | Números o métricas | Poppins | Medium |
 
 Se privilegia la legibilidad y consistencia visual, con fuentes modernas y redondeadas.
+
+<div align = "center">
+  <img src="assets/Typography.png" style="margin-bottom: 5px;" width="500">
+</div>
 
 **Espaciado y grid**
 
@@ -2023,6 +2031,10 @@ Se privilegia la legibilidad y consistencia visual, con fuentes modernas y redon
 - Estilo consistente: outline (Lucide o Material Icons Outlined).  
 - Color principal: gris oscuro #3C3C3C o púrpura #8A2BE2.
 
+<div align = "center">
+  <img src="assets/Iconography.png" style="margin-bottom: 5px;" width="500">
+</div>
+
 <div id="6.1.2."><h4>6.1.2. Web, Mobile & Devices Style Guidelines</h4></div>
 
 **Diseño web (desktop-first)**
@@ -2032,13 +2044,13 @@ Se privilegia la legibilidad y consistencia visual, con fuentes modernas y redon
 - Espacios amplios para resaltar métricas  
 - Animaciones suaves en hover o al mostrar resultados (fade-in)
 
-**Diseño mobile (responsive)**
+<!--**Diseño mobile (responsive)**
 
 - Colapsar secciones horizontales en vertical  
 - Priorizar tarjetas con métricas y alertas  
 - Menú superior transformado en barra de navegación tipo “tabs”  
 - Padding mínimo lateral: 12px  
-
+-->
 ---
 
 <div id="6.2."><h3>6.2. Information Architecture</h3></div>
@@ -2100,6 +2112,34 @@ El wireframe de la página de inicio estructura los elementos de manera jerárqu
 - Bloques de beneficios y métricas visuales.  
 - Llamado a la acción final y pie de página con enlaces institucionales.
 
+**Wireframe Landing Page**
+
+Sección Principal de la landing page:
+
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Características:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Producto:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Equipo:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Contacto:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
 <div id="6.3.2."><h4>6.3.2. Landing Page Mock-up</h4></div>
 
 El mock-up presenta la aplicación del sistema visual y tipográfico definido:  
@@ -2107,6 +2147,34 @@ El mock-up presenta la aplicación del sistema visual y tipográfico definido:
 - Imágenes o ilustraciones relacionadas con análisis de emociones.  
 - Tipografía moderna y legible.  
 - Botones con microinteracciones al pasar el cursor.  
+
+**Mock-up Landing Page**
+
+Sección Principal de la landing page:
+
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Características:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Producto:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Equipo:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Sección Contacto:
+<div align = "center">
+  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+</div>
 
 ---
 
@@ -2120,6 +2188,32 @@ Los wireframes de la aplicación muestran la estructura base de las pantallas pr
 - Panel de filtros y control de variables.  
 - Sección de historial de análisis.
 
+**Application wireframes**
+
+ Dashboard
+
+<div align = "center">
+  <img src="assets/wireframes1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Análisis unitario 
+
+<div align = "center">
+  <img src="assets/wireframes2.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Resultados unitarios
+
+<div align = "center">
+  <img src="assets/wireframes3.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+Historial de análisis 
+
+<div align = "center">
+  <img src="assets/wireframes4.png" style="margin-bottom: 5px;" width="500">
+</div>
+
 <div id="6.4.2."><h4>6.4.2. Applications Wireflow Diagrams</h4></div>
 
 Los wireflows representan la navegación y las interacciones entre pantallas:  
@@ -2127,6 +2221,16 @@ Los wireflows representan la navegación y las interacciones entre pantallas:
 - Diagramas con nodos de acción y decisión.  
 - Conexiones visuales que facilitan la comprensión del recorrido del usuario.  
 - Permiten evaluar la eficiencia del flujo antes del desarrollo visual final.
+
+**Applications Wireflows Diagrams**
+
+<div align = "center">
+  <img src="assets/Wireflow1.png" style="margin-bottom: 5px;" width="500">
+</div>
+
+<div align = "center">
+  <img src="assets/Wireflow2.png" style="margin-bottom: 5px;" width="500">
+</div>
 
 <div id='7.'><h2>7. Conclusiones</h2></div>
 
@@ -2156,8 +2260,9 @@ Bussola, N., Ferrari, C., & Gatti, R. (2023). Artificial intelligence in clinica
 
 <div id='9.'><h2>9. Anexo</h2></div>
 
-| Descripción | Enlace |
-|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Organización de Github | [https://github.com/TF-SoftwareEmergentes](https://github.com/TF-SoftwareEmergentes) |
-| Link de Exposición | <td>URL: <a href="XXX">Videos</a></td> |
-| Miro (Strategic-Level DDD) | <td>URL: <a href="https://miro.com/welcomeonboard/NTdVVituT0xHUHkzRGE0anlScmprYjhKSzZtQWpPNFY4eVBOUXJpU284bVVGekJyY05yT0gwWlFCK3QxajRrUG0yRTNXTnB1SU9zZEVNc1BFN2U0YnJpenV0QTBlNTNnYmwrbW1MMkxTaHdDbVNLM3Fwd1g2VHVkVDR4V0pMTW5zVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=331643886038">Miro</a></td> |
+| Descripción                   | Enlace                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Organización de Github        | [https://github.com/TF-SoftwareEmergentes](https://github.com/TF-SoftwareEmergentes)                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Link de Exposición            | [Videos](XXX)                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Miro (Strategic-Level DDD)    | [Miro](https://miro.com/welcomeonboard/NTdVVituT0xHUHkzRGE0anlScmprYjhKSzZtQWpPNFY4eVBOUXJpU284bVVGekJyY05yT0gwWlFCK3QxajRrUG0yRTNXTnB1SU9zZEVNc1BFN2U0YnJpenV0QTBlNTNnYmwrbW1MMkxTaHdDbVNLM3Fwd1g2VHVkVDR4V0pMTW5zVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=331643886038)                                                                                                                                                                                                 |
+| Figma    | [Figma](https://www.figma.com/design/x4ACH9nRRjhAVw9U5PxYXN/Agentic-Audio-Analyzer?m=auto&t=SONjwzX2KMzWy4kR-1)                                                                                                                                                                                                 |
