@@ -228,36 +228,48 @@ conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el l
       <td>Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
         Diego Martin Bastidas Bastidas<br>
-        TB1: Expuso la importancia del problema y el objetivo del proyecto.<br><br>
+        TB1: Expuso la importancia del problema y el objetivo del proyecto.<br>
+        TP1: Presentó el diseño táctico y la arquitectura de componentes.<br><br>
         Diego André Cantoral Paredes<br>
-        TB1: Presentó la metodología y explicó el uso de EventStorming.<br><br>
+        TB1: Presentó la metodología y explicó el uso de EventStorming.<br>
+        TP1: Explicó la implementación de la capa de dominio y los flujos CQRS.<br><br>
         David Alejandro Rivas Sarango<br>
-        TB1: Explicó los bounded contexts y su interacción.<br><br>
+        TB1: Explicó los bounded contexts y su interacción.<br>
+        TP1: Detalló la integración entre los contextos y la base de datos.<br><br>
         Elvia Marcela Rodriguez Villa<br>
-        TB1: Describió los casos de uso y el valor para los usuarios finales.<br><br>
+        TB1: Describió los casos de uso y el valor para los usuarios finales.<br>
+        TP1: Expuso los wireframes y la experiencia de usuario.<br><br>
         Silva Tirado, Sebastián Valentino<br>
-        TB1: Presentó las conclusiones parciales y los aportes estratégicos.
+        TB1: Presentó las conclusiones parciales y los aportes estratégicos.<br>
+        TP1: Resumió los avances en UX y la validación funcional.
       </td>
       <td>
-        TB1: Cada integrante logró comunicar con claridad su parte del proyecto, manteniendo un discurso técnico adaptado al nivel del público, lo que permitió una comprensión compartida del avance.
+        TB1: Cada integrante logró comunicar con claridad su parte del proyecto, manteniendo un discurso técnico adaptado al nivel del público, lo que permitió una comprensión compartida del avance.<br>
+        TP1: El equipo demostró capacidad para exponer resultados técnicos y de diseño, facilitando la comprensión de la solución tanto a audiencias especializadas como generales. Esto fortaleció la colaboración interdisciplinaria y la alineación de objetivos.
       </td>
     </tr>
     <tr>
       <td>Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</td>
       <td>
         Diego Martin Bastidas Bastidas<br>
-        TB1: Redactó la introducción y la justificación del problema.<br><br>
+        TB1: Redactó la introducción y la justificación del problema.<br>
+        TP1: Documentó el diseño táctico y los diagramas de componentes.<br><br>
         Diego André Cantoral Paredes<br>
-        TB1: Elaboró la sección de EventStorming y Candidate Context Discovery.<br><br>
+        TB1: Elaboró la sección de EventStorming y Candidate Context Discovery.<br>
+        TP1: Redactó la estructura de la capa de dominio y los flujos CQRS.<br><br>
         David Alejandro Rivas Sarango<br>
-        TB1: Desarrolló los Bounded Context Canvases.<br><br>
+        TB1: Desarrolló los Bounded Context Canvases.<br>
+        TP1: Documentó la integración entre contextos y el modelo de datos.<br><br>
         Elvia Marcela Rodriguez Villa<br>
-        TB1: Redactó los Domain Message Flows Modeling.<br><br>
+        TB1: Redactó los Domain Message Flows Modeling.<br>
+        TP1: Elaboró la documentación de wireframes y experiencia de usuario.<br><br>
         Silva Tirado, Sebastián Valentino<br>
-        TB1: Estructuró el Context Mapping y la conclusión general.
+        TB1: Estructuró el Context Mapping y la conclusión general.<br>
+        TP1: Redactó los avances en UX y la validación funcional.
       </td>
       <td>
-        TB1: Se alcanzó una redacción clara, coherente y objetiva en todas las secciones, lo que permitió consolidar un documento alineado con los criterios de un proyecto de ingeniería.
+        TB1: Se alcanzó una redacción clara, coherente y objetiva en todas las secciones, lo que permitió consolidar un documento alineado con los criterios de un proyecto de ingeniería.<br>
+        TP1: La documentación técnica y de UX fue precisa y comprensible, permitiendo que los resultados sean accesibles para distintos públicos. Esto contribuyó a la transparencia y al seguimiento efectivo del proyecto.
       </td>
     </tr>
   </tbody>
@@ -2118,7 +2130,7 @@ Los wireflows representan la navegación y las interacciones entre pantallas:
 
 <div id='7.'><h2>7. Conclusiones</h2></div>
 
-La primera versión del trabajo ha permitido delimitar de manera estratégica el dominio de la plataforma de cobranza con análisis de sentimientos, identificando los bounded contexts clave, sus relaciones y flujos de comunicación. A través de técnicas como EventStorming, Candidate Context Discovery, Domain Storytelling, Bounded Context Canvas y Context Mapping, se logró construir una comprensión compartida del sistema y sentar las bases para su diseño técnico y funcional, asegurando que la solución responda tanto a las necesidades del negocio como a los retos tecnológicos de procesamiento de audio en tiempo real, análisis emocional y soporte a la toma de decisiones en la gestión de cobranzas.
+La segunda versión del trabajo, orientada a las unidades 5 y 6, permitió avanzar desde el diseño estratégico hacia la implementación táctica y la experiencia de usuario. Se desarrollaron los modelos de dominio detallados para cada bounded context, definiendo entidades, servicios y repositorios bajo principios de Clean Architecture y DDD. Además, se diseñaron los componentes clave de la solución, los diagramas de base de datos y los flujos de aplicación, asegurando la integración entre IAM, procesamiento de audio, puntuación y analítica. En la unidad 6, se establecieron las guías de estilo, la arquitectura de información y los wireframes, priorizando la usabilidad y la visualización efectiva de métricas para supervisores y agentes. Estos avances consolidan la base técnica y UX para la siguiente etapa de desarrollo y validación funcional.
 
 <div id='8.'><h2>8. Bibliografía</h2></div>
 
