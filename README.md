@@ -1800,11 +1800,87 @@ Almacena el **resultado de la transcripción** del canal caller: idioma, métric
 <div id='5.3.5.'><h4>5.3.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
 <div id='5.3.6.'><h4>5.3.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.3.6.1.'><h4>5.3.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
+<img src="./img/Bounded Context Domain Layer Class Diagrams.png">
 <div id='5.3.6.2.'><h4>5.3.6.2. Bounded Context Database Design Diagram</h4></div>
+<img src="./img/Bounded_Context_Database_Design_Diagram.png">
 
+**Tabla: performance_reviews**
+
+Almacena las evaluaciones completas de rendimiento de los callers
+
+| Campo | Tipo | Descripción | Restricciones |
+|-------|------|-------------|---------------|
+| `id` | UUID | Identificador único de la evaluación | PRIMARY KEY, DEFAULT gen_random_uuid() |
+| `caller_id` | VARCHAR(64) | Identificador del agente caller | NOT NULL |
+| `recording_id` | VARCHAR(64) | Identificador de la grabación evaluada | NOT NULL, UNIQUE |
+| `campaign_id` | VARCHAR(64) | Identificador de la campaña de cobranza | NOT NULL |
+| `sentiment_score` | DECIMAL(3,2) | Puntuación de sentimiento (-1.0 a 1.0) | NOT NULL |
+| `emotion_category` | VARCHAR(20) | Categoría emocional detectada | NOT NULL |
+| `payment_disposition` | VARCHAR(10) | Disposición de pago del deudor | NOT NULL |
+| `sentiment_confidence` | DECIMAL(3,2) | Confianza del análisis de sentimiento | NOT NULL |
+| `adherence_score` | DECIMAL(3,2) | Puntuación de adherencia al speech | NOT NULL |
+| `total_deviations` | INTEGER | Número total de desviaciones del speech | NOT NULL |
+| `critical_deviations` | INTEGER | Número de desviaciones críticas | NOT NULL |
+| `forbidden_words_count` | INTEGER | Conteo de palabras prohibidas detectadas | NOT NULL |
+| `severity_level` | VARCHAR(10) | Nivel de severidad de palabras prohibidas | NOT NULL |
+| `performance_score` | INTEGER | Puntuación final de rendimiento (0-100) | NOT NULL |
+| `performance_category` | VARCHAR(15) | Categoría de rendimiento | NOT NULL |
+| `created_at` | TIMESTAMPTZ | Fecha y hora de creación | NOT NULL, DEFAULT NOW() |
+| `updated_at` | TIMESTAMPTZ | Fecha y hora de última actualización | NOT NULL, DEFAULT NOW() |
+
+**Tabla: realtime_hints**
+
+Almacena recomendaciones en tiempo real generadas durante las llamadas
+
+| Campo | Tipo | Descripción | Restricciones |
+|-------|------|-------------|---------------|
+| `id` | UUID | Identificador único de la recomendación | PRIMARY KEY, DEFAULT gen_random_uuid() |
+| `caller_id` | VARCHAR(64) | Identificador del agente caller | NOT NULL |
+| `recording_id` | VARCHAR(64) | Identificador de la grabación en curso | NOT NULL |
+| `recommendation` | TEXT | Contenido de la recomendación | NOT NULL |
+| `recommendation_type` | VARCHAR(15) | Tipo de recomendación | NOT NULL |
+| `priority` | VARCHAR(10) | Prioridad de la recomendación | NOT NULL |
+| `trigger_context` | JSONB | Contexto que disparó la recomendación | NULLABLE |
+| `segment_timestamp` | INTEGER | Timestamp en segundos dentro de la llamada | NULLABLE |
+| `is_active` | BOOLEAN | Indica si la recomendación está activa | NOT NULL, DEFAULT TRUE |
+| `acknowledged` | BOOLEAN | Indica si el agente ha visto la recomendación | NOT NULL, DEFAULT FALSE |
+| `created_at` | TIMESTAMPTZ | Fecha y hora de creación | NOT NULL, DEFAULT NOW() |
+| `expires_at` | TIMESTAMPTZ | Fecha y hora de expiración | NOT NULL |
+
+**Tabla: speech_catalogs**
+
+Catálogo de speeches aprobados por campaña
+
+| Campo | Tipo | Descripción | Restricciones |
+|-------|------|-------------|---------------|
+| `id` | UUID | Identificador único del speech | PRIMARY KEY, DEFAULT gen_random_uuid() |
+| `campaign_id` | VARCHAR(64) | Identificador de la campaña | NOT NULL |
+| `version` | INTEGER | Versión del speech | NOT NULL |
+| `speech_name` | VARCHAR(100) | Nombre descriptivo del speech | NOT NULL |
+| `speech_content` | TEXT | Contenido completo del speech | NOT NULL |
+| `key_phrases` | JSONB | Frases clave en formato JSON | NOT NULL |
+| `forbidden_phrases` | JSONB | Frases prohibidas en formato JSON | NOT NULL |
+| `required_sections` | JSONB | Secciones obligatorias del speech | NOT NULL |
+| `optional_sections` | JSONB | Secciones opcionales del speech | NOT NULL |
+| `is_active` | BOOLEAN | Indica si el speech está activo | NOT NULL, DEFAULT TRUE |
+| `created_at` | TIMESTAMPTZ | Fecha y hora de creación | NOT NULL, DEFAULT NOW() |
+| `updated_at` | TIMESTAMPTZ | Fecha y hora de última actualización | NOT NULL, DEFAULT NOW() |
+
+**Tabla: performance_insights**
+
+Insights derivados de las evaluaciones para análisis posterior
+
+| Campo | Tipo | Descripción | Restricciones |
+|-------|------|-------------|---------------|
+| `id` | UUID | Identificador único del insight | PRIMARY KEY, DEFAULT gen_random_uuid() |
+| `review_id` | UUID | Referencia a la evaluación relacionada | NOT NULL, FOREIGN KEY |
+| `insight_type` | VARCHAR(20) | Tipo de insight generado | NOT NULL |
+| `insight_category` | VARCHAR(30) | Categoría del insight | NOT NULL |
+| `insight_text` | TEXT | Texto descriptivo del insight | NOT NULL |
+| `confidence_score` | DECIMAL(3,2) | Puntuación de confianza del insight | NOT NULL |
+| `created_at` | TIMESTAMPTZ | Fecha y hora de creación | NOT NULL, DEFAULT NOW() |
 <div id='5.4.'><h3>5.4. Bounded Context: Analítica </h3></div>
 <div id='5.4.1.'><h4>5.4.1. Domain Layer</h4></div>
-**Objetivo del BC:** Consolidar y servir métricas, KPIs y tendencias a partir de eventos y resultados generados por _Proceso de audio_ y _Puntuación & Recomendaciones_ (e.g., WER, latencia, score de promesa, cumplimiento, productividad de agentes), exponiendo insights consistentes para dashboards, reportes y alertas.
 
 ### Sub-capa Model
 
