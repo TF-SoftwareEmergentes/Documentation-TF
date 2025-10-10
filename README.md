@@ -22,13 +22,13 @@ width=50%"/>
 
 <div style="text-align: center;">
   
-|                Nombre                 |   Código   |
-| :-----------------------------------: | :--------: |
-| Diego Martin Bastidas Bastidas        | u20221a301 |
-| Diego André Cantoral Paredes          | u20201f568 |
-| David Alejandro Rivas Sarango         | u20191e831 |
-| Elvia Marcela Rodriguez Villa         | u20231c784 |
-| Sebastian Valentino Silva Tirado      | u20211g296 |
+|         Apellidos y Nombre        |   Código   |
+| :-------------------------------: | :--------: |
+|  Bastidas Bastidas, Diego Martin  | u20221a301 |
+|   Cantoral Paredes, Diego André   | u20201f568 |
+|   Rivas Sarango, David Alejandro  | u20191e831 |
+|   Rodriguez Villa, Elvia Marcela  | u20231c784 |
+| Silva Tirado, Sebastian Valentino | u20211g296 |
 
 </div>
 
