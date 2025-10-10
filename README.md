@@ -2117,27 +2117,22 @@ El wireframe de la página de inicio estructura los elementos de manera jerárqu
 Sección Principal de la landing page:
 
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/Wireframe1.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 Sección Características:
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/Wireframe2.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 Sección Producto:
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/Wireframe3.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 Sección Equipo:
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
-</div>
-
-Sección Contacto:
-<div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/Wireframe4.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 <div id="6.3.2."><h4>6.3.2. Landing Page Mock-up</h4></div>
@@ -2153,27 +2148,22 @@ El mock-up presenta la aplicación del sistema visual y tipográfico definido:
 Sección Principal de la landing page:
 
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/wfLP1.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 Sección Características:
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/wfLP2.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 Sección Producto:
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/wfLP3.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 Sección Equipo:
 <div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
-</div>
-
-Sección Contacto:
-<div align = "center">
-  <img src="assets/wf1.png" style="margin-bottom: 5px;" width="500">
+  <img src="assets/wfLP4.png" style="margin-bottom: 5px;" width="500">
 </div>
 
 ---
