@@ -1964,21 +1964,157 @@ Se presenta el modelo lógico de la base de datos del BC Analítica, alineado co
 <img src="./img/AnaliticaDatabase.png">
 
 <div id="6."><h2>6. Capítulo VI: Solution UX Design</h2></div>
+
 <div id="6.1."><h3>6.1. Style Guidelines</h3></div>
+
 <div id="6.1.1."><h4>6.1.1. General Style Guidelines</h4></div>
+
+**Color Palette (UI principal)**
+
+| Uso | Color | HEX |
+|-----|--------|------|
+| Fondo general | Lavanda muy claro | #F8F6FF |
+| Tarjetas / Secciones | Blanco con sombra suave | #FFFFFF |
+| Texto principal | Gris oscuro | #3C3C3C |
+| Texto secundario | Gris medio | #666666 |
+| Púrpura principal (títulos, acentos) |  | #8A2BE2 |
+| Verde positivo |  | #C8F7C5 |
+| Amarillo advertencia |  | #FFF7C5 |
+| Rojo alerta |  | #FECACA |
+| Azul métrico |  | #A6E3E9 |
+| Naranja indicador |  | #FEC89A |
+
+Los colores transmiten claridad y emocionalidad positiva, alineados al tema de análisis de sentimientos.
+
+**Tipografía**
+
+| Elemento | Fuente | Estilo / Peso |
+|-----------|---------|----------------|
+| Títulos principales | Poppins | Bold |
+| Subtítulos | Poppins | SemiBold |
+| Texto del cuerpo | Inter | Regular |
+| Números o métricas | Poppins | Medium |
+
+Se privilegia la legibilidad y consistencia visual, con fuentes modernas y redondeadas.
+
+**Espaciado y grid**
+
+- Margen exterior: 24px  
+- Espaciado interno (padding de tarjetas): 16px  
+- Separación entre secciones: 32px  
+- Bordes redondeados: 12px  
+- Sombra suave: 0 4px 10px rgba(0,0,0,0.05)
+
+**Iconografía**
+
+- Íconos lineales minimalistas.  
+- Estilo consistente: outline (Lucide o Material Icons Outlined).  
+- Color principal: gris oscuro #3C3C3C o púrpura #8A2BE2.
+
 <div id="6.1.2."><h4>6.1.2. Web, Mobile & Devices Style Guidelines</h4></div>
+
+**Diseño web (desktop-first)**
+
+- Ancho máximo de contenido: 1200px  
+- Distribución con grid de 3 columnas (principal, lateral, resumen)  
+- Espacios amplios para resaltar métricas  
+- Animaciones suaves en hover o al mostrar resultados (fade-in)
+
+**Diseño mobile (responsive)**
+
+- Colapsar secciones horizontales en vertical  
+- Priorizar tarjetas con métricas y alertas  
+- Menú superior transformado en barra de navegación tipo “tabs”  
+- Padding mínimo lateral: 12px  
+
+---
+
 <div id="6.2."><h3>6.2. Information Architecture</h3></div>
+
 <div id="6.2.1."><h4>6.2.1. Site Maps</h4></div>
+
+La arquitectura del sitio se estructura en niveles jerárquicos claros que guían al usuario desde la página principal hacia las secciones de análisis, resultados y recursos adicionales. El mapa del sitio incluye:
+
+1. Home  
+2. Dashboard de análisis  
+3. Reportes detallados  
+4. Configuración de usuario  
+5. Ayuda y soporte  
+
+Se prioriza la accesibilidad y la facilidad de navegación.
+
 <div id="6.2.2."><h4>6.2.2. Labeling Systems</h4></div>
+
+El sistema de etiquetado utiliza términos claros, coherentes y fácilmente reconocibles.  
+- Etiquetas cortas y descriptivas.  
+- Lenguaje inclusivo y neutral.  
+- Consistencia en el uso de mayúsculas y verbos de acción.  
+- Ejemplo: “Inicio”, “Analizar”, “Resultados”, “Descargar reporte”.
+
 <div id="6.2.3."><h4>6.2.3. Searching Systems</h4></div>
+
+El sistema de búsqueda se basa en un campo predictivo que sugiere resultados a medida que el usuario escribe.  
+- Autocompletado de términos frecuentes.  
+- Filtrado por categorías (tema, fecha, fuente).  
+- Resultados ordenados por relevancia y fecha de publicación.  
+- Integración con búsquedas semánticas para mejorar la precisión.
+
 <div id="6.2.4."><h4>6.2.4. SEO Tags and Meta Tags</h4></div>
+
+Optimización SEO mediante el uso de metadatos relevantes:  
+- Títulos con palabras clave del dominio (“análisis de sentimientos”, “UX”, “visualización de datos”).  
+- Descripciones meta breves (máx. 155 caracteres).  
+- Uso de etiquetas ALT en imágenes y encabezados jerárquicos (H1, H2, H3).  
+- Open Graph y Twitter Cards para compartir correctamente en redes sociales.
+
 <div id="6.2.5."><h4>6.2.5. Navigation Systems</h4></div>
+
+Sistema de navegación unificado:  
+- Barra superior fija con accesos principales.  
+- Menú lateral para secciones secundarias.  
+- Breadcrumbs en vistas internas.  
+- Enlace al inicio desde el logotipo.  
+- Navegación responsive optimizada para dispositivos móviles.
+
+---
+
 <div id="6.3."><h3>6.3. Landing Page UI Design</h3></div>
+
 <div id="6.3.1."><h4>6.3.1. Landing Page Wireframe</h4></div>
+
+El wireframe de la página de inicio estructura los elementos de manera jerárquica y enfocada a la conversión.  
+- Encabezado con logo y CTA (“Comenzar análisis”).  
+- Sección introductoria con mensaje principal.  
+- Bloques de beneficios y métricas visuales.  
+- Llamado a la acción final y pie de página con enlaces institucionales.
+
 <div id="6.3.2."><h4>6.3.2. Landing Page Mock-up</h4></div>
+
+El mock-up presenta la aplicación del sistema visual y tipográfico definido:  
+- Colores suaves y contrastes claros.  
+- Imágenes o ilustraciones relacionadas con análisis de emociones.  
+- Tipografía moderna y legible.  
+- Botones con microinteracciones al pasar el cursor.  
+
+---
+
 <div id="6.4."><h3>6.4. Applications UX/UI Design</h3></div>
+
 <div id="6.4.1."><h4>6.4.1. Applications Wireframes</h4></div>
+
+Los wireframes de la aplicación muestran la estructura base de las pantallas principales:  
+- Dashboard con resumen de métricas.  
+- Pantalla de resultados con gráficos interactivos.  
+- Panel de filtros y control de variables.  
+- Sección de historial de análisis.
+
 <div id="6.4.2."><h4>6.4.2. Applications Wireflow Diagrams</h4></div>
+
+Los wireflows representan la navegación y las interacciones entre pantallas:  
+- Flujo desde inicio de sesión hasta resultados.  
+- Diagramas con nodos de acción y decisión.  
+- Conexiones visuales que facilitan la comprensión del recorrido del usuario.  
+- Permiten evaluar la eficiencia del flujo antes del desarrollo visual final.
 
 <div id='7.'><h2>7. Conclusiones</h2></div>
 
