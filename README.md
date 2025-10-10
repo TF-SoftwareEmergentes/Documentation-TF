@@ -1707,9 +1707,96 @@ Almacena el **resultado de la transcripción** del canal caller: idioma, métric
 
 <div id='5.3.'><h3>5.3. Bounded Context: Puntuación & Recomendaciones </h3></div>
 <div id='5.3.1.'><h4>5.3.1. Domain Layer</h4></div>
+
+#### Sub-capa Model
+
+| Tipo | Nombre | Descripción | Responsabilidad Principal | Relación |
+|------|---------|-------------|--------------------------|----------|
+| Aggregate | **CallerPerformanceReview** | Evaluación completa del rendimiento de un caller en una llamada | Consolidar todas las métricas de evaluación y emitir puntuación final | 1:1 con Recording, usa SentimentScore, SpeechAdherence, ForbiddenWordsDetection |
+| Entity | **SentimentAnalysis** | Análisis de sentimiento del caller | Calcular estado emocional y disposición de pago | Parte de CallerPerformanceReview |
+| Entity | **SpeechAdherence** | Evaluación de adherencia al guión | Medir cumplimiento del speech definido por campaña | Parte de CallerPerformanceReview |
+| Entity | **ForbiddenWordsDetection** | Detección de palabras prohibidas | Identificar uso de lenguaje inapropiado | Parte de CallerPerformanceReview |
+| Value Object | **SentimentScore** | Puntuación de sentimiento (-1.0 a 1.0) | Representar valor numérico del estado emocional | Usado por SentimentAnalysis |
+| Value Object | **PaymentDisposition** | Disposición de pago (ALTA, MEDIA, BAJA) | Clasificar intención de pago del deudor | Derivado de SentimentScore |
+| Value Object | **AdherenceScore** | Puntuación de adherencia (0.0 a 1.0) | Medir cumplimiento del speech | Usado por SpeechAdherence |
+| Value Object | **ForbiddenWordsCount** | Conteo de palabras prohibidas | Cuantificar uso de lenguaje inapropiado | Usado por ForbiddenWordsDetection |
+| Value Object | **PerformanceScore** | Puntuación final de rendimiento (0-100) | Consolidar todas las métricas en score único | Calculado por CallerPerformanceReview |
+| Enum | **EmotionCategory** | Categorías emocionales (POSITIVO, NEUTRAL, NEGATIVO, ESTRES, AGRESIVO) | Clasificar emoción detectada | Usado por SentimentAnalysis |
+| Enum | **RecommendationType** | Tipos de recomendación (TECNICA, EMOCIONAL, ESTRATEGICA, URGENTE) | Clasificar sugerencias generadas | Usado por RealTimeHint |
+
+#### Domain Events
+
+| Evento | Dispara | Propósito |
+|--------|---------|-----------|
+| **SentimentCalculated** | SentimentAnalysis | Señala que el análisis de sentimiento está completo |
+| **SpeechAdherenceEvaluated** | SpeechAdherence | Indica evaluación de adherencia al speech |
+| **ForbiddenWordsDetected** | ForbiddenWordsDetection | Notifica detección de palabras prohibidas |
+| **PerformanceScoreCalculated** | CallerPerformanceReview | Señala cálculo completo del score de rendimiento |
+| **RealTimeHintGenerated** | RealTimeHint | Genera recomendación inmediata durante llamada |
+
 <div id='5.3.2.'><h4>5.3.2. Interface Layer</h4></div>
+
+### Sub-capa REST
+
+| Tipo | Nombre | Descripción | Responsabilidad Principal | Relación |
+|------|---------|-------------|--------------------------|----------|
+| Resource | **EvaluatePerformanceRequest** | Petición para evaluar rendimiento | Encapsular transcript y metadatos | PerformanceController → EvaluatePerformanceCommand |
+| Resource | **EvaluatePerformanceResponse** | Respuesta de evaluación | Devolver scores y recomendaciones | Devuelto por PerformanceController |
+| Resource | **GenerateHintRequest** | Solicitud de recomendación en tiempo real | Datos de contexto de llamada en curso | HintController → GenerateHintCommand |
+| Resource | **GenerateHintResponse** | Respuesta de recomendación | Sugerencia inmediata para caller | Devuelto por HintController |
+| Resource | **GetPerformanceRequest** | Consulta de evaluación existente | Parámetros de búsqueda | PerformanceController → GetPerformanceQuery |
+| Resource | **GetPerformanceResponse** | Respuesta con evaluación | Datos completos de evaluación | Devuelto por PerformanceController |
+| Assembler | **EvaluatePerformanceCommandMapper** | DTO → EvaluatePerformanceCommand | Validar y mapear | PerformanceController |
+| Assembler | **GenerateHintCommandMapper** | DTO → GenerateHintCommand | Validar y mapear | HintController |
+| Assembler | **GetPerformanceQueryMapper** | DTO → GetPerformanceQuery | Validar y mapear | PerformanceController |
+
+### Contratos REST (endpoints)
+
+| Endpoint | Método | Request | Response | Auth | Observaciones |
+|----------|---------|---------|----------|------|---------------|
+| `/api/scoring/performance/evaluate` | POST | EvaluatePerformanceRequest | EvaluatePerformanceResponse | Sí | Evaluación completa de rendimiento |
+| `/api/scoring/hints/generate` | POST | GenerateHintRequest | GenerateHintResponse | Sí | Recomendación en tiempo real |
+| `/api/scoring/performance/{reviewId}` | GET | - | GetPerformanceResponse | Sí | Consulta de evaluación existente |
+| `/api/scoring/callers/{callerId}/performance` | GET | - | List<GetPerformanceResponse> | Sí | Histórico de evaluaciones por caller |
 <div id='5.3.3.'><h4>5.3.3. Application Layer</h4></div>
+
+### Sub-capa Internal (Casos de uso / Orquestación)
+
+| Tipo | Nombre | Descripción | Responsabilidad Principal | Depende de |
+|------|---------|-------------|--------------------------|------------|
+| CommandHandler | **EvaluatePerformanceHandler** | Evaluar rendimiento completo del caller | Orquestar análisis de sentimiento, adherencia y palabras prohibidas | SentimentAnalysisService, SpeechAdherenceService, ForbiddenWordsService, PerformanceScoringService |
+| CommandHandler | **GenerateHintHandler** | Generar recomendación en tiempo real | Producir sugerencia contextual basada en análisis parcial | RecommendationEngine, RealTimeHintRepository |
+| QueryHandler | **GetPerformanceQueryHandler** | Consultar evaluación de rendimiento | Recuperar y mapear evaluación existente | PerformanceReviewRepository |
+| Service Impl | **PerformanceAppService** | Fachada de casos de uso de evaluación | Exponer operaciones compuestas | Handlers + Repositorios |
+| Policy | **RetryPolicy** | Reintentos para servicios externos | Reintentar fallos transitorios en LLM | Envuelve SentimentAnalysisService |
+
+### Sub-capa Messaging
+
+| Tipo | Nombre | Escucha/Publica | Responsabilidad | Observaciones |
+|------|---------|-----------------|-----------------|---------------|
+| EventHandler | **OnTranscriptFinalized** | FinalTranscriptGenerated (Proceso de Audio) | Disparar EvaluatePerformanceCommand | Inicia evaluación cuando transcript está listo |
+| EventHandler | **OnPartialTranscript** | PartialTranscriptGenerated (Proceso de Audio) | Disparar GenerateHintCommand | Genera recomendaciones en tiempo real |
+| EventPublisher | **PerformanceEventPublisher** | Publica PerformanceScoreCalculated, RealTimeHintGenerated | Entregar eventos a Analítica | Implementación en Infra |
 <div id='5.3.4.'><h4>5.3.4. Infrastructure Layer</h4></div>
+
+### Sub-capa Services
+
+| Tipo | Nombre | Descripción | Responsabilidad Principal | Relación |
+|------|---------|-------------|--------------------------|----------|
+| Service Impl | **SentimentAnalysisServiceImpl** | Análisis de sentimiento con LLM | Invocar Mistral AI API para clasificación emocional | Implementa SentimentAnalysisService |
+| Service Impl | **SpeechAdherenceServiceImpl** | Evaluación de adherencia al speech | Comparar transcript con speech de campaña | Implementa SpeechAdherenceService |
+| Service Impl | **ForbiddenWordsServiceImpl** | Detección de palabras prohibidas | Buscar en diccionario configurable | Implementa ForbiddenWordsService |
+| Service Impl | **PerformanceScoringServiceImpl** | Cálculo de score final | Aplicar fórmula con pesos configurables | Implementa PerformanceScoringService |
+| Service Impl | **RecommendationEngineImpl** | Generación de recomendaciones | Aplicar reglas de negocio y ML | Implementa RecommendationEngine |
+
+### Sub-capa Repository / Persistence
+
+| Tipo | Nombre | Descripción | Responsabilidad Principal | Relación |
+|------|---------|-------------|--------------------------|----------|
+| Repository | **PerformanceReviewRepositoryImpl** | Persistencia de evaluaciones | Guardar/recuperar CallerPerformanceReview | Implementa PerformanceReviewRepository |
+| Repository | **RealTimeHintRepositoryImpl** | Gestión de recomendaciones | Almacenar recomendaciones en tiempo real | Implementa RealTimeHintRepository |
+| Repository | **SpeechCatalogRepositoryImpl** | Acceso a catálogo de speeches | Cargar speeches por campaña | Implementa SpeechCatalogRepository |
+| Config | **LLMConfig** | Configuración de modelos de lenguaje | Parámetros para Mistral AI y otros LLMs | Usado por servicios de análisis |
 <div id='5.3.5.'><h4>5.3.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
 <div id='5.3.6.'><h4>5.3.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.3.6.1.'><h4>5.3.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
