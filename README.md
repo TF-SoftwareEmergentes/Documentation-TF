@@ -1798,6 +1798,7 @@ Almacena el **resultado de la transcripción** del canal caller: idioma, métric
 | Repository | **SpeechCatalogRepositoryImpl** | Acceso a catálogo de speeches | Cargar speeches por campaña | Implementa SpeechCatalogRepository |
 | Config | **LLMConfig** | Configuración de modelos de lenguaje | Parámetros para Mistral AI y otros LLMs | Usado por servicios de análisis |
 <div id='5.3.5.'><h4>5.3.5. Bounded Context Software Architecture Component Level Diagrams</h4></div>
+<img src="./img/Bounded_Context_Software_Architecture_Component_Level_Diagrams.png">
 <div id='5.3.6.'><h4>5.3.6. Bounded Context Software Architecture Code Level Diagrams</h4></div>
 <div id='5.3.6.1.'><h4>5.3.6.1. Bounded Context Domain Layer Class Diagrams</h4></div>
 <img src="./img/Bounded Context Domain Layer Class Diagrams.png">
