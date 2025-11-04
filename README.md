@@ -200,9 +200,35 @@ Los integrantes son:
     6.4. [Applications UX/UI Design.](#6.4.)<br>
     6.4.1. [Applications Wireframes.](#6.4.1.)<br>
     6.4.2. [Applications Wireflow Diagrams.](#6.4.2.)<br>
-7. [Conclusiones](#5.)<br>
-8. [Bibliografía](#6.)<br>
-9. [Anexo](#7.)<br>
+    6.4.3. [Applications Mock-ups.](#6.4.3.)<br>
+    6.4.4. [Applications User Flow Diagrams.](#6.4.4.)<br>
+    6.5. [Applications Prototyping.](#6.5.)<br>
+7. [Capítulo VII: Product Implementation, Validation & Deployment.](#7.)<br>
+    7.1. [Software Configuration Management.](#7.1.)<br>
+    7.1.1. [Software Development Environment Configuration.](#7.1.1.)<br>
+    7.1.2. [Source Code Management.](#7.1.2.)<br>
+    7.1.3. [Source Code Style Guide & Conventions.](#7.1.3.)<br>
+    7.1.4. [Software Deployment Configuration.](#7.1.4.)<br>
+    7.2. [Solution Implementation.](#7.2.)<br>
+    7.2.1. [Sprint 1.](#7.2.1.)<br>
+    7.2.1.1. [Sprint Planning 1.](#7.2.1.1.)<br>
+    7.2.1.2. [Sprint Backlog 1.](#7.2.1.2.)<br>
+    7.2.1.3. [Development Evidence for Sprint Review.](#7.2.1.3.)<br>
+    7.2.1.4. [Testing Suite Evidence for Sprint Review.](#7.2.1.4.)<br>
+    7.2.1.5. [Execution Evidence for Sprint Review.](#7.2.1.5.)<br>
+    7.2.1.6. [Services Documentation Evidence for Sprint Review.](#7.2.1.6.)<br>
+    7.2.1.7. [Software Deployment Evidence for Sprint Review.](#7.2.1.7.)<br>
+    7.2.1.8. [Team Collaboration Insights during Sprint.](#7.2.1.8.)<br>
+    7.3. [Validation Interviews.](#7.3.)<br>
+    7.3.1. [Diseño de Entrevistas.](#7.3.1.)<br>
+    7.3.2. [Registro de Entrevistas.](#7.3.2.)<br>
+    7.3.3. [Evaluaciones según heurísticas.](#7.3.3.)<br>
+    7.4. [Video About-the-Product.](#7.4.)<br>
+8. [Conclusiones](#5.)<br>
+  8.1. [Conclusiones y recomendaciones.](#8.1.)<br>
+  8.2. [Video About-the-Team.](#8.2.)<br>
+9.  [Bibliografía](#6.)<br>
+10. [Anexo](#7.)<br>
 
 # STUDENT OUTCOME
 
@@ -2222,11 +2248,48 @@ Los wireflows representan la navegación y las interacciones entre pantallas:
   <img src="assets/Wireflow2.png" style="margin-bottom: 5px;" width="500">
 </div>
 
-<div id='7.'><h2>7. Conclusiones</h2></div>
+<div id="6.4.3."><h4>6.4.3. Applications Mock-ups</h4></div>
+
+<div id="6.4.4."><h4>6.4.4. Applications User Flow Diagrams</h4></div>
+
+<div id="6.5."><h4>6.5. Applications Prototyping</h4></div>
+
+<div id="7."><h4>Capítulo VII: Product Implementation, Validation & Deployment</h4></div>
+
+<div id="7.1."><h4>7.1. Software Configuration Management</h4></div>
+<div id="7.1.1."><h4>7.1.1. Software Development Environment Configuration</h4></div>
+
+<div id="7.1.2."><h4>7.1.2. Source Code Management</h4></div>
+
+<div id="7.1.3."><h4>7.1.3. Source Code Style Guide & Conventions</h4></div>
+
+<div id="7.1.4."><h4>7.1.4. Software Deployment Configuration</h4></div>
+
+<div id="7.2."><h4>7.2. Solution Implementation</h4></div>
+
+<div id="7.2.X."><h4>7.2.1. Sprint 1</h4></div>
+<div id="7.2.1.1."><h4>7.2.1.1. Sprint Planning 1</h4></div>
+<div id="7.2.1.2."><h4>7.2.1.2. Sprint Backlog 1</h4></div>
+<div id="7.2.1.3."><h4>7.2.1.3. Development Evidence for Sprint Review</h4></div>
+<div id="7.2.1.4."><h4>7.2.1.4. Testing Suite Evidence for Sprint Review</h4></div>
+<div id="7.2.1.5."><h4>7.2.1.5. Execution Evidence for Sprint Review</h4></div>
+<div id="7.2.1.6."><h4>7.2.1.6. Services Documentation Evidence for Sprint Review</h4></div>
+<div id="7.2.1.7."><h4>7.2.1.7. Software Deployment Evidence for Sprint Review</h4></div>
+<div id="7.2.1.8."><h4>7.2.1.8. Team Collaboration Insights during Sprint</h4></div>
+<div id="7.3."><h4>7.3. Validation Interviews</h4></div>
+<div id="7.3.1."><h4>7.3.1. Diseño de Entrevistas</h4></div>
+<div id="7.3.2."><h4>7.3.2. Registro de Entrevistas</h4></div>
+<div id="7.3.3."><h4>7.3.3. Evaluaciones según heurísticas</h4></div>
+<div id="7.4."><h4>7.4. Video About-the-Product</h4></div>
+
+<div id='8.'><h2>8. Conclusiones</h2></div>
+<div id='8.1.'><h4>8.1. Conclusiones y recomendaciones</h4></div>
 
 La segunda versión del trabajo, orientada a las unidades 5 y 6, permitió avanzar desde el diseño estratégico hacia la implementación táctica y la experiencia de usuario. Se desarrollaron los modelos de dominio detallados para cada bounded context, definiendo entidades, servicios y repositorios bajo principios de Clean Architecture y DDD. Además, se diseñaron los componentes clave de la solución, los diagramas de base de datos y los flujos de aplicación, asegurando la integración entre IAM, procesamiento de audio, puntuación y analítica. En la unidad 6, se establecieron las guías de estilo, la arquitectura de información y los wireframes, priorizando la usabilidad y la visualización efectiva de métricas para supervisores y agentes. Estos avances consolidan la base técnica y UX para la siguiente etapa de desarrollo y validación funcional.
 
-<div id='8.'><h2>8. Bibliografía</h2></div>
+<div id='8.2.'><h4>8.2. Video About-the-Team</h4></div>
+
+<div id='9.'><h2>9. Bibliografía</h2></div>
 
 Brandolini, A. (2019). *Introducing EventStorming: An act of deliberate collective learning*. Leanpub.  
 
